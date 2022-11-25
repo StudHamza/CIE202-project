@@ -246,6 +246,31 @@ void GUI::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const
 }
 
 
+void GUI::DrawRegPoly(Point P1, Point P2, int s, GfxInfo RegPolyGfxInfo)const
+{
+	color DrawingClr;
+	if (RegPolyGfxInfo.isSelected)	//shape is selected
+		DrawingClr = HighlightColor; //shape should be drawn highlighted
+	else
+		DrawingClr = RegPolyGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, RegPolyGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (RegPolyGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(RegPolyGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
+}
+
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
 GUI::~GUI()
 {
