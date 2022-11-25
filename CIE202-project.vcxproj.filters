@@ -123,7 +123,7 @@
     <ClCompile Include="Shapes\Graph.cpp">
       <Filter>Shapes&amp;Graph</Filter>
     </ClCompile>
-    <ClCompile Include="RegPoly.cpp">
+    <ClCompile Include="Shapes\RegPoly.cpp">
       <Filter>Shapes&amp;Graph</Filter>
     </ClCompile>
   </ItemGroup>
@@ -208,7 +208,7 @@
     <ClInclude Include="Shapes\Graph.h">
       <Filter>Shapes&amp;Graph</Filter>
     </ClInclude>
-    <ClInclude Include="RegPoly.h">
+    <ClInclude Include="Shapes\RegPoly.h">
       <Filter>Shapes&amp;Graph</Filter>
     </ClInclude>
   </ItemGroup>
