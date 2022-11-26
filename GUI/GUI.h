@@ -39,7 +39,7 @@ class GUI
 		//If you want to change the menu icons order, change the order here
 		ICON_RECT,		//Recangle icon in menu
 		ICON_CIRC,		//Circle icon in menu
-
+		ICON_REGPOLY, //Regular polygon
 		//TODO: Add more icons names here
 
 		ICON_EXIT,		//Exit icon
