@@ -1,4 +1,5 @@
 #include "GUI.h"
+#include "vector"
 
 GUI::GUI()
 {
@@ -130,6 +131,7 @@ window* GUI::CreateWind(int w, int h, int x, int y) const
 	pW->DrawRectangle(0, ToolBarHeight, w, h);
 	return pW;
 }
+
 //////////////////////////////////////////////////////////////////////////////////////////
 void GUI::CreateStatusBar() const
 {
@@ -203,7 +205,7 @@ void GUI::PrintMessage(string msg) const	//Prints a message on status bar
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
-color GUI::getCrntDrawColor() const	//get current drwawing color
+color GUI::getCrntDrawColor() const	//get current drawing color
 {
 	return DrawColor;
 }
@@ -248,7 +250,7 @@ void GUI::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const
 }
 
 
-void GUI::DrawRegPoly(Point P1, Point P2, int s, GfxInfo RegPolyGfxInfo)const
+void GUI::DrawRegPoly(Point P1,  vector<int> Xv, vector<int> Yv,int side, GfxInfo RegPolyGfxInfo)const
 {
 	color DrawingClr;
 	if (RegPolyGfxInfo.isSelected)	//shape is selected
@@ -266,8 +268,9 @@ void GUI::DrawRegPoly(Point P1, Point P2, int s, GfxInfo RegPolyGfxInfo)const
 	}
 	else
 		style = FRAME;
-
-	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
+	int *x=&Xv[0];
+	int* y = &Yv[0];
+	pWind->DrawPolygon(x,y,side,style);
 }
 
 

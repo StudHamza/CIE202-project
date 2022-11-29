@@ -27,6 +27,7 @@ void Graph::Draw(GUI* pUI) const
 	pUI->ClearDrawArea();
 	for (auto shapePointer : shapesList)
 		shapePointer->Draw(pUI);
+	pUI->CreateDrawToolBar(); //Prevents Shapes to flow into Tool bar
 }
 
 
@@ -40,3 +41,5 @@ shape* Graph::Getshape(int x, int y) const
 
 	return nullptr;
 }
+
+

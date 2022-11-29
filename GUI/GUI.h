@@ -1,7 +1,7 @@
 #pragma once
 
 
-
+#include <vector>
 #include "..\CMUgraphicsLib\CMUgraphics.h"
 #include "..\Defs.h"
 
@@ -103,7 +103,7 @@ public:
 
 	// -- shapes Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const;//Draw a rectangle
-	void DrawRegPoly(Point P1, Point P2, int s, GfxInfo RegPolyGfxInfo)const;
+	void DrawRegPoly(Point P1, vector<int> Vx, vector<int> Vy,int s, GfxInfo RegPolyGfxInfo)const; //Draw a Regular polygon
 
 	///Make similar functions for drawing all other shapes.
 

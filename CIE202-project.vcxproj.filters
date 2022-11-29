@@ -126,6 +126,9 @@
     <ClCompile Include="Shapes\RegPoly.cpp">
       <Filter>Shapes&amp;Graph</Filter>
     </ClCompile>
+    <ClCompile Include="operations\opAddRegPoly.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -210,6 +213,9 @@
     </ClInclude>
     <ClInclude Include="Shapes\RegPoly.h">
       <Filter>Shapes&amp;Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="operations\opAddRegPoly.h">
+      <Filter>Operations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
