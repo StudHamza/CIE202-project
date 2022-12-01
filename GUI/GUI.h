@@ -13,10 +13,16 @@ struct Point	//To be used for shapes points
 	int x, y;
 };
 
+struct Box		//a two cordered rectangle for the hit box
+{
+	Point P1, P2;
+};
+
 struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 {
 	color DrawClr;	//Draw color of the shape
 	color FillClr;	//Fill color of the shape
+	color PrevClr;	//Pervious color before selection
 	bool isFilled;	//shape Filled or not
 	int BorderWdth;	//Width of shape borders
 	bool isSelected;	//true if the shape is selected.
@@ -47,6 +53,16 @@ class GUI
 		DRAW_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
 
 	};
+	enum VToolBarIcon //The icons displayed on the vertical tool bar
+	{
+		ICON_SELECT,
+		ICON_DELETE,
+		ICON_IMAGE,
+		ICON_SAVE,
+		ICON_LOAD,
+
+		DRAW_ICON_COUNT_V
+	};
 
 	enum PlayMenuIcon //The icons of the Play menu (you should add more icons)
 	{
@@ -66,6 +82,8 @@ class GUI
 		wx, wy,			//Window starting coordinates
 		StatusBarHeight,	//Status Bar Height
 		ToolBarHeight,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
+		VToolBarImageH,		//Vertical toolbar heigtht
+		VToolBarImageW,		//Width of 
 		MenuIconWidth;		//Width of each icon in toolbar menu
 
 
@@ -95,6 +113,7 @@ public:
 	// Output Functions  ---------------------------
 	window* CreateWind(int, int, int, int) const; //creates the application window
 	void CreateDrawToolBar();	//creates Draw mode toolbar & menu
+	void CreateDrawVToolBar();
 	void CreatePlayToolBar();	//creates Play mode toolbar & menu
 	void CreateStatusBar() const;	//create the status bar
 

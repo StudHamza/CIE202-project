@@ -129,6 +129,9 @@
     <ClCompile Include="operations\opAddRegPoly.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
+    <ClCompile Include="operations\opSelect.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -215,6 +218,9 @@
       <Filter>Shapes&amp;Graph</Filter>
     </ClInclude>
     <ClInclude Include="operations\opAddRegPoly.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="operations\opSelect.h">
       <Filter>Operations</Filter>
     </ClInclude>
   </ItemGroup>

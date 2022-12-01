@@ -1,6 +1,7 @@
 #include "controller.h"
 #include "operations\opAddRect.h"
 #include "operations\opAddRegPoly.h"
+#include "operations\opSelect.h"
 
 
 //Constructor
@@ -15,7 +16,10 @@ controller::controller()
 //==================================================================================//
 operationType controller::GetUseroperation() const
 {
+	//Unselect Selected Shapes
+	if (pGraph->UnselectShape()) { pGUI->ClearStatusBar(); }
 	//Ask the input to get the operation from the user.
+	
 	return pGUI->GetUseroperation();		
 }
 ////////////////////////////////////////////////////////////////////////////////////
@@ -39,6 +43,9 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opAddRegPoly(this);
 			break;
 
+		case SELECT_SHAPE:
+			pOp = new opSelect(this);
+			break;
 		case EXIT:
 			///create Exitoperation here
 			

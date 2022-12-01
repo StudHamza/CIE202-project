@@ -14,14 +14,15 @@ GUI::GUI()
 
 	StatusBarHeight = 50;
 	ToolBarHeight = 50;
+	VToolBarImageW = 50;
+	VToolBarImageH = 50;
 	MenuIconWidth = 80;
 
 	DrawColor = BLUE;	//default Drawing color
 	FillColor = GREEN;	//default Filling color
 	MsgColor = BLACK;		//Messages color
 	BkGrndColor = WHITE;	//Background color
-	HighlightColor = MAGENTA;	//This color should NOT be used to draw shapes. use if for highlight only
-	StatusBarColor = LIGHTSEAGREEN;
+	StatusBarColor = BLUEVIOLET;
 	PenWidth = 3;	//default width of the shapes frames
 
 
@@ -32,6 +33,7 @@ GUI::GUI()
 
 	CreateDrawToolBar();
 	CreateStatusBar();
+	CreateDrawVToolBar();
 }
 
 
@@ -74,7 +76,7 @@ operationType GUI::GetUseroperation() const
 {
 	int x, y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
-
+	
 	if (InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 	{
 		//[1] If user clicks on the Toolbar
@@ -96,14 +98,30 @@ operationType GUI::GetUseroperation() const
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
+		//[4] user clicks on vertical tool bar
+		if (x >= 0 && x <= VToolBarImageW)
+		{
+			int ClickedIconOrder = (y / (VToolBarImageH+250));
 
-		//[2] User clicks on the drawing area
+			switch (ClickedIconOrder)
+			{
+			case ICON_SELECT: return SELECT_SHAPE; 
+			case ICON_DELETE: return DEL;
+			case ICON_IMAGE: return POST_IMAGE;
+			case ICON_SAVE: return SAVE;
+			case ICON_LOAD: return LOAD;
+
+			default: return EMPTY;	//A click on empty place in desgin toolbar
+			}
+		}
+
+		//[3] User clicks on the drawing area
 		if (y >= ToolBarHeight && y < height - StatusBarHeight)
 		{
 			return DRAWING_AREA;
 		}
 
-		//[3] User clicks on the status bar
+		//[4] User clicks on the status bar
 		return STATUS;
 	}
 	else	//GUI is in PLAY mode
@@ -173,11 +191,10 @@ void GUI::CreateDrawToolBar()
 
 
 	//Draw a line under the toolbar
-	pWind->SetPen(RED, 3);
+	pWind->SetPen(DARKRED, 3);
 	pWind->DrawLine(0, ToolBarHeight, width, ToolBarHeight);
 
 }
-//////////////////////////////////////////////////////////////////////////////////////////
 
 void GUI::CreatePlayToolBar() 
 {
@@ -185,12 +202,33 @@ void GUI::CreatePlayToolBar()
 	///TODO: write code to create Play mode menu
 }
 //////////////////////////////////////////////////////////////////////////////////////////
+//                  CREATING THE VERTICLE TOOL BAR                                     	//
+//////////////////////////////////////////////////////////////////////////////////////////
+void GUI::CreateDrawVToolBar() {
+	string VToolBarIcon[DRAW_ICON_COUNT_V];
+	VToolBarIcon[ICON_SELECT] = "images\\VToolBar\\Select_Icon.jpg";
+	VToolBarIcon[ICON_DELETE] = "images\\VToolBar\\Delete_Icon.jpg";
+	VToolBarIcon[ICON_IMAGE] = "images\\VToolBar\\Image_Icon.jpg";
+	VToolBarIcon[ICON_SAVE] = "images\\VToolBar\\Save_Icon.jpg";
+	VToolBarIcon[ICON_LOAD] = "images\\VToolBar\\Load_Icon.jpg";
+	
+	//DRAW MENUE
+	for (int i = 0; i < DRAW_ICON_COUNT_V; i++) {
+		pWind->SetPen(DARKRED, 4);
+		pWind->DrawLine(0, (VToolBarImageH * (i+1)) + 250, VToolBarImageW, (VToolBarImageH * (i+1)) + 250);
+		pWind->DrawImage(VToolBarIcon[i], 0, (VToolBarImageH * i) + 250, VToolBarImageW, VToolBarImageH-5);
+	}
+
+	pWind->DrawLine(VToolBarImageW, ToolBarHeight, VToolBarImageW, 650);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
 
 void GUI::ClearDrawArea() const
 {
 	pWind->SetPen(BkGrndColor, 1);
 	pWind->SetBrush(BkGrndColor);
-	pWind->DrawRectangle(0, ToolBarHeight, width, height - StatusBarHeight);
+	pWind->DrawRectangle(VToolBarImageW, ToolBarHeight, width-VToolBarImageW, height - StatusBarHeight);
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -229,10 +267,8 @@ int GUI::getCrntPenWidth() const		//get current pen width
 void GUI::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const
 {
 	color DrawingClr;
-	if (RectGfxInfo.isSelected)	//shape is selected
-		DrawingClr = HighlightColor; //shape should be drawn highlighted
-	else
-		DrawingClr = RectGfxInfo.DrawClr;
+
+	DrawingClr = RectGfxInfo.DrawClr;
 
 	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);	//Set Drawing color & width
 
@@ -253,10 +289,8 @@ void GUI::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const
 void GUI::DrawRegPoly(Point P1,  vector<int> Xv, vector<int> Yv,int side, GfxInfo RegPolyGfxInfo)const
 {
 	color DrawingClr;
-	if (RegPolyGfxInfo.isSelected)	//shape is selected
-		DrawingClr = HighlightColor; //shape should be drawn highlighted
-	else
-		DrawingClr = RegPolyGfxInfo.DrawClr;
+
+	DrawingClr = RegPolyGfxInfo.DrawClr;
 
 	pWind->SetPen(DrawingClr, RegPolyGfxInfo.BorderWdth);	//Set Drawing color & width
 

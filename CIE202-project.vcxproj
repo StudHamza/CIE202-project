@@ -182,6 +182,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="operations\opAddRect.cpp" />
     <ClCompile Include="operations\opAddRegPoly.cpp" />
+    <ClCompile Include="operations\opSelect.cpp" />
     <ClCompile Include="Shapes\Graph.cpp" />
     <ClCompile Include="Shapes\RegPoly.cpp" />
     <ClCompile Include="Shapes\Shape.cpp" />
@@ -214,6 +215,7 @@
     <ClInclude Include="operations\opAddRect.h" />
     <ClInclude Include="operations\opAddRegPoly.h" />
     <ClInclude Include="operations\operation.h" />
+    <ClInclude Include="operations\opSelect.h" />
     <ClInclude Include="Shapes\Graph.h" />
     <ClInclude Include="Shapes\RegPoly.h" />
     <ClInclude Include="Shapes\Shape.h" />

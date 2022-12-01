@@ -11,5 +11,6 @@ public:
 	Rect(Point , Point, GfxInfo shapeGfxInfo );
 	virtual ~Rect();
 	virtual void Draw(GUI* pUI) const;
+	virtual Box HitBox() const;
 };
 

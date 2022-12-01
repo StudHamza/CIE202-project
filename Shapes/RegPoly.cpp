@@ -1,6 +1,7 @@
 #include "RegPoly.h"
-using namespace std;
 #include <iostream>
+#include <algorithm>
+using namespace std;
 
 
 RegPoly::RegPoly(Point P1, Point P2,int S, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
@@ -40,3 +41,14 @@ void RegPoly::Draw(GUI* pUI) const
 	pUI->DrawRegPoly(Start,Xv,Yv ,Side, ShpGfxInfo);
 }
 
+Box RegPoly::HitBox()const //Not done yet
+{
+	int max_x = *max_element(Xv.begin(), Xv.end());
+	int max_y = *max_element(Yv.begin(), Yv.end());
+	int min_x = *min_element(Xv.begin(), Xv.end());
+	int min_y = *min_element(Yv.begin(), Yv.end());
+	Point closest = { min_x, min_y };
+	Point farthest = { max_x, max_y };
+	Box HBox = { closest,farthest };
+	return HBox;
+}
