@@ -135,9 +135,6 @@
     <ClCompile Include="operations\opSave.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
-    <ClCompile Include="stringFunctions.cpp">
-      <Filter>Shapes&amp;Graph</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />

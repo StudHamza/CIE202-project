@@ -1,29 +1,14 @@
 #pragma once
+#include "Graph.h"
 #include <iostream>
 using namespace std;
-#include <string>
-#include <vector>
 
-int setColor(string c)
-{
-    int red, green, blue;
-    int start, end;
-    start = find('(', c) + 1;
-    end = find(',', c);
-    red = stoi(getString(start, end, c));
-    start = end + 1;
-    end = find(',', c, 1);
-    green = stoi(getString(start, end, c));
-    start = end + 1;
-    end = find(')', c);
-    blue = stoi(getString(start, end, c));
-}
 
-int find(char f, string sentence, int num = 0)
+int find(char f, string sentence, int num = 1)
 { // Will return number corresonding to the wanted charcter
     for (int i = 0; i < sentence.size(); i++)
     {
-        if (sentence[i] == f && num == 0)
+        if (sentence[i] == f && num == 1)
         {
             return i;
         }
@@ -43,4 +28,35 @@ string getString(int s, int e, string sentence)
         thing += sentence[i];
     }
     return thing; // Will return wanted string
+}
+
+color Fcolor(string c)
+{
+    unsigned int red, green, blue;
+    int start, end;
+    start = find('(', c) + 1;
+    end = find(',', c);
+    red = stoi(getString(start, end, c));
+    start = end + 1;
+    end = find(',', c, 2);
+    green = stoi(getString(start, end, c));
+    start = end + 1;
+    end = find(')', c);
+    blue = stoi(getString(start, end, c));
+    color clr(red, blue, green);
+    return clr;
+}
+
+Point getP(string c)
+{
+    Point p;
+    int start, end;
+    start = find('(', c) + 1;
+    end = find(',', c);
+    p.x = stoi(getString(start, end - 1, c));
+    start = end + 1;
+    end = find(')', c);
+    p.y = stoi(getString(start, end - 1, c));
+
+    return p;
 }

@@ -188,7 +188,6 @@
     <ClCompile Include="Shapes\RegPoly.cpp" />
     <ClCompile Include="Shapes\Shape.cpp" />
     <ClCompile Include="Shapes\Rect.cpp" />
-    <ClCompile Include="stringFunctions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
