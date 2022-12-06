@@ -16,15 +16,22 @@ void opSelect::Execute()
 	//Get a Pointer to the Input / Output Interfaces
 	GUI* pUI = pControl->GetUI();
 	Graph* G = pControl->getGraph();
+	G->UnselectShape();
+
 
 	pUI->PrintMessage("Select Shape");
 	pUI->GetPointClicked(P.x, P.y);
-	shape* SelectedShapeG = G->Getshape(P.x, P.y);
-	if(SelectedShapeG){
-		pUI->ClearStatusBar();
-		color pevClr = pUI->getCrntDrawColor();
-		string msg=G->SelectShape(P, pevClr,SelectedShapeG);
+	shape* SelectedShapeG = G->Getshape(P.x, P.y);  //Gets clicked on shape if it is available
+	if(SelectedShapeG){   //if selected
+		pUI->ClearStatusBar(); 
+		color pevClr = pUI->getCrntDrawColor(); //get crnt drawing pen color
+		color pevFill = pUI->getCrntFillColor(); //Current fill color
+		int  pevBorderW = pUI->getCrntPenWidth();	//pev width
+		string msg=G->SelectShape(P, pevClr,SelectedShapeG);   //selecte shape and return msg (shape info)
 		pUI->PrintMessage(msg);
 	}
-
+	else
+	{
+		pUI->PrintMessage("You selected nothing");
+	}
 }

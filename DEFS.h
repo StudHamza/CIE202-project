@@ -10,6 +10,7 @@ enum operationType //The operations supported (you can add more if needed)
 	DRAW_TRI,		//Draw Triangle
 	DRAW_CIRC,		//Draw Circle
 	DRAW_REGPOLY,	//Draw Regular polygon
+	COLOR_PALETTE,
 	SELECT_SHAPE,	//Selects shape
 	POST_IMAGE,		//Post image into shape
 	CHNG_DRAW_CLR,	//Change the drawing color

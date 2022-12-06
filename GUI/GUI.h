@@ -47,7 +47,8 @@ class GUI
 		ICON_CIRC,		//Circle icon in menu
 		ICON_REGPOLY, //Regular polygon
 		//TODO: Add more icons names here
-
+		ICON_COLOR,
+		ICON_PLAY,
 		ICON_EXIT,		//Exit icon
 
 		DRAW_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum

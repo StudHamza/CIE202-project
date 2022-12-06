@@ -1,5 +1,6 @@
 #include "Rect.h"
 
+
 Rect::Rect(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo)
 {
 	Corner1 = P1;
@@ -17,8 +18,36 @@ void Rect::Draw(GUI* pUI) const
 
 
 
-Box Rect::HitBox()const
+bool Rect::HitBox(int x,int y)const
 {
-	Box HBox = {Corner1,Corner2};
-	return HBox;
+	Box HBox;
+	if (Corner1.x < Corner2.x && Corner1.y < Corner2.y) {
+		HBox = { Corner1,Corner2 };
+	}
+	else {
+		HBox = { Corner2,Corner1 };
+	}
+	if (x >= HBox.P1.x && x <= HBox.P2.x && y >= HBox.P1.y && y <= HBox.P2.y) { return true; }
+	return false;
+}
+
+
+string Rect::GetInfo(char s)const
+{
+	string name,id,c1, c2, drawClr, fill, borderWidth,msg;
+	color Draw=ShpGfxInfo.DrawClr;
+	color Fill = ShpGfxInfo.FillClr;
+	name = "Rectangle";
+	id = to_string(ID);
+	c1 = "(" + to_string(Corner1.x) + "," + to_string(Corner1.y) + ")";
+	c2 = " (" + to_string(Corner2.x) + "," + to_string(Corner2.y) + ")"; 
+	drawClr = Draw.getClr();
+	fill = Fill.getClr();
+	borderWidth = to_string(ShpGfxInfo.BorderWdth);
+	if (s == 's') {
+		msg = name+" " +id+" corner1 " +c1+" corner2 " +c2+" " +drawClr+" " +fill+" " +"Border width "+borderWidth;
+		return msg;
+	}
+	msg = name+","+id+","+c1+","+c2+","+drawClr+","+fill+","+borderWidth;
+	return msg;
 }

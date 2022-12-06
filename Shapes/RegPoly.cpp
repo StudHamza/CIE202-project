@@ -41,14 +41,34 @@ void RegPoly::Draw(GUI* pUI) const
 	pUI->DrawRegPoly(Start,Xv,Yv ,Side, ShpGfxInfo);
 }
 
-Box RegPoly::HitBox()const //Not done yet
+bool RegPoly::HitBox(int x,int y)const //Not done yet
 {
-	int max_x = *max_element(Xv.begin(), Xv.end());
-	int max_y = *max_element(Yv.begin(), Yv.end());
-	int min_x = *min_element(Xv.begin(), Xv.end());
-	int min_y = *min_element(Yv.begin(), Yv.end());
-	Point closest = { min_x, min_y };
-	Point farthest = { max_x, max_y };
-	Box HBox = { closest,farthest };
-	return HBox;
+
+		int i, j, c = 0;
+		for (i = 0, j = Side - 1; i < Side; j = i++) {
+			if (((Yv[i] > y) != (Yv[j] > y)) &&
+				(x < (Xv[j] - Xv[i]) * (y - Yv[i]) / (Yv[j] - Yv[i]) + Xv[i]))
+				c = !c;
+		}
+		return c;
+}
+
+
+string RegPoly::GetInfo(char s)const	//current Draw,fill color and int border width
+{
+	string name,id,side,start, radius, drawClr, fill, borderWidth,msg;
+	name = "Regular Polygon";
+	id = to_string(ID);
+	start = "(" + to_string(Center.x) + "," + to_string(Center.y) + ")";
+	radius = " (" + to_string(Start.x) + "," + to_string(Start.y) + ")";
+	drawClr = "("+to_string(ShpGfxInfo.DrawClr.ucRed) + ", " + to_string(ShpGfxInfo.DrawClr.ucBlue) + " ," + to_string(ShpGfxInfo.DrawClr.ucGreen)+")";
+	fill = "(" + to_string(ShpGfxInfo.FillClr.ucRed) + " ," + to_string(ShpGfxInfo.FillClr.ucBlue) + ", " + to_string(ShpGfxInfo.FillClr.ucGreen)+")";
+	borderWidth = to_string(ShpGfxInfo.BorderWdth);
+	side = to_string(Side);
+	if (s == 's') {
+		msg = name+" " +id+" Center " +start+" Radius" +radius+" Draw Color" +drawClr+" Fill Color" +fill+" Border Width" +borderWidth;
+		return msg;
+	}
+	msg = name + "," + id +","+ side+"," + start + "," + radius + "," + drawClr + "," + fill + "," + borderWidth;
+	return msg;
 }

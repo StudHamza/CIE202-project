@@ -23,6 +23,10 @@ class color {
     unsigned char ucGreen;
     unsigned char ucBlue;
 
+    string getClr() {
+        string clr = "(" + to_string(ucRed) + "," + to_string(ucGreen) + "," + to_string(ucBlue) + ")";
+        return clr;
+    }
 };
 
 bool operator==(color a, color b);

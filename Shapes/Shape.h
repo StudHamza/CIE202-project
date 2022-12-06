@@ -9,26 +9,26 @@ class shape
 protected:
 	int ID;		//Each shape has an ID
 	GfxInfo ShpGfxInfo;	//shape graphis info
-	
+	static int counter;
 	/// Add more parameters if needed.
 
 public:
+
 	shape(GfxInfo shapeGfxInfo);
 	virtual ~shape() {}
 	void SetSelected(bool s);	//select/unselect the shape
 	bool IsSelected() const;	//check whether fig is selected
 
 	virtual void Draw(GUI* pUI) const =0 ;		//Draw the shape
-	virtual Box HitBox()const =0;		//create hit box
+	virtual bool HitBox(int,int)const =0;		//create hit box
 	void ChngDrawClr(color Dclr);	//changes the shape's drawing color
 	void ChngFillClr(color Fclr);	//changes the shape's filling color
-	string Selected(color);
+	void Selected(color);
 	void UnSelect();
 	///The following functions should be supported by the shape class
 	///It should be overridden by each inherited shape
-
+	virtual string GetInfo(char)const = 0;		//Return a string of all shape info. Is used in save and select functiosn
 	///Decide the parameters that you should pass to each function	
-
 
 	//virtual void Rotate() = 0;	//Rotate the shape
 	//virtual void Resize() = 0;	//Resize the shape
@@ -39,4 +39,3 @@ public:
 
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all shape info on the status bar
 };
-

@@ -15,7 +15,8 @@ public:
 	RegPoly(Point, Point,int,GfxInfo shapeGfxInfo);
 	void SetVertices();
 	virtual void Draw(GUI* pUI) const;
-	virtual Box HitBox()const;
+	virtual bool HitBox(int,int)const;
+	virtual string GetInfo(char)const;
 	virtual ~RegPoly();
 };
 

@@ -1,7 +1,9 @@
 #include "shape.h"
 
 shape::shape(GfxInfo shapeGfxInfo)
-{ 
+{	
+	counter++;
+	ID = counter;
 	ShpGfxInfo = shapeGfxInfo;	//Default status is non-filled.
 }
  
@@ -22,13 +24,11 @@ void shape::ChngFillClr(color Fclr)
 	ShpGfxInfo.FillClr = Fclr; 
 }
 
-string shape::Selected(color previousC)
+void shape::Selected(color previousC)	//Sets shape to selected and gets info through a virtual function
 {
-	ShpGfxInfo.PrevClr=color(previousC);
-	SetSelected(true);
-	ChngDrawClr(MAGENTA);
-	string msg = "Shape info:\tBorder Width "+to_string(ShpGfxInfo.BorderWdth)+"\tPen Color \t is selected\tfill color";
-	return msg;
+	ShpGfxInfo.PrevClr=color(previousC);	//sets prev Color of selected shape
+	SetSelected(true);	//sets selected to true
+	ChngDrawClr(MAGENTA);		//change color
 }
 
 void shape::UnSelect()
@@ -36,3 +36,6 @@ void shape::UnSelect()
 	SetSelected(false);
 	ChngDrawClr(ShpGfxInfo.PrevClr);
 }
+
+int shape::counter = 0;
+

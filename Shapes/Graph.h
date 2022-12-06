@@ -2,6 +2,8 @@
 #include "Shape.h"
 #include <fstream>
 #include <vector>
+
+
 using namespace std;
 
 //forward decl
@@ -23,6 +25,6 @@ public:
 	string SelectShape(Point,color,shape *);	//Responsible for shape selection
 	bool UnselectShape();
 
-	void Save(ofstream& outfile);	//Save all shapes to a file
+	void Save(ofstream& outfile,color,color,int);	//Save all shapes to a file
 	void load(ifstream& inputfile);	//Load all shapes from a file
 };

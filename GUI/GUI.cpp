@@ -1,6 +1,7 @@
 #include "GUI.h"
 #include "vector"
 
+#include<iostream>
 GUI::GUI()
 {
 	//Initialize user interface parameters
@@ -16,7 +17,7 @@ GUI::GUI()
 	ToolBarHeight = 50;
 	VToolBarImageW = 50;
 	VToolBarImageH = 50;
-	MenuIconWidth = 80;
+	MenuIconWidth = 70;
 
 	DrawColor = BLUE;	//default Drawing color
 	FillColor = GREEN;	//default Filling color
@@ -82,9 +83,9 @@ operationType GUI::GetUseroperation() const
 		//[1] If user clicks on the Toolbar
 		if (y >= 0 && y < ToolBarHeight)
 		{
-			//Check whick Menu icon was clicked
+			//Check which Menu icon was clicked
 			//==> This assumes that menu icons are lined up horizontally <==
-			int ClickedIconOrder = (x / MenuIconWidth);
+			int ClickedIconOrder = (x / (MenuIconWidth));
 			//Divide x coord of the point clicked by the menu icon width (int division)
 			//if division result is 0 ==> first icon is clicked, if 1 ==> 2nd icon and so on
 
@@ -93,22 +94,24 @@ operationType GUI::GetUseroperation() const
 			case ICON_RECT: return DRAW_RECT;
 			case ICON_CIRC: return DRAW_CIRC;
 			case ICON_REGPOLY: return DRAW_REGPOLY;
+			case ICON_COLOR: return COLOR_PALETTE;
+			case ICON_PLAY: return TO_PLAY;
 			case ICON_EXIT: return EXIT;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
 		//[4] user clicks on vertical tool bar
-		if (x >= 0 && x <= VToolBarImageW)
+		if (x >= 0 && x <= VToolBarImageW && y>=250)
 		{
-			int ClickedIconOrder = (y / (VToolBarImageH+250));
+			int ClickedIconOrderV = ((y-250) / (VToolBarImageH-5));
 
-			switch (ClickedIconOrder)
+			switch (ClickedIconOrderV)
 			{
-			case ICON_SELECT: return SELECT_SHAPE; 
-			case ICON_DELETE: return DEL;
+			case ICON_SELECT: return SELECT_SHAPE;
+			case ICON_DELETE:  return DEL;
 			case ICON_IMAGE: return POST_IMAGE;
-			case ICON_SAVE: return SAVE;
+			case ICON_SAVE:  return SAVE ;
 			case ICON_LOAD: return LOAD;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -180,15 +183,18 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_RECT] = "images\\MenuIcons\\Menu_Rect.jpg";
 	MenuIconImages[ICON_CIRC] = "images\\MenuIcons\\Menu_Circ.jpg";
 	MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\Menu_RegPoly.jpg";
+	MenuIconImages[ICON_COLOR]="images\\MenuIcons\\Menu_Color.jpg";
+	MenuIconImages[ICON_PLAY] = "images\\MenuIcons\\Menu_Play.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
 
 	//TODO: Prepare images for each menu icon and add it to the list
-
+	pWind->SetPen(DARKRED, 4);
 	//Draw menu icon one image at a time
-	for (int i = 0; i < DRAW_ICON_COUNT; i++)
-		pWind->DrawImage(MenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight);
+	for (int i = 0; i < DRAW_ICON_COUNT; i++) {
+		pWind->DrawImage(MenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth-5, ToolBarHeight);
+		pWind->DrawLine(MenuIconWidth*(i+1), 0,  (i+1) * MenuIconWidth, ToolBarHeight);
 
-
+	}
 
 	//Draw a line under the toolbar
 	pWind->SetPen(DARKRED, 3);
