@@ -3,6 +3,9 @@
 #include "operations\opAddRegPoly.h"
 #include "operations\opSelect.h"
 #include "operations\opSave.h"
+#include "operations\opLoad.h"
+#include "operations\opClear.h"
+#include "operations\opExit.h"
 
 
 //Constructor
@@ -54,7 +57,13 @@ operation* controller::createOperation(operationType OpType)
 		case SAVE:
 			pOp = new opSave(this);
 			break;
+		case LOAD:
+			pOp = new opLoad(this);
+			break;
+		case CLEAR:
+			pOp = new opClear(this);
 		case EXIT:
+			pOp = new opExit(this);
 			///create Exitoperation here
 			
 			break;
@@ -123,6 +132,6 @@ void controller::Run()
 		//Update the interface
 		UpdateInterface();
 
-	} while (OpType != EXIT);
+	} while (OpType!=CLEAR);
 
 }

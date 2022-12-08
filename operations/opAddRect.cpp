@@ -40,6 +40,7 @@ void opAddRect::Execute()
 
 	RectGfxInfo.isFilled = false;	//default is not filled
 	RectGfxInfo.isSelected = false;	//defualt is not selected
+	RectGfxInfo.isSaved = false;	//defualt is not saved
 
 
 	//Create a rectangle with the above parameters

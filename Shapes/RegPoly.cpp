@@ -4,6 +4,7 @@
 using namespace std;
 
 
+
 RegPoly::RegPoly(Point P1, Point P2,int S, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 {
 	Center = P1;
@@ -57,12 +58,20 @@ bool RegPoly::HitBox(int x,int y)const //Not done yet
 string RegPoly::GetInfo(char s)const	//current Draw,fill color and int border width
 {
 	string name,id,side,start, radius, drawClr, fill, borderWidth,msg;
+	color fc, dc;
 	name = "Regular Polygon";
 	id = to_string(ID);
 	start = "(" + to_string(Center.x) + "," + to_string(Center.y) + ")";
 	radius = " (" + to_string(Start.x) + "," + to_string(Start.y) + ")";
-	drawClr = "("+to_string(ShpGfxInfo.DrawClr.ucRed) + ", " + to_string(ShpGfxInfo.DrawClr.ucBlue) + " ," + to_string(ShpGfxInfo.DrawClr.ucGreen)+")";
-	fill = "(" + to_string(ShpGfxInfo.FillClr.ucRed) + " ," + to_string(ShpGfxInfo.FillClr.ucBlue) + ", " + to_string(ShpGfxInfo.FillClr.ucGreen)+")";
+	dc = ShpGfxInfo.DrawClr;
+	drawClr = dc.getClr();
+	fc = ShpGfxInfo.FillClr;
+	if (ShpGfxInfo.isFilled) {
+		fill = fc.getClr();
+	}
+	else {
+		fill = "(255,255,255)";
+	}
 	borderWidth = to_string(ShpGfxInfo.BorderWdth);
 	side = to_string(Side);
 	if (s == 's') {

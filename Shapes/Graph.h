@@ -1,5 +1,7 @@
 #pragma once
 #include "Shape.h"
+#include "RegPoly.h"
+#include "Rect.h"
 #include <fstream>
 #include <vector>
 
@@ -27,4 +29,9 @@ public:
 
 	void Save(ofstream& outfile,color,color,int);	//Save all shapes to a file
 	void load(ifstream& inputfile);	//Load all shapes from a file
+
+	bool Exit();		//Checks for saved shapes
+
+	void Clear();
+	void CheckSaved();
 };

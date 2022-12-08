@@ -135,6 +135,15 @@
     <ClCompile Include="operations\opSave.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
+    <ClCompile Include="operations\opLoad.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="operations\opClear.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="operations\opExit.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -227,6 +236,15 @@
       <Filter>Operations</Filter>
     </ClInclude>
     <ClInclude Include="operations\opSave.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="operations\opLoad.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="operations\opClear.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="operations\opExit.h">
       <Filter>Operations</Filter>
     </ClInclude>
   </ItemGroup>

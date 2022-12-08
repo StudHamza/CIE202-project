@@ -37,5 +37,18 @@ void shape::UnSelect()
 	ChngDrawClr(ShpGfxInfo.PrevClr);
 }
 
+
+bool shape::IsSaved()
+{
+	return ShpGfxInfo.isSaved;
+}
+
+
+void shape::SetSaved(bool s)
+{
+	ShpGfxInfo.isSaved = s;
+}
+
+
 int shape::counter = 0;
 

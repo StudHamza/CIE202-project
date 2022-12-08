@@ -43,7 +43,7 @@ color Fcolor(string c)
     start = end + 1;
     end = find(')', c);
     blue = stoi(getString(start, end, c));
-    color clr(red, blue, green);
+    color clr(red, green, blue);
     return clr;
 }
 

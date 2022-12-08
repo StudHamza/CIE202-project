@@ -42,7 +42,12 @@ string Rect::GetInfo(char s)const
 	c1 = "(" + to_string(Corner1.x) + "," + to_string(Corner1.y) + ")";
 	c2 = " (" + to_string(Corner2.x) + "," + to_string(Corner2.y) + ")"; 
 	drawClr = Draw.getClr();
-	fill = Fill.getClr();
+
+	fill = "(255,255,255)";
+	if (ShpGfxInfo.isFilled) {
+		fill = Fill.getClr();
+	}
+
 	borderWidth = to_string(ShpGfxInfo.BorderWdth);
 	if (s == 's') {
 		msg = name+" " +id+" corner1 " +c1+" corner2 " +c2+" " +drawClr+" " +fill+" " +"Border width "+borderWidth;

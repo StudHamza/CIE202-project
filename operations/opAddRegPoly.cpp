@@ -45,6 +45,7 @@ void opAddRegPoly::Execute()
 
 	RegPolyGfxInfo.isFilled = false;	//default is not filled
 	RegPolyGfxInfo.isSelected = false;	//defualt is not selected
+	RegPolyGfxInfo.isSaved = false;		//defualt is not save
 
 
 	//Create a polygon with the above parameters

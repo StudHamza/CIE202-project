@@ -29,6 +29,9 @@ public:
 	///It should be overridden by each inherited shape
 	virtual string GetInfo(char)const = 0;		//Return a string of all shape info. Is used in save and select functiosn
 	///Decide the parameters that you should pass to each function	
+	bool IsSaved();
+	void SetSaved(bool s);
+
 
 	//virtual void Rotate() = 0;	//Rotate the shape
 	//virtual void Resize() = 0;	//Resize the shape

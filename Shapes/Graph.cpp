@@ -4,6 +4,7 @@
 #include <string>
 #include "Load.h"
 #include "Shape.h"
+#include <typeinfo>
 
 
 Graph::Graph()
@@ -32,8 +33,9 @@ void Graph::Addshape(shape* pShp)
 void Graph::Draw(GUI* pUI) const
 {
 	pUI->ClearDrawArea();
-	for (auto shapePointer : shapesList)
+	for (auto shapePointer : shapesList) {
 		shapePointer->Draw(pUI);
+	}
 	pUI->CreateDrawToolBar(); //Prevents Shapes to flow into Tool bar
 	pUI->CreateDrawVToolBar();
 }
@@ -80,13 +82,17 @@ bool Graph::UnselectShape()
 void Graph::Save(ofstream& file,color DrawClr,color FillClr,int BorderWidth) {
 		if (file) {
 			file << DrawClr.getClr() << "," << FillClr.getClr() << "," << BorderWidth << endl;
+			file << shapesList.size()<<endl;
 			for (auto& shape : shapesList) {
 				string line = shape->GetInfo('l');
+				shape->SetSaved(true);
 				file << line << endl;
 			}
 		}
 		file.close();
 }
+
+
 
 void Graph::load(ifstream& file) {
 	string line;
@@ -107,24 +113,29 @@ void Graph::load(ifstream& file) {
 			border = line.back() - 48;             //Border Width
 		}
 		// Output the text from the file
-
+		if (lineNum == 2) {
+			//number of shapes
+		}
 		else if (getString(0, 2, line) == "Reg")
 		{
 			//Getting info from file
-			Point corner1, corner2;		//rectangle corners
-			int start, end,id,side,border;  //start,end point   id,side and border Width
+			Point P1, P2;		//rectangle corners
+			int start, end, side, border; //start,end point   id,side and border Width
 			color DrawClr, FillClr;		//Draw color fill color
-			border = line.back() - 48;
-			id = line[find(',', line) + 1];
-			side = line[find(',', line, 2) + 1];
+			border = line.back()-48;
+
+			
+			start = find(',', line, 2);
+			end = find(',', line, 3);
+			side = stoi(getString(start+1, end, line));
 			start = find('(', line);
 			end = find(')', line);
 			string c = getString(start, end, line);
-			corner1 = getP(c);
+			P1 = getP(c);
 			start = find('(', line, 2);
 			end = find(')', line, 2);
 			string c2 = getString(start, end, line);
-			corner2 = getP(c2);
+			P2 = getP(c2);
 			start = find('(', line, 3);
 			end = find(')', line, 3);
 			DrawClr = Fcolor(getString(start, end, line));
@@ -132,20 +143,45 @@ void Graph::load(ifstream& file) {
 			end = find(')', line, 4);
 			FillClr = Fcolor(getString(start, end, line));
 			//Creating th rectangle
+			GfxInfo RegPolyGfxInfo;
+			RegPolyGfxInfo.BorderWdth = border;
+			RegPolyGfxInfo.DrawClr = DrawClr;
+			RegPolyGfxInfo.FillClr = FillClr;
+			//Create a polygon with the above parameters
+			RegPoly* R = new RegPoly(P1, P2, side, RegPolyGfxInfo);
+			Addshape(R);
+		}
+		else if (getString(0, 2, line) == "Rec")
+		{
+			Point P1, P2;
+			string holder;
+			color DrawClr, FillClr;
+			int start, end;
+
+			start = find('(', line);
+			end = find(')', line);
+			holder = getString(start, end, line);
+			P1 = getP(holder);
+			start = find('(', line, 2);
+			end = find(')', line, 2);
+			holder = getString(start, end, line);
+			P2 = getP(holder);
+			start = find('(', line, 3);
+			end = find(')', line, 3);
+			DrawClr = Fcolor(getString(start, end, line));
+			start = find('(', line, 4);
+			end = find(')', line, 4);
+			FillClr = Fcolor(getString(start, end, line));
+
+			//Constructing Rectangle
+			//Creating th rectangle
 			GfxInfo RectGfxInfo;
 			RectGfxInfo.BorderWdth = border;
 			RectGfxInfo.DrawClr = DrawClr;
 			RectGfxInfo.FillClr = FillClr;
-
-			//Create a rectangle with the above parameters
-			//Rect* R = new Rect(corner1, corner2, RectGfxInfo);
-
-			//Add the rectangle to the list of shapes
-			//Addshape(R);
-
-		}
-		else if (getString(0, 2, line) == "Rec")
-		{
+			//Create a polygon with the above parameters
+			Rect* R = new Rect(P1, P2, RectGfxInfo);
+			Addshape(R);
 		}
 		else if (getString(0, 2, line) == "Cir")
 		{
@@ -161,8 +197,22 @@ void Graph::load(ifstream& file) {
 		}
 		cout << line << endl;
 		lineNum++;
-		lineNum++;
 	}
 }
 
 
+
+
+void Graph::Clear() {
+	shapesList.clear();
+}
+
+bool Graph::Exit()
+{
+	if (shapesList.size() > 0) {
+		for (auto* shape : shapesList) {
+			if ((shape->IsSaved()) == false) { return true; }
+		}
+	}
+	return false;
+}

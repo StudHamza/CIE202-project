@@ -26,6 +26,7 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 	bool isFilled;	//shape Filled or not
 	int BorderWdth;	//Width of shape borders
 	bool isSelected;	//true if the shape is selected.
+	bool isSaved;
 };
 
 
@@ -47,6 +48,7 @@ class GUI
 		ICON_CIRC,		//Circle icon in menu
 		ICON_REGPOLY, //Regular polygon
 		//TODO: Add more icons names here
+		
 		ICON_COLOR,
 		ICON_PLAY,
 		ICON_EXIT,		//Exit icon
@@ -58,6 +60,7 @@ class GUI
 	{
 		ICON_SELECT,
 		ICON_DELETE,
+		ICON_CLEAR,
 		ICON_IMAGE,
 		ICON_SAVE,
 		ICON_LOAD,
@@ -101,6 +104,7 @@ class GUI
 
 
 	window* pWind;
+	window* pEWind;
 
 public:
 
@@ -108,7 +112,7 @@ public:
 
 	// Input Functions  ---------------------------
 	void GetPointClicked(int& x, int& y) const;//Get coordinate where user clicks
-	string GetSrting() const;	 //Returns a string entered by the user
+	string GetSrting(char c='c') const;	 //Returns a string entered by the user
 	operationType GetUseroperation() const; //Read the user click and map to an operation
 
 	// Output Functions  ---------------------------
@@ -117,6 +121,8 @@ public:
 	void CreateDrawVToolBar();
 	void CreatePlayToolBar();	//creates Play mode toolbar & menu
 	void CreateStatusBar() const;	//create the status bar
+	void SetExit(window*);		//Creates window
+	void DeleteExitWind();
 
 	void ClearStatusBar() const;	//Clears the status bar
 	void ClearDrawArea() const;	//Clears the drawing area
@@ -128,6 +134,10 @@ public:
 	///Make similar functions for drawing all other shapes.
 
 	void PrintMessage(string msg) const;	//Print a message on Status bar
+
+	void PrintExitMessage(string msg,char p='u') const;	//Print a message on Exit window
+
+
 
 	color getCrntDrawColor() const;	//get current drwawing color
 	color getCrntFillColor() const;	//get current filling color

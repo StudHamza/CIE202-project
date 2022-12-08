@@ -48,7 +48,7 @@ void GUI::GetPointClicked(int& x, int& y) const
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
 
-string GUI::GetSrting() const
+string GUI::GetSrting(char c) const
 {
 	string Label;
 	char Key;
@@ -56,19 +56,26 @@ string GUI::GetSrting() const
 	pWind->FlushKeyQueue();
 	while (1)
 	{
-		ktype = pWind->WaitKeyPress(Key);
-		if (ktype == ESCAPE )	//ESCAPE key is pressed
+		if (c == 'c')
+			ktype = pWind->WaitKeyPress(Key);
+		else
+			ktype = pEWind->WaitKeyPress(Key);
+		if (ktype == ESCAPE)	//ESCAPE key is pressed
 			return "";	//returns nothing as user has cancelled label
 		if (Key == 13)	//ENTER key is pressed
 			return Label;
 		if (Key == 8)	//BackSpace is pressed
-			if( Label.size() > 0)	
+			if (Label.size() > 0)
 				Label.resize(Label.size() - 1);
 			else
-				Key = '\0';		
-		else
+				Key = '\0';
+		else {
 			Label += Key;
-		PrintMessage(Label);
+		}
+		if (c == 'c')
+			PrintMessage(Label);
+		else
+			PrintExitMessage(Label, 'd');
 	}
 }
 
@@ -104,12 +111,13 @@ operationType GUI::GetUseroperation() const
 		//[4] user clicks on vertical tool bar
 		if (x >= 0 && x <= VToolBarImageW && y>=250)
 		{
-			int ClickedIconOrderV = ((y-250) / (VToolBarImageH-5));
+			int ClickedIconOrderV = ((y-250) / (VToolBarImageH));
 
 			switch (ClickedIconOrderV)
 			{
 			case ICON_SELECT: return SELECT_SHAPE;
 			case ICON_DELETE:  return DEL;
+			case ICON_CLEAR: return CLEAR;
 			case ICON_IMAGE: return POST_IMAGE;
 			case ICON_SAVE:  return SAVE ;
 			case ICON_LOAD: return LOAD;
@@ -154,6 +162,11 @@ window* GUI::CreateWind(int w, int h, int x, int y) const
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
+void GUI::SetExit(window*pE) {
+	pEWind = pE;
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+
 void GUI::CreateStatusBar() const
 {
 	pWind->SetPen(StatusBarColor, 1);
@@ -214,6 +227,7 @@ void GUI::CreateDrawVToolBar() {
 	string VToolBarIcon[DRAW_ICON_COUNT_V];
 	VToolBarIcon[ICON_SELECT] = "images\\VToolBar\\Select_Icon.jpg";
 	VToolBarIcon[ICON_DELETE] = "images\\VToolBar\\Delete_Icon.jpg";
+	VToolBarIcon[ICON_CLEAR] = "images\\VToolBar\\Clear_Icon.jpg";
 	VToolBarIcon[ICON_IMAGE] = "images\\VToolBar\\Image_Icon.jpg";
 	VToolBarIcon[ICON_SAVE] = "images\\VToolBar\\Save_Icon.jpg";
 	VToolBarIcon[ICON_LOAD] = "images\\VToolBar\\Load_Icon.jpg";
@@ -221,8 +235,8 @@ void GUI::CreateDrawVToolBar() {
 	//DRAW MENUE
 	for (int i = 0; i < DRAW_ICON_COUNT_V; i++) {
 		pWind->SetPen(DARKRED, 4);
-		pWind->DrawLine(0, (VToolBarImageH * (i+1)) + 250, VToolBarImageW, (VToolBarImageH * (i+1)) + 250);
 		pWind->DrawImage(VToolBarIcon[i], 0, (VToolBarImageH * i) + 250, VToolBarImageW, VToolBarImageH-5);
+		pWind->DrawLine(0, (VToolBarImageH * (i+1)) + 250, VToolBarImageW, (VToolBarImageH * (i+1)) + 250);
 	}
 
 	pWind->DrawLine(VToolBarImageW, ToolBarHeight, VToolBarImageW, 650);
@@ -246,6 +260,20 @@ void GUI::PrintMessage(string msg) const	//Prints a message on status bar
 	pWind->SetPen(MsgColor, 50);
 	pWind->SetFont(24, BOLD, BY_NAME, "Arial");
 	pWind->DrawString(10, height - (int)(0.75 * StatusBarHeight), msg);
+}
+
+void GUI::PrintExitMessage(string msg,char p) const	//Prints a message on status bar
+{	
+	pEWind->SetPen(WHITE, 1);
+	pEWind->SetBrush(WHITE);
+	pEWind->DrawRectangle(10, 70, 600, 300);
+	pEWind->SetPen(RED, 50);
+	pEWind->SetFont(24, BOLD, BY_NAME, "Arial");
+	if (p == 'u')
+	{
+		pEWind->DrawString(10, 50, msg);
+	}
+	else{ pEWind->DrawString(10, 70, msg); }
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -315,10 +343,16 @@ void GUI::DrawRegPoly(Point P1,  vector<int> Xv, vector<int> Yv,int side, GfxInf
 
 
 
+void GUI::DeleteExitWind()
+{
+	delete pEWind;
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////
 GUI::~GUI()
 {
 	delete pWind;
+	delete pEWind;
 }
 
