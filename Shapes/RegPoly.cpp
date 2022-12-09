@@ -66,11 +66,9 @@ string RegPoly::GetInfo(char s)const	//current Draw,fill color and int border wi
 	dc = ShpGfxInfo.DrawClr;
 	drawClr = dc.getClr();
 	fc = ShpGfxInfo.FillClr;
+	fill = "(N)";
 	if (ShpGfxInfo.isFilled) {
 		fill = fc.getClr();
-	}
-	else {
-		fill = "(255,255,255)";
 	}
 	borderWidth = to_string(ShpGfxInfo.BorderWdth);
 	side = to_string(Side);

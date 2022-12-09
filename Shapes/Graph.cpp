@@ -122,32 +122,54 @@ void Graph::load(ifstream& file) {
 			Point P1, P2;		//rectangle corners
 			int start, end, side, border; //start,end point   id,side and border Width
 			color DrawClr, FillClr;		//Draw color fill color
+			bool isFilled;
 			border = line.back()-48;
 
 			
-			start = find(',', line, 2);
+			start = find(',', line, 2);		
 			end = find(',', line, 3);
-			side = stoi(getString(start+1, end, line));
+			side = stoi(getString(start+1, end, line));		//Number of side
+
+
 			start = find('(', line);
 			end = find(')', line);
 			string c = getString(start, end, line);
-			P1 = getP(c);
+			P1 = getP(c);								//Point 1
+
+
 			start = find('(', line, 2);
 			end = find(')', line, 2);
 			string c2 = getString(start, end, line);
-			P2 = getP(c2);
+			P2 = getP(c2);							//Point 2
+
+
 			start = find('(', line, 3);
 			end = find(')', line, 3);
-			DrawClr = Fcolor(getString(start, end, line));
+			DrawClr = Fcolor(getString(start, end, line));		//Draw color
+
+
+
 			start = find('(', line, 4);
 			end = find(')', line, 4);
-			FillClr = Fcolor(getString(start, end, line));
-			//Creating th rectangle
+			if (getString(start, end, line) != "(N)") {	//if fill
+				FillClr = Fcolor(getString(start, end, line));	//Fill color	
+				isFilled = true;
+			}
+			else
+			{
+				isFilled = false;			//is not filled
+			}
+			
+
+
+			//Creating RegPoly
 			GfxInfo RegPolyGfxInfo;
 			RegPolyGfxInfo.BorderWdth = border;
 			RegPolyGfxInfo.DrawClr = DrawClr;
 			RegPolyGfxInfo.FillClr = FillClr;
+			RegPolyGfxInfo.isFilled = isFilled;
 			//Create a polygon with the above parameters
+
 			RegPoly* R = new RegPoly(P1, P2, side, RegPolyGfxInfo);
 			Addshape(R);
 		}
@@ -157,21 +179,36 @@ void Graph::load(ifstream& file) {
 			string holder;
 			color DrawClr, FillClr;
 			int start, end;
+			bool isFilled;
 
 			start = find('(', line);
 			end = find(')', line);
 			holder = getString(start, end, line);
-			P1 = getP(holder);
+			P1 = getP(holder);						//Point 1
+
+
 			start = find('(', line, 2);
 			end = find(')', line, 2);
 			holder = getString(start, end, line);
-			P2 = getP(holder);
+			P2 = getP(holder);						//Point 2
+
 			start = find('(', line, 3);
 			end = find(')', line, 3);
-			DrawClr = Fcolor(getString(start, end, line));
+			DrawClr = Fcolor(getString(start, end, line));		//Draw color
+
+
 			start = find('(', line, 4);
 			end = find(')', line, 4);
-			FillClr = Fcolor(getString(start, end, line));
+			if (getString(start,end,line) != "(N)") {	//if fill
+				FillClr = Fcolor(getString(start, end, line));	//Fill color	
+				isFilled = true;
+			}
+			else
+			{
+				isFilled = false;			//is not filled
+			}
+
+
 
 			//Constructing Rectangle
 			//Creating th rectangle
@@ -179,6 +216,7 @@ void Graph::load(ifstream& file) {
 			RectGfxInfo.BorderWdth = border;
 			RectGfxInfo.DrawClr = DrawClr;
 			RectGfxInfo.FillClr = FillClr;
+			RectGfxInfo.isFilled = isFilled;
 			//Create a polygon with the above parameters
 			Rect* R = new Rect(P1, P2, RectGfxInfo);
 			Addshape(R);
@@ -195,7 +233,7 @@ void Graph::load(ifstream& file) {
 		else if (getString(0, 2, line) == "Irr")
 		{
 		}
-		cout << line << endl;
+		//cout << line << endl;
 		lineNum++;
 	}
 }

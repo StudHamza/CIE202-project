@@ -43,7 +43,7 @@ string Rect::GetInfo(char s)const
 	c2 = " (" + to_string(Corner2.x) + "," + to_string(Corner2.y) + ")"; 
 	drawClr = Draw.getClr();
 
-	fill = "(255,255,255)";
+	fill = "(N)";
 	if (ShpGfxInfo.isFilled) {
 		fill = Fill.getClr();
 	}
