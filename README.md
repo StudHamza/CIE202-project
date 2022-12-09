@@ -10,3 +10,8 @@ Once youre complete, add changes to your master, commit them then push your code
 SS of the program
 
 ![image](https://user-images.githubusercontent.com/118675709/206655229-eddf6027-c027-4211-9bc0-616a09598754.png)
+
+
+Working functions:
+Select, save, load, exist & check for saved, Regpolygon,  Rectangle, and Clear(broom icon) .
+My team is still wirting other features.
