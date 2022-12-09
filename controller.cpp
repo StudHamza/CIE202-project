@@ -62,10 +62,10 @@ operation* controller::createOperation(operationType OpType)
 			break;
 		case CLEAR:
 			pOp = new opClear(this);
+			break;
 		case EXIT:
 			pOp = new opExit(this);
 			///create Exitoperation here
-			
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no operation
@@ -132,6 +132,6 @@ void controller::Run()
 		//Update the interface
 		UpdateInterface();
 
-	} while (OpType!=CLEAR);
+	} while (OpType!=ON_GOING);
 
 }

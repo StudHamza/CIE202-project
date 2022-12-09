@@ -19,10 +19,10 @@ void opExit::Execute() {
 		string answer;
 		do {
 			answer = pUI->GetSrting('d');
-			if (answer == "n") {
+			if (answer == "Y") {
 				exit(1);
 			}
-			else if (answer == "Y")
+			else if (answer == "n")
 			{
 				pUI->DeleteExitWind();
 				break;
