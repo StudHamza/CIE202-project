@@ -243,6 +243,9 @@ void Graph::load(ifstream& file) {
 
 
 void Graph::Clear() {
+	for (auto& shape : shapesList) {
+		delete shape;
+	}
 	shapesList.clear();
 }
 
