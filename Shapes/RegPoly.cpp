@@ -79,3 +79,16 @@ string RegPoly::GetInfo(char s)const	//current Draw,fill color and int border wi
 	msg = name + "," + id +","+ side+"," + start + "," + radius + "," + drawClr + "," + fill + "," + borderWidth;
 	return msg;
 }
+
+
+void RegPoly::Shift(int dy, int dx) {
+	for (int i = 0; i < Side; i++) {
+		Xv[i] += dx;
+		Yv[i] += dy;
+	}
+}
+
+
+shape* RegPoly::Clone() {
+	return new RegPoly(*this);
+}

@@ -50,5 +50,9 @@ void shape::SetSaved(bool s)
 }
 
 
+
+
+
+
 int shape::counter = 0;
 

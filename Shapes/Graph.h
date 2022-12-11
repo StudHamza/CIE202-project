@@ -18,6 +18,7 @@ private:
 	vector <shape*> shapesList; //a container to hold all shapes							   
 	shape* selectedShape;	//pointer to the currently selected shape
 	Point* pvp = new Point{0,0}; //isnt dellocated yet
+	vector <shape*> clipboard;	//copy of selected shpes
 public:										
 	Graph();
 	~Graph();
@@ -26,6 +27,8 @@ public:
 	shape* Getshape(int x, int y) const; //Search for a shape given a point inside the shape
 	string SelectShape(Point,color,shape *);	//Responsible for shape selection
 	bool UnselectShape();
+	void ClipBoard();		//returns a vector of the selected shapes
+	shape* GetSelectedShape()const;
 
 	void Save(ofstream& outfile,color,color,int);	//Save all shapes to a file
 	void load(ifstream& inputfile);	//Load all shapes from a file

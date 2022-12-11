@@ -144,6 +144,9 @@
     <ClCompile Include="operations\opExit.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
+    <ClCompile Include="operations\opCopy.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -245,6 +248,9 @@
       <Filter>Operations</Filter>
     </ClInclude>
     <ClInclude Include="operations\opExit.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="operations\opCopy.h">
       <Filter>Operations</Filter>
     </ClInclude>
   </ItemGroup>

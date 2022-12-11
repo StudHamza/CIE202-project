@@ -58,7 +58,7 @@ string Graph::SelectShape(Point P, color pevClr,shape *selected)
 {
 
 	*pvp = P; //Set previous point clicked
-
+	selectedShape = selected;
 	selected->Selected(pevClr); //sets shape to selected
 	return (selected->GetInfo('s')); //call select function that returns shape info as string
 
@@ -71,6 +71,7 @@ bool Graph::UnselectShape()
 			if (pSelected->IsSelected()) {	//checks if bool select 
 				pSelected->UnSelect();		//Unselects
 				*pvp = { 0,0 };			//Resttore pev mouse click to nothing
+				selectedShape = nullptr;
 				return false;
 			}
 		}
@@ -253,4 +254,19 @@ bool Graph::Exit()
 		}
 	}
 	return false;
+}
+
+
+
+void Graph::ClipBoard() {
+	for (auto& selected : shapesList)
+	{
+		if(selected->IsSelected())
+		clipboard.push_back(selected->Clone());	//problem: coppied item will have the same id
+	}
+}
+
+shape* Graph::GetSelectedShape()const
+{
+	return selectedShape;
 }

@@ -56,3 +56,16 @@ string Rect::GetInfo(char s)const
 	msg = name+","+id+","+c1+","+c2+","+drawClr+","+fill+","+borderWidth;
 	return msg;
 }
+
+
+void Rect::Shift(int dy, int dx) {
+	Corner1.x += dx;
+	Corner1.y += dy;
+	Corner2.x += dy;
+	Corner2.y += dy;
+}
+
+
+shape* Rect::Clone() {
+	return new Rect(*this);
+}

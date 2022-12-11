@@ -16,6 +16,7 @@ public:
 
 	shape(GfxInfo shapeGfxInfo);
 	virtual ~shape() {}
+	virtual shape* Clone() = 0;		//Copy constructor that'll be virtual
 	void SetSelected(bool s);	//select/unselect the shape
 	bool IsSelected() const;	//check whether fig is selected
 
@@ -33,12 +34,13 @@ public:
 	void SetSaved(bool s);
 
 
+	//Moving
+	virtual void Shift(int, int)=0;
+
 	//virtual void Rotate() = 0;	//Rotate the shape
 	//virtual void Resize() = 0;	//Resize the shape
 	//virtual void Move() = 0;		//Move the shape
 
-	//virtual void Save(ofstream &OutFile) = 0;	//Save the shape parameters to the file
-	//virtual void Load(ifstream &Infile) = 0;	//Load the shape parameters to the file
 
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all shape info on the status bar
 };

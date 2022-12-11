@@ -60,6 +60,7 @@ class GUI
 	{
 		ICON_SELECT,
 		ICON_DELETE,
+		ICON_COPY,
 		ICON_CLEAR,
 		ICON_IMAGE,
 		ICON_SAVE,
@@ -78,6 +79,8 @@ class GUI
 		PLAY_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
 
 	};
+
+
 
 
 	GUI_MODE InterfaceMode;

@@ -84,9 +84,9 @@ operationType GUI::GetUseroperation() const
 {
 	int x, y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
-	
 	if (InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 	{
+
 		//[1] If user clicks on the Toolbar
 		if (y >= 0 && y < ToolBarHeight)
 		{
@@ -117,6 +117,7 @@ operationType GUI::GetUseroperation() const
 			{
 			case ICON_SELECT: return SELECT_SHAPE;
 			case ICON_DELETE:  return DEL;
+			case ICON_COPY: return COPY;
 			case ICON_CLEAR: return CLEAR;
 			case ICON_IMAGE: return POST_IMAGE;
 			case ICON_SAVE:  return SAVE ;
@@ -228,6 +229,7 @@ void GUI::CreateDrawVToolBar() {
 	string VToolBarIcon[DRAW_ICON_COUNT_V];
 	VToolBarIcon[ICON_SELECT] = "images\\VToolBar\\Select_Icon.jpg";
 	VToolBarIcon[ICON_DELETE] = "images\\VToolBar\\Delete_Icon.jpg";
+	VToolBarIcon[ICON_COPY] = "images\\VToolBar\\Copy_Icon.jpg";
 	VToolBarIcon[ICON_CLEAR] = "images\\VToolBar\\Clear_Icon.jpg";
 	VToolBarIcon[ICON_IMAGE] = "images\\VToolBar\\Image_Icon.jpg";
 	VToolBarIcon[ICON_SAVE] = "images\\VToolBar\\Save_Icon.jpg";

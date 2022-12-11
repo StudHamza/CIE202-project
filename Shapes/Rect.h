@@ -13,6 +13,8 @@ public:
 	virtual void Draw(GUI* pUI) const;
 	virtual bool HitBox(int,int) const;
 	virtual string GetInfo(char)const;
-	//void load();
+	virtual void Shift(int, int);		
+
+	shape* Clone();
 };
 

@@ -6,7 +6,7 @@
 #include "operations\opLoad.h"
 #include "operations\opClear.h"
 #include "operations\opExit.h"
-
+#include "operations\opCOPY.h"
 
 //Constructor
 controller::controller()
@@ -59,6 +59,9 @@ operation* controller::createOperation(operationType OpType)
 			break;
 		case LOAD:
 			pOp = new opLoad(this);
+			break;
+		case COPY:
+			pOp= new opCopy(this);
 			break;
 		case CLEAR:
 			pOp = new opClear(this);
