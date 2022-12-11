@@ -41,6 +41,7 @@ void opAddRegPoly::Execute()
 	RegPolyGfxInfo.DrawClr = pUI->getCrntDrawColor();
 	RegPolyGfxInfo.FillClr = pUI->getCrntFillColor();
 	RegPolyGfxInfo.BorderWdth = pUI->getCrntPenWidth();
+	RegPolyGfxInfo.PrevClr = RegPolyGfxInfo.DrawClr;	//sets first color to draw color
 
 
 	RegPolyGfxInfo.isFilled = false;	//default is not filled

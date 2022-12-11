@@ -262,14 +262,41 @@ bool Graph::Exit()
 
 
 void Graph::ClipBoard() {
+	clipboard.clear();
 	for (auto& selected : shapesList)
 	{
-		if(selected->IsSelected())
-		clipboard.push_back(selected->Clone());	//problem: coppied item will have the same id
+		if (selected->IsSelected()) {
+			selected->UnSelect();
+			selectedShape = nullptr;
+			clipboard.push_back(selected->Clone());	//problem: coppied item will have the same id
+		}
 	}
 }
 
 shape* Graph::GetSelectedShape()const
 {
 	return selectedShape;
+}
+
+
+void Graph::Paste() {
+	//UnselectShape();	//unselect previous shape to select by defualt the copied
+	const color pevClr = clipboard[0]->getPevDrawClr();
+	for (auto& shape : clipboard) {
+		
+		shape->UpdateId();
+		shape->Shift(10,10);
+		shape->Selected(pevClr);
+		Addshape(shape);
+	}
+	ClipBoard(); //updates the clipboard with new shapes
+
+}
+
+
+bool Graph::getClipBoard() const {
+	if (clipboard.size() > 0)
+		return true;
+	else
+		return false;
 }

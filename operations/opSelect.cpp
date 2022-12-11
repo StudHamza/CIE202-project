@@ -3,6 +3,7 @@
 
 #include "..\GUI\GUI.h"
 #include "..\Shapes\Graph.h"
+#include <iostream>
 
 opSelect::opSelect(controller* pCont) :operation(pCont)
 {}
@@ -16,6 +17,7 @@ void opSelect::Execute()
 	//Get a Pointer to the Input / Output Interfaces
 	GUI* pUI = pControl->GetUI();
 	Graph* G = pControl->getGraph();
+
 	G->UnselectShape();
 
 

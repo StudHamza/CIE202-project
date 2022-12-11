@@ -27,7 +27,10 @@ public:
 	shape* Getshape(int x, int y) const; //Search for a shape given a point inside the shape
 	string SelectShape(Point,color,shape *);	//Responsible for shape selection
 	bool UnselectShape();
-	void ClipBoard();		//returns a vector of the selected shapes
+	void ClipBoard();		//sets a vector of the selected shapes
+	bool getClipBoard() const;
+	void Paste();
+
 	shape* GetSelectedShape()const;
 
 	void Save(ofstream& outfile,color,color,int);	//Save all shapes to a file

@@ -18,6 +18,7 @@ GUI::GUI()
 	VToolBarImageW = 50;
 	VToolBarImageH = 50;
 	MenuIconWidth = 70;
+	VToolStart = 150;
 
 	DrawColor = BLUE;	//default Drawing color
 	FillColor = GREEN;	//default Filling color
@@ -109,15 +110,16 @@ operationType GUI::GetUseroperation() const
 			}
 		}
 		//[4] user clicks on vertical tool bar
-		if (x >= 0 && x <= VToolBarImageW && y>=250)
+		if (x >= 0 && x <= VToolBarImageW && y>=VToolStart)
 		{
-			int ClickedIconOrderV = ((y-250) / (VToolBarImageH));
+			int ClickedIconOrderV = ((y-VToolStart) / (VToolBarImageH));
 
 			switch (ClickedIconOrderV)
 			{
 			case ICON_SELECT: return SELECT_SHAPE;
 			case ICON_DELETE:  return DEL;
 			case ICON_COPY: return COPY;
+			case ICON_PASTE: return PASTE;
 			case ICON_CLEAR: return CLEAR;
 			case ICON_IMAGE: return POST_IMAGE;
 			case ICON_SAVE:  return SAVE ;
@@ -230,6 +232,7 @@ void GUI::CreateDrawVToolBar() {
 	VToolBarIcon[ICON_SELECT] = "images\\VToolBar\\Select_Icon.jpg";
 	VToolBarIcon[ICON_DELETE] = "images\\VToolBar\\Delete_Icon.jpg";
 	VToolBarIcon[ICON_COPY] = "images\\VToolBar\\Copy_Icon.jpg";
+	VToolBarIcon[ICON_PASTE] = "images\\VToolBar\\Paste_Icon.jpg";
 	VToolBarIcon[ICON_CLEAR] = "images\\VToolBar\\Clear_Icon.jpg";
 	VToolBarIcon[ICON_IMAGE] = "images\\VToolBar\\Image_Icon.jpg";
 	VToolBarIcon[ICON_SAVE] = "images\\VToolBar\\Save_Icon.jpg";
@@ -238,8 +241,8 @@ void GUI::CreateDrawVToolBar() {
 	//DRAW MENUE
 	for (int i = 0; i < DRAW_ICON_COUNT_V; i++) {
 		pWind->SetPen(DARKRED, 4);
-		pWind->DrawImage(VToolBarIcon[i], 0, (VToolBarImageH * i) + 250, VToolBarImageW, VToolBarImageH-5);
-		pWind->DrawLine(0, (VToolBarImageH * (i+1)) + 250, VToolBarImageW, (VToolBarImageH * (i+1)) + 250);
+		pWind->DrawImage(VToolBarIcon[i], 0, (VToolBarImageH * i) + VToolStart, VToolBarImageW, VToolBarImageH-5);
+		pWind->DrawLine(0, (VToolBarImageH * (i+1)) + VToolStart, VToolBarImageW, (VToolBarImageH * (i+1)) + VToolStart);
 	}
 
 	pWind->DrawLine(VToolBarImageW, ToolBarHeight, VToolBarImageW, 650);

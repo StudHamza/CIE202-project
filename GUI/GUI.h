@@ -61,6 +61,7 @@ class GUI
 		ICON_SELECT,
 		ICON_DELETE,
 		ICON_COPY,
+		ICON_PASTE,
 		ICON_CLEAR,
 		ICON_IMAGE,
 		ICON_SAVE,
@@ -91,7 +92,8 @@ class GUI
 		ToolBarHeight,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
 		VToolBarImageH,		//Vertical toolbar heigtht
 		VToolBarImageW,		//Width of 
-		MenuIconWidth;		//Width of each icon in toolbar menu
+		MenuIconWidth,		//Width of each icon in toolbar menu
+		VToolStart;			//Starting point of vertical tool bar
 
 
 	color DrawColor;		//Drawing color

@@ -19,6 +19,7 @@ public:
 	virtual shape* Clone() = 0;		//Copy constructor that'll be virtual
 	void SetSelected(bool s);	//select/unselect the shape
 	bool IsSelected() const;	//check whether fig is selected
+	color getPevDrawClr() const;		//get pev draw color of shape
 
 	virtual void Draw(GUI* pUI) const =0 ;		//Draw the shape
 	virtual bool HitBox(int,int)const =0;		//create hit box
@@ -26,6 +27,7 @@ public:
 	void ChngFillClr(color Fclr);	//changes the shape's filling color
 	void Selected(color);
 	void UnSelect();
+	void UpdateId();		//resposible for id updates when cloning(copy paste)
 	///The following functions should be supported by the shape class
 	///It should be overridden by each inherited shape
 	virtual string GetInfo(char)const = 0;		//Return a string of all shape info. Is used in save and select functiosn

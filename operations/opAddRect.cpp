@@ -36,6 +36,7 @@ void opAddRect::Execute()
 	RectGfxInfo.DrawClr = pUI->getCrntDrawColor();
 	RectGfxInfo.FillClr = pUI->getCrntFillColor();
 	RectGfxInfo.BorderWdth = pUI->getCrntPenWidth();
+	RectGfxInfo.PrevClr= RectGfxInfo.DrawClr;
 
 
 	RectGfxInfo.isFilled = false;	//default is not filled

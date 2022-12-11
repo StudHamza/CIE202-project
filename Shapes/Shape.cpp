@@ -1,4 +1,5 @@
 #include "shape.h"
+#include <iostream>
 
 shape::shape(GfxInfo shapeGfxInfo)
 {	
@@ -31,6 +32,11 @@ void shape::Selected(color previousC)	//Sets shape to selected and gets info thr
 	ChngDrawClr(MAGENTA);		//change color
 }
 
+color shape::getPevDrawClr() const
+{
+	return	ShpGfxInfo.PrevClr;
+}
+
 void shape::UnSelect()
 {
 	SetSelected(false);
@@ -50,7 +56,11 @@ void shape::SetSaved(bool s)
 }
 
 
-
+void shape::UpdateId() {
+	counter++;
+	cout << "updated id: " << counter<<endl;
+	ID = counter;
+}
 
 
 
