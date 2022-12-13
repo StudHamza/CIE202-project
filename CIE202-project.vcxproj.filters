@@ -256,7 +256,6 @@
     <ClInclude Include="operations\opCopy.h">
       <Filter>Operations</Filter>
     </ClInclude>
-    <ClInclude Include="opPaste.h" />
     <ClInclude Include="operations\opPaste.h">
       <Filter>Operations</Filter>
     </ClInclude>

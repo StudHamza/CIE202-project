@@ -23,6 +23,5 @@ void opLoad::Execute() {
 	else {
 		pUI->PrintMessage("There is no such file");
 	}
-	pUI->ClearStatusBar();
 
 }
