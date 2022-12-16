@@ -338,6 +338,59 @@ void Graph::load(ifstream& file) {
 		else if (getString(0, 2, line) == "Irr")
 		{
 		}
+		else if (getString(0, 2, line) == "Lin") {
+		Point P1, P2;
+		string holder;
+		color DrawClr, FillClr;
+		int start, end, Sborder;
+		bool isFilled;
+
+
+		Sborder = line.back() - 48;		//Border
+
+		start = find('(', line);
+		end = find(')', line);
+		holder = getString(start, end, line);
+		P1 = getP(holder);						//Point 1
+
+
+		start = find('(', line, 2);
+		end = find(')', line, 2);
+		holder = getString(start, end, line);
+		P2 = getP(holder);						//Point 2
+
+		start = find('(', line, 3);
+		end = find(')', line, 3);
+		DrawClr = Fcolor(getString(start, end, line));		//Draw color
+
+
+		start = find('(', line, 4);
+		end = find(')', line, 4);
+		if (getString(start, end, line) != "(N)") {	//if fill
+			FillClr = Fcolor(getString(start, end, line));	//Fill color	
+			isFilled = true;
+		}
+		else
+		{
+			isFilled = false;			//is not filled
+		}
+
+
+
+		//Constructing LineGfxInfo
+		//Creating the line
+		GfxInfo LineGfxInfo;
+		LineGfxInfo.BorderWdth = Sborder;
+		LineGfxInfo.DrawClr = DrawClr;
+		LineGfxInfo.FillClr = FillClr;
+		LineGfxInfo.isFilled = isFilled;
+		//Create a polygon with the above parameters
+		Line* L = new Line(P1, P2, LineGfxInfo);
+		Addshape(L);
+}
+	{
+
+	}
 		//cout << line << endl;
 		lineNum++;
 	}

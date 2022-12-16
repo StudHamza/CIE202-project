@@ -10,6 +10,7 @@
 #include "operations\opPaste.h"
 #include "operations\opAddCircle.h"
 #include "operations\opAddTriangle.h"
+#include "operations\opAddLine.h"
 
 //Constructor
 controller::controller()
@@ -42,7 +43,7 @@ operation* controller::createOperation(operationType OpType)
 			break;
 
 		case DRAW_LINE:
-			///create AddLineoperation here
+			pOp = new opAddLine(this);
 
 			break;
 		case DRAW_CIRC:

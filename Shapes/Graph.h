@@ -4,6 +4,7 @@
 #include "Rect.h"
 #include "Circle.h"
 #include "Triangle.h"
+#include "Line.h"
 #include <fstream>
 #include <vector>
 

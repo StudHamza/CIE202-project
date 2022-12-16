@@ -44,6 +44,7 @@ class GUI
 	{
 		//Note: Icons are ordered here as they appear in menu
 		//If you want to change the menu icons order, change the order here
+		ICON_LINE,
 		ICON_RECT,		//Recangle icon in menu
 		ICON_CIRC,		//Circle icon in menu
 		ICON_TRI,
@@ -138,6 +139,7 @@ public:
 	void DrawRegPoly(Point P1, vector<int> Vx, vector<int> Vy,int s, GfxInfo RegPolyGfxInfo)const; //Draw a Regular polygon
 	void DrawCircle(Point P1, int Radius, GfxInfo CircleGfxInfo)const;
 	void DrawTriangle(Point, Point, Point, GfxInfo)const;	//Draw Triangle
+	void DrawLine(Point, Point,GfxInfo)const;	//Draw a line
 
 	///Make similar functions for drawing all other shapes.
 

@@ -99,6 +99,7 @@ operationType GUI::GetUseroperation() const
 
 			switch (ClickedIconOrder)
 			{
+			case ICON_LINE: return DRAW_LINE;
 			case ICON_RECT: return DRAW_RECT;
 			case ICON_CIRC: return DRAW_CIRC;
 			case ICON_TRI:	return DRAW_TRI;
@@ -198,6 +199,7 @@ void GUI::CreateDrawToolBar()
 	//To control the order of these images in the menu, 
 	//reoder them in UI_Info.h ==> enum DrawMenuIcon
 	string MenuIconImages[DRAW_ICON_COUNT];
+	MenuIconImages[ICON_LINE]="images\\MenuIcons\\Menu_Line.jpg";
 	MenuIconImages[ICON_RECT] = "images\\MenuIcons\\Menu_Rect.jpg";
 	MenuIconImages[ICON_CIRC] = "images\\MenuIcons\\Menu_Circ.jpg";
 	MenuIconImages[ICON_TRI] = "images\\MenuIcons\\Menu_Triangle.jpg";
@@ -395,7 +397,25 @@ void GUI::DrawTriangle(Point P1, Point P2,Point P3 ,GfxInfo TriangleGfxInfo) con
 }
 
 
+void GUI::DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo)const
+{
+	color DrawingClr;
 
+	DrawingClr = LineGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, LineGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (LineGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(LineGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+	pWind->DrawLine(P1.x,P1.y,P2.x,P2.y,style);
+}
 
 
 
