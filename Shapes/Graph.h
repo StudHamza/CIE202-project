@@ -2,6 +2,7 @@
 #include "Shape.h"
 #include "RegPoly.h"
 #include "Rect.h"
+#include "Circle.h"
 #include <fstream>
 #include <vector>
 
