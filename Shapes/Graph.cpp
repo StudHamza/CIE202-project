@@ -276,6 +276,61 @@ void Graph::load(ifstream& file) {
 		}
 		else if (getString(0, 2, line) == "Tri")
 		{
+		//Getting info from file
+		Point P1, P2,P3;		//rectangle corners
+		int start, end, side, border; //start,end point   id,side and border Width
+		color DrawClr, FillClr;		//Draw color fill color
+		bool isFilled;
+		border = line.back() - 48;
+
+
+		start = find('(', line);
+		end = find(')', line);
+		string c = getString(start, end, line);
+		P1 = getP(c);								//Point 1
+
+
+		start = find('(', line, 2);
+		end = find(')', line, 2);
+		string c2 = getString(start, end, line);
+		P2 = getP(c2);							//Point 2
+
+
+		start = find('(', line, 3);
+		end = find(')', line, 3);
+		string c3 = getString(start, end, line);
+		P3 = getP(c3);							//Point 3
+
+
+		start = find('(', line, 4);
+		end = find(')', line, 4);
+		DrawClr = Fcolor(getString(start, end, line));		//Draw color
+
+
+
+		start = find('(', line, 5);
+		end = find(')', line, 5);
+		if (getString(start, end, line) != "(N)") {	//if fill
+			FillClr = Fcolor(getString(start, end, line));	//Fill color	
+			isFilled = true;
+		}
+		else
+		{
+			isFilled = false;			//is not filled
+		}
+
+
+
+		//Creating RegPoly
+		GfxInfo TriangleGfxInfo;
+		TriangleGfxInfo.BorderWdth = border;
+		TriangleGfxInfo.DrawClr = DrawClr;
+		TriangleGfxInfo.FillClr = FillClr;
+		TriangleGfxInfo.isFilled = isFilled;
+		//Create a polygon with the above parameters
+
+		Triangle* T = new Triangle(P1, P2, P3, TriangleGfxInfo);
+		Addshape(T);
 		}
 		else if (getString(0, 2, line) == "Ova")
 		{

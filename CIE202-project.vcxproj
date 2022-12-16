@@ -183,6 +183,7 @@
     <ClCompile Include="operations\opAddCircle.cpp" />
     <ClCompile Include="operations\opAddRect.cpp" />
     <ClCompile Include="operations\opAddRegPoly.cpp" />
+    <ClCompile Include="operations\opAddTriangle.cpp" />
     <ClCompile Include="operations\opClear.cpp" />
     <ClCompile Include="operations\opCopy.cpp" />
     <ClCompile Include="operations\opExit.cpp" />
@@ -195,6 +196,7 @@
     <ClCompile Include="Shapes\RegPoly.cpp" />
     <ClCompile Include="Shapes\Shape.cpp" />
     <ClCompile Include="Shapes\Rect.cpp" />
+    <ClCompile Include="Shapes\Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -223,6 +225,7 @@
     <ClInclude Include="operations\opAddCircle.h" />
     <ClInclude Include="operations\opAddRect.h" />
     <ClInclude Include="operations\opAddRegPoly.h" />
+    <ClInclude Include="operations\opAddTriangle.h" />
     <ClInclude Include="operations\opClear.h" />
     <ClInclude Include="operations\opCopy.h" />
     <ClInclude Include="operations\operation.h" />
@@ -236,6 +239,7 @@
     <ClInclude Include="Shapes\RegPoly.h" />
     <ClInclude Include="Shapes\Shape.h" />
     <ClInclude Include="Shapes\Rect.h" />
+    <ClInclude Include="Shapes\Triangle.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

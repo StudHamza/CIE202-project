@@ -3,6 +3,7 @@
 #include "RegPoly.h"
 #include "Rect.h"
 #include "Circle.h"
+#include "Triangle.h"
 #include <fstream>
 #include <vector>
 

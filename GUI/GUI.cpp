@@ -101,6 +101,7 @@ operationType GUI::GetUseroperation() const
 			{
 			case ICON_RECT: return DRAW_RECT;
 			case ICON_CIRC: return DRAW_CIRC;
+			case ICON_TRI:	return DRAW_TRI;
 			case ICON_REGPOLY: return DRAW_REGPOLY;
 			case ICON_COLOR: return COLOR_PALETTE;
 			case ICON_PLAY: return TO_PLAY;
@@ -199,6 +200,7 @@ void GUI::CreateDrawToolBar()
 	string MenuIconImages[DRAW_ICON_COUNT];
 	MenuIconImages[ICON_RECT] = "images\\MenuIcons\\Menu_Rect.jpg";
 	MenuIconImages[ICON_CIRC] = "images\\MenuIcons\\Menu_Circ.jpg";
+	MenuIconImages[ICON_TRI] = "images\\MenuIcons\\Menu_Triangle.jpg";
 	MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\Menu_RegPoly.jpg";
 	MenuIconImages[ICON_COLOR]="images\\MenuIcons\\Menu_Color.jpg";
 	MenuIconImages[ICON_PLAY] = "images\\MenuIcons\\Menu_Play.jpg";
@@ -371,7 +373,26 @@ void GUI::DrawCircle(Point P1,int Radius,GfxInfo CircleGfxInfo)const
 
 
 
+void GUI::DrawTriangle(Point P1, Point P2,Point P3 ,GfxInfo TriangleGfxInfo) const
+{
+	color DrawingClr;
 
+	DrawingClr = TriangleGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, TriangleGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (TriangleGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(TriangleGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y,P3.x,P3.y ,style);
+
+}
 
 
 
