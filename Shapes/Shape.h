@@ -1,7 +1,8 @@
 #pragma once
 #include "..\defs.h"
 #include "..\GUI\GUI.h"
-
+#include <fstream>
+#include <iostream>
 
 //Base class for all shapes
 class shape
@@ -38,6 +39,10 @@ public:
 
 	//Moving
 	virtual void Shift(int, int)=0;
+
+	//Virtual save 
+	virtual void Save(ofstream &outfile)const=0;
+
 
 	//virtual void Rotate() = 0;	//Rotate the shape
 	//virtual void Resize() = 0;	//Resize the shape

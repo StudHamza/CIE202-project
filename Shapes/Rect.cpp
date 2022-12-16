@@ -69,3 +69,8 @@ void Rect::Shift(int dy, int dx) {
 shape* Rect::Clone() {
 	return new Rect(*this);
 }
+
+void Rect::Save(ofstream& file) const{
+	string line = GetInfo('l');
+	file << line << endl;
+}

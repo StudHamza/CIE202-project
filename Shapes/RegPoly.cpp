@@ -92,3 +92,8 @@ void RegPoly::Shift(int dy, int dx) {
 shape* RegPoly::Clone() {
 	return new RegPoly(*this);
 }
+
+void RegPoly::Save(ofstream &file)const {
+	string line = GetInfo('l');	//get load info
+	file << line << endl;
+}

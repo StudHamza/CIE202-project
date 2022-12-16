@@ -85,9 +85,8 @@ void Graph::Save(ofstream& file,color DrawClr,color FillClr,int BorderWidth) {
 			file << DrawClr.getClr() << "," << FillClr.getClr() << "," << BorderWidth << endl;
 			file << shapesList.size()<<endl;
 			for (auto& shape : shapesList) {
-				string line = shape->GetInfo('l');
+				shape->Save(file);
 				shape->SetSaved(true);
-				file << line << endl;
 			}
 		}
 		file.close();

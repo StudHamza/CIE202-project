@@ -68,3 +68,8 @@ void Circle::Shift(int dy, int dx) {
 shape* Circle::Clone() {
 	return new Circle(*this);
 }
+
+void Circle::Save(ofstream &file) const{
+	string line = GetInfo('l');
+	file << line << endl;
+}
