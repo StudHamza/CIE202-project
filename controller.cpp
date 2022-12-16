@@ -8,6 +8,7 @@
 #include "operations\opExit.h"
 #include "operations\opCOPY.h"
 #include "operations\opPaste.h"
+#include "operations\opAddCircle.h"
 
 //Constructor
 controller::controller()
@@ -42,6 +43,9 @@ operation* controller::createOperation(operationType OpType)
 		case DRAW_LINE:
 			///create AddLineoperation here
 
+			break;
+		case DRAW_CIRC:
+			pOp = new opAddCircle(this);
 			break;
 		case DRAW_REGPOLY:
 			pOp = new opAddRegPoly(this);

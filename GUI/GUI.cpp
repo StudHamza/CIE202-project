@@ -349,6 +349,35 @@ void GUI::DrawRegPoly(Point P1,  vector<int> Xv, vector<int> Yv,int side, GfxInf
 
 
 
+void GUI::DrawCircle(Point P1,int Radius,GfxInfo CircleGfxInfo)const
+{
+	color DrawingClr;
+
+	DrawingClr = CircleGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, CircleGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (CircleGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(CircleGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+	pWind->DrawCircle(P1.x, P1.y, Radius, style);
+}
+
+
+
+
+
+
+
+
+
+
 void GUI::DeleteExitWind()
 {
 	delete pEWind;

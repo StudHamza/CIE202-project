@@ -180,6 +180,7 @@
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="controller.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="operations\opAddCircle.cpp" />
     <ClCompile Include="operations\opAddRect.cpp" />
     <ClCompile Include="operations\opAddRegPoly.cpp" />
     <ClCompile Include="operations\opClear.cpp" />
@@ -189,6 +190,7 @@
     <ClCompile Include="operations\opPaste.cpp" />
     <ClCompile Include="operations\opSelect.cpp" />
     <ClCompile Include="operations\opSave.cpp" />
+    <ClCompile Include="Shapes\Circle.cpp" />
     <ClCompile Include="Shapes\Graph.cpp" />
     <ClCompile Include="Shapes\RegPoly.cpp" />
     <ClCompile Include="Shapes\Shape.cpp" />
@@ -218,6 +220,7 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="operations\opAddCircle.h" />
     <ClInclude Include="operations\opAddRect.h" />
     <ClInclude Include="operations\opAddRegPoly.h" />
     <ClInclude Include="operations\opClear.h" />
@@ -228,6 +231,7 @@
     <ClInclude Include="operations\opPaste.h" />
     <ClInclude Include="operations\opSave.h" />
     <ClInclude Include="operations\opSelect.h" />
+    <ClInclude Include="Shapes\Circle.h" />
     <ClInclude Include="Shapes\Graph.h" />
     <ClInclude Include="Shapes\RegPoly.h" />
     <ClInclude Include="Shapes\Shape.h" />

@@ -135,6 +135,7 @@ public:
 	// -- shapes Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const;//Draw a rectangle
 	void DrawRegPoly(Point P1, vector<int> Vx, vector<int> Vy,int s, GfxInfo RegPolyGfxInfo)const; //Draw a Regular polygon
+	void DrawCircle(Point P1, int Radius, GfxInfo CircleGfxInfo)const;
 
 	///Make similar functions for drawing all other shapes.
 
