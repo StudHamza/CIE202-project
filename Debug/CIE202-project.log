@@ -1,0 +1,8 @@
+﻿cl : command line  warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+  Triangle.cpp
+  RegPoly.cpp
+C:\Users\GETAC\Documents\1A.Zewail\Year2\Cpp project\Shapes\RegPoly.cpp(18,35): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\GETAC\Documents\1A.Zewail\Year2\Cpp project\Shapes\RegPoly.cpp(23,10): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\GETAC\Documents\1A.Zewail\Year2\Cpp project\Shapes\RegPoly.cpp(24,10): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  CIE202-project.vcxproj -> C:\Users\GETAC\Documents\1A.Zewail\Year2\Cpp project\Debug\CIE202-project.exe
