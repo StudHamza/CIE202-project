@@ -1,0 +1,49 @@
+﻿  auxil.cpp
+  CMUgraphics.cpp
+  image.cpp
+  keyqueue.cpp
+  mousequeue.cpp
+  windowinput.cpp
+  GUI.cpp
+  controller.cpp
+  main.cpp
+  opAddRect.cpp
+  Graph.cpp
+  RegPoly.cpp
+  Shape.cpp
+  Rect.cpp
+  Generating Code...
+  jpegload.c
+  jcomapi.c
+  jcparam.c
+  jdapimin.c
+  jdapistd.c
+  jdatasrc.c
+  jdcoefct.c
+  jdcolor.c
+  jddctmgr.c
+  jdhuff.c
+  jdinput.c
+  jdmainct.c
+  jdmarker.c
+  jdmaster.c
+  jdmerge.c
+  jdphuff.c
+  jdpostct.c
+  jdsample.c
+  jdtrans.c
+  jerror.c
+  Generating Code...
+  Compiling...
+  jidctflt.c
+  jidctfst.c
+  jidctint.c
+  jidctred.c
+  jmemmgr.c
+  jmemnobs.c
+  jquant1.c
+  jquant2.c
+  jutils.c
+  Generating Code...
+auxil.obj : error LNK2019: unresolved external symbol __imp_timeGetTime referenced in function "unsigned long __cdecl CurrentTime(void)" (?CurrentTime@@YAKXZ)
+C:\Users\GETAC\Documents\1A.Zewail\Year2\Cpp project\x64\Debug\CIE202-project.exe : fatal error LNK1120: 1 unresolved externals
