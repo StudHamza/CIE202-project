@@ -42,7 +42,7 @@ void RegPoly::Draw(GUI* pUI) const
 	pUI->DrawRegPoly(Start,Xv,Yv ,Side, ShpGfxInfo);
 }
 
-bool RegPoly::HitBox(int x,int y)const //Not done yet
+bool RegPoly::HitBox(int x,int y)const //From internet
 {
 
 		int i, j, c = 0;

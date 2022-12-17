@@ -21,7 +21,7 @@ void Triangle::Draw(GUI* pUI) const
 
 
 
-bool Triangle::HitBox(int x, int y)const
+bool Triangle::HitBox(int x, int y)const		//from internet
 {
 	int as_x = x - F.x;
 	int as_y = y - F.y;
