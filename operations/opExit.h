@@ -9,7 +9,7 @@ public:
 	opExit(controller* pCont);
 	virtual ~opExit();
 
-	//Add rectangle to the controller
+
 	virtual void Execute();
 
 };

@@ -276,7 +276,7 @@ void GUI::PrintExitMessage(string msg,char p) const	//Prints a message on status
 {	
 	pEWind->SetPen(WHITE, 1);
 	pEWind->SetBrush(WHITE);
-	pEWind->DrawRectangle(10, 70, 600, 300);
+	pEWind->DrawRectangle(10, 70,	pEWind->GetWidth(), pEWind->GetHeight());
 	pEWind->SetPen(RED, 50);
 	pEWind->SetFont(24, BOLD, BY_NAME, "Arial");
 	if (p == 'u')
