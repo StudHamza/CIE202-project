@@ -9,6 +9,7 @@ enum operationType //The operations supported (you can add more if needed)
 	DRAW_RECT,		//Draw Rectangle
 	DRAW_TRI,		//Draw Triangle
 	DRAW_CIRC,		//Draw Circle
+	DRAW_OVAL,
 	DRAW_REGPOLY,	//Draw Regular polygon
 	COLOR_PALETTE,
 	SELECT_SHAPE,	//Selects shape

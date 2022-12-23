@@ -182,6 +182,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="operations\opAddCircle.cpp" />
     <ClCompile Include="operations\opAddLine.cpp" />
+    <ClCompile Include="operations\opAddOval.cpp" />
     <ClCompile Include="operations\opAddRect.cpp" />
     <ClCompile Include="operations\opAddRegPoly.cpp" />
     <ClCompile Include="operations\opAddTriangle.cpp" />
@@ -195,6 +196,7 @@
     <ClCompile Include="Shapes\Circle.cpp" />
     <ClCompile Include="Shapes\Graph.cpp" />
     <ClCompile Include="Shapes\Line.cpp" />
+    <ClCompile Include="Shapes\Oval.cpp" />
     <ClCompile Include="Shapes\RegPoly.cpp" />
     <ClCompile Include="Shapes\Shape.cpp" />
     <ClCompile Include="Shapes\Rect.cpp" />
@@ -226,6 +228,7 @@
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="operations\opAddCircle.h" />
     <ClInclude Include="operations\opAddLine.h" />
+    <ClInclude Include="operations\opAddOval.h" />
     <ClInclude Include="operations\opAddRect.h" />
     <ClInclude Include="operations\opAddRegPoly.h" />
     <ClInclude Include="operations\opAddTriangle.h" />
@@ -240,6 +243,7 @@
     <ClInclude Include="Shapes\Circle.h" />
     <ClInclude Include="Shapes\Graph.h" />
     <ClInclude Include="Shapes\Line.h" />
+    <ClInclude Include="Shapes\Oval.h" />
     <ClInclude Include="Shapes\RegPoly.h" />
     <ClInclude Include="Shapes\Shape.h" />
     <ClInclude Include="Shapes\Rect.h" />

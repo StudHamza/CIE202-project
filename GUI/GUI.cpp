@@ -102,6 +102,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_LINE: return DRAW_LINE;
 			case ICON_RECT: return DRAW_RECT;
 			case ICON_CIRC: return DRAW_CIRC;
+			case ICON_OVAL: return DRAW_OVAL;
 			case ICON_TRI:	return DRAW_TRI;
 			case ICON_REGPOLY: return DRAW_REGPOLY;
 			case ICON_COLOR: return COLOR_PALETTE;
@@ -202,6 +203,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_LINE]="images\\MenuIcons\\Menu_Line.jpg";
 	MenuIconImages[ICON_RECT] = "images\\MenuIcons\\Menu_Rect.jpg";
 	MenuIconImages[ICON_CIRC] = "images\\MenuIcons\\Menu_Circ.jpg";
+	MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\Menu_Oval.jpg";
 	MenuIconImages[ICON_TRI] = "images\\MenuIcons\\Menu_Triangle.jpg";
 	MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\Menu_RegPoly.jpg";
 	MenuIconImages[ICON_COLOR]="images\\MenuIcons\\Menu_Color.jpg";
@@ -391,7 +393,6 @@ void GUI::DrawTriangle(Point P1, Point P2,Point P3 ,GfxInfo TriangleGfxInfo) con
 	}
 	else
 		style = FRAME;
-
 	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y,P3.x,P3.y ,style);
 
 }
@@ -416,6 +417,33 @@ void GUI::DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo)const
 
 	pWind->DrawLine(P1.x,P1.y,P2.x,P2.y,style);
 }
+
+
+
+
+
+void GUI::DrawOval(Point P1, Point P2, GfxInfo OvalGfxInfo) const
+{
+	color DrawingClr;
+
+	DrawingClr = OvalGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, OvalGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (OvalGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(OvalGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+	pWind->DrawEllipse(P1.x,P1.y,P2.x,P2.y,style);
+
+}
+
+
+
 
 
 

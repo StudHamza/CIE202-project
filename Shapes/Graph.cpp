@@ -425,7 +425,7 @@ void Graph::ClipBoard() {
 		if (selected->IsSelected()) {
 			selected->UnSelect();
 			selectedShape = nullptr;
-			clipboard.push_back(selected->Clone());	//problem: coppied item will have the same id
+			clipboard.push_back(selected);	//problem: coppied item will have the same id
 		}
 	}
 }
@@ -439,12 +439,12 @@ shape* Graph::GetSelectedShape()const
 void Graph::Paste() {
 	//UnselectShape();	//unselect previous shape to select by defualt the copied
 	const color pevClr = clipboard[0]->getPevDrawClr();
-	for (auto& shape : clipboard) {
-		
-		shape->UpdateId();
-		shape->Shift(10,10);
-		shape->Selected(pevClr);
-		Addshape(shape);
+	for (auto& c_shape : clipboard) {
+		shape* Pasted_shape = c_shape->Clone();
+		Pasted_shape->UpdateId();
+		Pasted_shape->Shift(10,10);
+		Pasted_shape->Selected(pevClr);
+		Addshape(Pasted_shape);
 	}
 	ClipBoard(); //updates the clipboard with new shapes
 

@@ -47,6 +47,7 @@ class GUI
 		ICON_LINE,
 		ICON_RECT,		//Recangle icon in menu
 		ICON_CIRC,		//Circle icon in menu
+		ICON_OVAL,
 		ICON_TRI,
 		ICON_REGPOLY, //Regular polygon
 		//TODO: Add more icons names here
@@ -139,6 +140,7 @@ public:
 	void DrawRegPoly(Point P1, vector<int> Vx, vector<int> Vy,int s, GfxInfo RegPolyGfxInfo)const; //Draw a Regular polygon
 	void DrawCircle(Point P1, int Radius, GfxInfo CircleGfxInfo)const;
 	void DrawTriangle(Point, Point, Point, GfxInfo)const;	//Draw Triangle
+	void DrawOval(Point, Point, GfxInfo)const;
 	void DrawLine(Point, Point,GfxInfo)const;	//Draw a line
 
 	///Make similar functions for drawing all other shapes.
@@ -152,6 +154,9 @@ public:
 	color getCrntDrawColor() const;	//get current drwawing color
 	color getCrntFillColor() const;	//get current filling color
 	int getCrntPenWidth() const;		//get current pen width
+
+
+	//Keyboard events
 
 
 	~GUI();
