@@ -458,6 +458,10 @@ void GUI::FrameImage(image stick,int x,int y)
 	SetPixel(stick.getHDC(), x, y, (255, 255, 255));
 }
 
+void GUI::drawImage(image stick, Point P1, Point P2)
+{
+	pWind->DrawImage(stick, P1.x, P1.y, P2.x, P2.y);
+}
 
 
 

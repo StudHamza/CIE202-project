@@ -504,3 +504,21 @@ bool Graph::getClipBoard() const {
 	else
 		return false;
 }
+
+void Graph::delShape(shape* selecetedshape) {
+	for (unsigned int i = 0; i < shapesList.size(); i++) {
+
+		if (selecetedshape ==shapesList[i]) {
+			shapesList.erase(shapesList.begin() + i);
+			delete selectedShape;
+			selectedShape = nullptr;
+		}
+
+	}
+}
+
+void Graph::cut(shape* selected_shape)
+{
+	clipboard.clear();
+	clipboard.push_back(selected_shape);
+}

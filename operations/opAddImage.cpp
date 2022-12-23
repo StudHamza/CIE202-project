@@ -19,14 +19,15 @@ void opAddImage::Execute()
 	pUI->PrintMessage("Please write the exact file path");
 	string path = pUI->GetSrting();
 	fstream Image;
-	Image.open(path);
+	Point P1={0,0}, P2={0,100};
+	Image.open(path+".jpg");
 	if (Image) {
 
-		image Stick(path);
-		if ((Stick.GetHeight() || Stick.GetWidth()) > 800) {
+		image Stick(path+ ".jpg");
+		if ((Stick.GetHeight() || Stick.GetWidth()) > 1000) {
 			pUI->PrintMessage("Image is way too Large, reduce it dimensions");
 		}
-		else {
+		else {	// I need to make a box around each shape inorder to stick an image into it
 			/*
 			shape* Frame = pGph->GetSelectedShape();
 			for (int i = 0; i < Stick.GetWidth(); i++)
@@ -42,6 +43,7 @@ void opAddImage::Execute()
 			Frame->stickImage(Stick);
 		}
 		*/
+			pUI->drawImage(Stick, {0,0}, {0,100});
 			Image.close();
 		}
 	}

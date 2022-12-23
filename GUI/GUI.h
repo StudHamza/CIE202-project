@@ -154,6 +154,7 @@ public:
 
 	//Frame Image
 	void FrameImage(image,int,int);
+	void drawImage(image, Point, Point);
 
 
 	color getCrntDrawColor() const;	//get current drwawing color
