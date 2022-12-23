@@ -52,7 +52,7 @@ class image {
 	friend class window;
 
   public:
-  
+	  HDC getHDC() { return dcTempBuffer; };
     image();
 	image(string strFileName, imagetype itThisType = JPEG);
     image(const char *cpFileName, imagetype itThisType = JPEG);

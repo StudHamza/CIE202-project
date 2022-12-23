@@ -12,6 +12,7 @@
 #include "operations\opAddTriangle.h"
 #include "operations\opAddLine.h"
 #include "operations\opAddOval.h"
+#include "operations\opAddImage.h"
 
 //Constructor
 controller::controller()
@@ -82,6 +83,9 @@ operation* controller::createOperation(operationType OpType)
 			break;
 		case CLEAR:
 			pOp = new opClear(this);
+			break;
+		case POST_IMAGE:
+			pOp = new opAddImage(this);
 			break;
 		case EXIT:
 			pOp = new opExit(this);

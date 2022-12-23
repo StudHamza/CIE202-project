@@ -11,6 +11,7 @@ protected:
 	int ID;		//Each shape has an ID
 	GfxInfo ShpGfxInfo;	//shape graphis info
 	static int counter;
+	image sticked;
 	/// Add more parameters if needed.
 
 public:
@@ -36,6 +37,10 @@ public:
 	bool IsSaved();
 	void SetSaved(bool s);
 
+
+
+	//Images
+	void stickImage(image);
 
 	//Moving
 	virtual void Shift(int, int)=0;

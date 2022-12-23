@@ -113,6 +113,7 @@ class GUI
 
 	window* pWind;
 	window* pEWind;
+	window* pCWind;
 
 public:
 
@@ -130,7 +131,9 @@ public:
 	void CreatePlayToolBar();	//creates Play mode toolbar & menu
 	void CreateStatusBar() const;	//create the status bar
 	void SetExit(window*);		//Creates window
+	void SetColor(window*);	//creates a color pallete
 	void DeleteExitWind();
+	void DeleteColorPallate();
 
 	void ClearStatusBar() const;	//Clears the status bar
 	void ClearDrawArea() const;	//Clears the drawing area
@@ -149,6 +152,8 @@ public:
 
 	void PrintExitMessage(string msg,char p='u') const;	//Print a message on Exit window
 
+	//Frame Image
+	void FrameImage(image,int,int);
 
 
 	color getCrntDrawColor() const;	//get current drwawing color

@@ -174,6 +174,9 @@
     <ClCompile Include="operations\opAddOval.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
+    <ClCompile Include="operations\opAddImage.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -305,6 +308,9 @@
       <Filter>Shapes&amp;Graph</Filter>
     </ClInclude>
     <ClInclude Include="operations\opAddOval.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="operations\opAddImage.h">
       <Filter>Operations</Filter>
     </ClInclude>
   </ItemGroup>

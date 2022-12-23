@@ -174,6 +174,15 @@ void GUI::SetExit(window*pE) {
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
+
+void GUI::SetColor(window* pC) {
+	pC->ChangeTitle("Color Pallete");
+	pCWind = pC;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
 void GUI::CreateStatusBar() const
 {
 	pWind->SetPen(StatusBarColor, 1);
@@ -442,7 +451,12 @@ void GUI::DrawOval(Point P1, Point P2, GfxInfo OvalGfxInfo) const
 
 }
 
+/////////////////////////////////////////////////////////////////////////////////\
 
+void GUI::FrameImage(image stick,int x,int y)
+{
+	SetPixel(stick.getHDC(), x, y, (255, 255, 255));
+}
 
 
 
@@ -453,10 +467,15 @@ void GUI::DeleteExitWind()
 }
 
 
+void GUI::DeleteColorPallate()
+{
+	delete pCWind;
+}
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
 GUI::~GUI()
 {
 	delete pWind;
-	delete pEWind;
 }
 

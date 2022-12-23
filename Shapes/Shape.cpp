@@ -62,6 +62,10 @@ void shape::UpdateId() {
 	ID = counter;
 }
 
+void shape::stickImage(image stick)
+{
+	sticked = stick;
+}
 
 
 int shape::counter = 0;
