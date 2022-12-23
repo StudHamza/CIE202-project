@@ -334,6 +334,53 @@ void Graph::load(ifstream& file) {
 		}
 		else if (getString(0, 2, line) == "Ova")
 		{
+		Point P1, P2;
+		string holder;
+		color DrawClr, FillClr;
+		int start, end, Sborder;
+		bool isFilled;
+
+		border = line.back() - 48;		//Circle border
+
+		start = find('(', line);
+		end = find(')', line);
+		holder = getString(start, end, line);
+		P1 = getP(holder);						//Point 1
+
+
+		start = find('(', line, 2);
+		end = find(')', line, 2);
+		holder = getString(start, end, line);
+		P2 = getP(holder);						//Point 2
+
+		start = find('(', line, 3);
+		end = find(')', line, 3);
+		DrawClr = Fcolor(getString(start, end, line));		//Draw color
+
+
+		start = find('(', line, 4);
+		end = find(')', line, 4);
+		if (getString(start, end, line) != "(N)") {	//if fill
+			FillClr = Fcolor(getString(start, end, line));	//Fill color	
+			isFilled = true;
+		}
+		else
+		{
+			isFilled = false;			//is not filled
+		}
+
+
+
+		//Constructing Circle
+		//Intialzing Gfx infp
+		GfxInfo OvalGfxInfo;
+		OvalGfxInfo.BorderWdth = border;
+		OvalGfxInfo.DrawClr = DrawClr;
+		OvalGfxInfo.FillClr = FillClr;
+		OvalGfxInfo.isFilled = isFilled;
+		//Create a polygon with the above parameters
+		Oval* C = new Oval(P1, P2, OvalGfxInfo);
+		Addshape(C);
 		}
 		else if (getString(0, 2, line) == "Irr")
 		{

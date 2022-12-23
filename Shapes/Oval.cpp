@@ -30,7 +30,7 @@ string Oval::GetInfo(char s)const
 	string name, id, C, R, drawClr, fill, borderWidth, msg;
 	color Draw = ShpGfxInfo.DrawClr;
 	color Fill = ShpGfxInfo.FillClr;
-	name = "Circle";
+	name = "Oval";
 	id = to_string(ID);
 	C = "(" + to_string(Radius1.x) + "," + to_string(Radius1.y) + ")";
 	R = " (" + to_string(Radius2.x) + "," + to_string(Radius2.y) + ")";

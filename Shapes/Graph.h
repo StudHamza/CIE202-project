@@ -5,6 +5,7 @@
 #include "Circle.h"
 #include "Triangle.h"
 #include "Line.h"
+#include "Oval.h"
 #include <fstream>
 #include <vector>
 
