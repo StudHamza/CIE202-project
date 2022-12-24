@@ -34,6 +34,8 @@ public:
 	void ClipBoard();		//sets a vector of the selected shapes
 	bool getClipBoard() const;
 	void Paste();
+	void delShape(shape*);
+	void cut();
 
 	shape* GetSelectedShape()const;
 

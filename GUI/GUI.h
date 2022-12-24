@@ -66,6 +66,7 @@ class GUI
 		ICON_COPY,
 		ICON_PASTE,
 		ICON_CLEAR,
+		ICON_CUT,
 		ICON_IMAGE,
 		ICON_SAVE,
 		ICON_LOAD,
@@ -122,6 +123,7 @@ public:
 	// Input Functions  ---------------------------
 	void GetPointClicked(int& x, int& y) const;//Get coordinate where user clicks
 	string GetSrting(char c='c') const;	 //Returns a string entered by the user
+	bool GetKeyClicked()const;		//Return key modifiers
 	operationType GetUseroperation() const; //Read the user click and map to an operation
 
 	// Output Functions  ---------------------------

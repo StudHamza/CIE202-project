@@ -21,7 +21,15 @@ void opSelect::Execute()
 	G->UnselectShape();
 
 
-	pUI->PrintMessage("Select Shape");
+	pUI->PrintMessage("Select Shape (To enable multi-select press y, else press n)");
+	if (pUI->GetKeyClicked())
+	{
+		pUI->PrintMessage("You enabled multi-select");
+	}
+	else
+	{
+		pUI->PrintMessage("Multi-select disabled, please select");
+	}
 	pUI->GetPointClicked(P.x, P.y);
 	shape* SelectedShapeG = G->Getshape(P.x, P.y);  //Gets clicked on shape if it is available
 	if(SelectedShapeG){   //if selected

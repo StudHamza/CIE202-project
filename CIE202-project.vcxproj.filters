@@ -177,6 +177,9 @@
     <ClCompile Include="operations\opAddImage.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
+    <ClCompile Include="operations\opCut.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -311,6 +314,9 @@
       <Filter>Operations</Filter>
     </ClInclude>
     <ClInclude Include="operations\opAddImage.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="operations\opCut.h">
       <Filter>Operations</Filter>
     </ClInclude>
   </ItemGroup>

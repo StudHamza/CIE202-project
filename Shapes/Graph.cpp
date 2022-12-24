@@ -517,8 +517,10 @@ void Graph::delShape(shape* selecetedshape) {
 	}
 }
 
-void Graph::cut(shape* selected_shape)
+void Graph::cut()
 {
+	shape* Cutted = selectedShape->Clone();
 	clipboard.clear();
-	clipboard.push_back(selected_shape);
+	clipboard.push_back(Cutted);
+	delShape(selectedShape);
 }

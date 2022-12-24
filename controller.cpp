@@ -13,6 +13,7 @@
 #include "operations\opAddLine.h"
 #include "operations\opAddOval.h"
 #include "operations\opAddImage.h"
+#include "operations\opCut.h"
 
 //Constructor
 controller::controller()
@@ -80,6 +81,9 @@ operation* controller::createOperation(operationType OpType)
 			break;
 		case PASTE:
 			pOp = new opPaste(this);
+			break;
+		case CUT:
+			pOp = new opCut(this);
 			break;
 		case CLEAR:
 			pOp = new opClear(this);

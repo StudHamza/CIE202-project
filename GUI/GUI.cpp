@@ -48,6 +48,16 @@ void GUI::GetPointClicked(int& x, int& y) const
 {
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
+bool GUI::GetKeyClicked()const
+{
+	keytype ktype;
+	char Key;
+	ktype = pWind->WaitKeyPress(Key);
+	pWind->FlushKeyQueue();
+	if (Key == 'y')
+		return true;
+	return false;
+}
 
 string GUI::GetSrting(char c) const
 {
@@ -124,6 +134,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_COPY: return COPY;
 			case ICON_PASTE: return PASTE;
 			case ICON_CLEAR: return CLEAR;
+			case ICON_CUT: return CUT;
 			case ICON_IMAGE: return POST_IMAGE;
 			case ICON_SAVE:  return SAVE ;
 			case ICON_LOAD: return LOAD;
@@ -249,6 +260,7 @@ void GUI::CreateDrawVToolBar() {
 	VToolBarIcon[ICON_COPY] = "images\\VToolBar\\Copy_Icon.jpg";
 	VToolBarIcon[ICON_PASTE] = "images\\VToolBar\\Paste_Icon.jpg";
 	VToolBarIcon[ICON_CLEAR] = "images\\VToolBar\\Clear_Icon.jpg";
+	VToolBarIcon[ICON_CUT] = "images\\VToolBar\\Cut_Icon.jpg";
 	VToolBarIcon[ICON_IMAGE] = "images\\VToolBar\\Image_Icon.jpg";
 	VToolBarIcon[ICON_SAVE] = "images\\VToolBar\\Save_Icon.jpg";
 	VToolBarIcon[ICON_LOAD] = "images\\VToolBar\\Load_Icon.jpg";
