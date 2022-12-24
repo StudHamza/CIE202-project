@@ -56,7 +56,7 @@ shape* Graph::Getshape(int x, int y) const
 
 string Graph::SelectShape(Point P, color pevClr,shape *selected)
 {
-
+	cout << "I got to the selected shape 1";
 	*pvp = P; //Set previous point clicked
 	selectedShape = selected;
 	selected->Selected(pevClr); //sets shape to selected

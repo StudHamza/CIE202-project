@@ -17,31 +17,26 @@ void opSelect::Execute()
 	//Get a Pointer to the Input / Output Interfaces
 	GUI* pUI = pControl->GetUI();
 	Graph* G = pControl->getGraph();
-
+	char Multi_select='e';
 	G->UnselectShape();
 
 
-	pUI->PrintMessage("Select Shape (To enable multi-select press y, else press n)");
-	if (pUI->GetKeyClicked())
-	{
-		pUI->PrintMessage("You enabled multi-select");
-	}
-	else
-	{
-		pUI->PrintMessage("Multi-select disabled, please select");
-	}
-	pUI->GetPointClicked(P.x, P.y);
-	shape* SelectedShapeG = G->Getshape(P.x, P.y);  //Gets clicked on shape if it is available
-	if(SelectedShapeG){   //if selected
-		pUI->ClearStatusBar(); 
-		color pevClr = pUI->getCrntDrawColor(); //get crnt drawing pen color
-		color pevFill = pUI->getCrntFillColor(); //Current fill color
-		int  pevBorderW = pUI->getCrntPenWidth();	//pev width
-		string msg=G->SelectShape(P, pevClr,SelectedShapeG);   //selecte shape and return msg (shape info)
-		pUI->PrintMessage(msg);
-	}
-	else
-	{
-		pUI->PrintMessage("You selected nothing");
-	}
+	pUI->PrintMessage("Select Shape (Hold shift to enable multi-select)");
+
+	do {
+		pUI->GetPointClicked(P.x, P.y);
+		shape* SelectedShapeG = G->Getshape(P.x, P.y);  //Gets clicked on shape if it is available
+		if (SelectedShapeG) {   //if selected
+			pUI->ClearStatusBar();
+			color pevClr = pUI->getCrntDrawColor(); //get crnt drawing pen colo
+			string msg = G->SelectShape(P, pevClr, SelectedShapeG);   //selecte shape and return msg (shape info)
+			pUI->PrintMessage(msg);
+			//G->set_selected_list();
+			G->Draw(pUI);
+		}
+		else
+		{
+			pUI->PrintMessage("Shape not found");
+		}
+	} while (pUI->GetKeyClicked());
 }
