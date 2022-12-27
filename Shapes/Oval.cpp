@@ -5,6 +5,22 @@ Oval::Oval(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 {
 	Radius1 = P1;
 	Radius2 = P2;
+	radiusX = abs(P1.x - P2.x)/2;
+	radiusY = abs(P1.y - P2.y)/2;
+	if (P1.x > P2.x) {
+		Center.x = (radiusX + P2.x);
+	}
+	else if(P1.x < P2.x)
+	{
+		Center.x = (radiusX + P1.x);
+	}
+	if (P1.y > P2.y) {
+		Center.y = (radiusY + P2.y);
+	}
+	else if (P1.y < P2.y)
+	{
+		Center.y = (radiusY + P1.y);
+	}
 }
 
 Oval::~Oval()
@@ -20,8 +36,13 @@ void Oval::Draw(GUI* pUI) const
 
 bool Oval::HitBox(int x, int y)const
 {
+	int res = (pow((x - Center.x), 2) / pow(radiusX, 2)) + (pow((y - Center.y), 2) / pow(radiusY, 2));
+	if (res <= 1)
+	{
+		return true;
+	}
 
-		return false;
+	return false;
 }
 
 

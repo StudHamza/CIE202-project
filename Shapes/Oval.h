@@ -5,8 +5,9 @@
 class Oval : public shape
 {
 private:
-	Point Radius1;
-	Point Radius2;
+	Point Radius1,Radius2,Center;
+	int radiusX, radiusY;
+	
 public:
 	Oval(Point, Point, GfxInfo shapeGfxInfo);
 	virtual ~Oval();
