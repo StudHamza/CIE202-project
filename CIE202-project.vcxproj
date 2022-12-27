@@ -187,6 +187,8 @@
     <ClCompile Include="operations\opAddRect.cpp" />
     <ClCompile Include="operations\opAddRegPoly.cpp" />
     <ClCompile Include="operations\opAddTriangle.cpp" />
+    <ClCompile Include="operations\opChngDraw.cpp" />
+    <ClCompile Include="operations\opChngFill.cpp" />
     <ClCompile Include="operations\opClear.cpp" />
     <ClCompile Include="operations\opColors.cpp" />
     <ClCompile Include="operations\opCopy.cpp" />
@@ -236,6 +238,8 @@
     <ClInclude Include="operations\opAddRect.h" />
     <ClInclude Include="operations\opAddRegPoly.h" />
     <ClInclude Include="operations\opAddTriangle.h" />
+    <ClInclude Include="operations\opChngDraw.h" />
+    <ClInclude Include="operations\opChngFill.h" />
     <ClInclude Include="operations\opClear.h" />
     <ClInclude Include="operations\opColors.h" />
     <ClInclude Include="operations\opCopy.h" />

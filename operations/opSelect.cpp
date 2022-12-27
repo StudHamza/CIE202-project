@@ -17,7 +17,6 @@ void opSelect::Execute()
 	//Get a Pointer to the Input / Output Interfaces
 	GUI* pUI = pControl->GetUI();
 	Graph* G = pControl->getGraph();
-	char Multi_select='e';
 	G->UnselectShape();
 	G->UnSelectAll();
 

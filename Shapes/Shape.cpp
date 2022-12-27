@@ -29,6 +29,10 @@ color shape::GetCrntColor() const
 {
 	return (ShpGfxInfo.DrawClr);
 }
+void shape::SetFill(bool isFilled)
+{
+	ShpGfxInfo.isFilled = isFilled;
+}
 
 void shape::Selected(color previousC)	//Sets shape to selected and gets info through a virtual function
 {

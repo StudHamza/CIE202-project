@@ -494,6 +494,11 @@ shape* Graph::GetSelectedShape()const
 	return selectedShape;
 }
 
+vector<shape*> Graph::GetShapeList()const
+{
+	return shapesList;
+}
+
 
 void Graph::Paste() {
 	//UnselectShape();	//unselect previous shape to select by defualt the copied

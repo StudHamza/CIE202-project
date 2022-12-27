@@ -183,6 +183,12 @@
     <ClCompile Include="operations\opColors.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
+    <ClCompile Include="operations\opChngDraw.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="operations\opChngFill.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -323,6 +329,12 @@
       <Filter>Operations</Filter>
     </ClInclude>
     <ClInclude Include="operations\opColors.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="operations\opChngDraw.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="operations\opChngFill.h">
       <Filter>Operations</Filter>
     </ClInclude>
   </ItemGroup>

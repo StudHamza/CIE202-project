@@ -15,6 +15,8 @@
 #include "operations\opAddImage.h"
 #include "operations\opCut.h"
 #include "operations\opColors.h"
+#include "operations\opChngDraw.h"
+#include "operations\opChngFill.h"
 
 //Constructor
 controller::controller()
@@ -62,8 +64,13 @@ operation* controller::createOperation(operationType OpType)
 		case DRAW_REGPOLY:
 			pOp = new opAddRegPoly(this);
 			break;
+		case CHNG_DRAW_CLR:
+			pOp = new opChngDraw(this);
+			break;
+		case CHNG_FILL_CLR:
+			pOp = new opChngFill(this);
+			break;
 		case COLOR_PALETTE:
-			cout << "i am here";
 			pOp = new opColors(this);
 			break;
 		case SELECT_SHAPE:

@@ -162,16 +162,17 @@ public:
 	color getCrntDrawColor() const;	//get current drwawing color
 	color getCrntFillColor() const;	//get current filling color
 	int getCrntPenWidth() const;		//get current pen width
-	color getColor(Point)const;
-	void setCrntSelectedColor(char);
-	char getCrntSelectedColor()const;
+	///////
+	color getColor(Point)const;		//Gets color from exact coordinates
+	//////
+	void setCrntSelectedColor(char);	//Set border color to selected
+	char getCrntSelectedColor()const;	//gets state of selected color
 
 	void ChangeDrawColor(color);
 	void ChangeFillColor(color);
 
 
 	//Keyboard events
-
 
 	~GUI();
 };

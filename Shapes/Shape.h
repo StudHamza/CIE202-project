@@ -25,10 +25,12 @@ public:
 
 	virtual void Draw(GUI* pUI) const =0 ;		//Draw the shape
 	virtual bool HitBox(int,int)const =0;		//create hit box
+
+	//Colors
 	void ChngDrawClr(color Dclr);	//changes the shape's drawing color
 	void ChngFillClr(color Fclr);	//changes the shape's filling color
 	color GetCrntColor()const;
-
+	void SetFill(bool);		//Sets fill to true or false
 
 	void Selected(color);
 	void UnSelect();
@@ -56,6 +58,4 @@ public:
 	//virtual void Resize() = 0;	//Resize the shape
 	//virtual void Move() = 0;		//Move the shape
 
-
-	//virtual void PrintInfo(Output* pOut) = 0;	//print all shape info on the status bar
 };
