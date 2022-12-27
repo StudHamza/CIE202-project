@@ -30,7 +30,8 @@ public:
 	void Draw(GUI* pUI) const;			//Draw the graph (draw all shapes)
 	shape* Getshape(int x, int y) const; //Search for a shape given a point inside the shape
 	string SelectShape(Point,color,shape *);	//Responsible for shape selection
-	bool UnselectShape();
+	bool UnselectShape();	//Unselects if clicked on drawing area
+	void UnSelectAll();
 	void ClipBoard();		//sets a vector of the selected shapes
 	bool getClipBoard() const;
 	void Paste();

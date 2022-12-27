@@ -19,6 +19,7 @@ void opSelect::Execute()
 	Graph* G = pControl->getGraph();
 	char Multi_select='e';
 	G->UnselectShape();
+	G->UnSelectAll();
 
 
 	pUI->PrintMessage("Select Shape (Hold shift to enable multi-select)");

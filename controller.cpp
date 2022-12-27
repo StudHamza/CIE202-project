@@ -14,6 +14,7 @@
 #include "operations\opAddOval.h"
 #include "operations\opAddImage.h"
 #include "operations\opCut.h"
+#include "operations\opColors.h"
 
 //Constructor
 controller::controller()
@@ -61,7 +62,10 @@ operation* controller::createOperation(operationType OpType)
 		case DRAW_REGPOLY:
 			pOp = new opAddRegPoly(this);
 			break;
-
+		case COLOR_PALETTE:
+			cout << "i am here";
+			pOp = new opColors(this);
+			break;
 		case SELECT_SHAPE:
 			pOp = new opSelect(this);
 			break;

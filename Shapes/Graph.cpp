@@ -56,7 +56,7 @@ shape* Graph::Getshape(int x, int y) const
 
 string Graph::SelectShape(Point P, color pevClr,shape *selected)
 {
-	cout << "I got to the selected shape 1";
+	selectedShape = nullptr;
 	*pvp = P; //Set previous point clicked
 	selectedShape = selected;
 	selected->Selected(pevClr); //sets shape to selected
@@ -70,6 +70,7 @@ bool Graph::UnselectShape()
 		if (pSelected) {
 			if (pSelected->IsSelected()) {	//checks if bool select 
 				pSelected->UnSelect();		//Unselects
+				UnSelectAll();
 				*pvp = { 0,0 };			//Resttore pev mouse click to nothing
 				selectedShape = nullptr;
 				return false;
@@ -78,6 +79,17 @@ bool Graph::UnselectShape()
 	}
 	else { return true; }
 }
+
+
+void Graph::UnSelectAll()
+{
+	for (shape* selected_shapes : shapesList)
+	{
+		if(selected_shapes->IsSelected())
+			selected_shapes->UnSelect();
+	}
+}
+
 
 
 void Graph::Save(ofstream& file,color DrawClr,color FillClr,int BorderWidth) {

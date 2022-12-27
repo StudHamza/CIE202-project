@@ -26,6 +26,7 @@ GUI::GUI()
 	BkGrndColor = WHITE;	//Background color
 	StatusBarColor = BLUEVIOLET;
 	PenWidth = 3;	//default width of the shapes frames
+	SelectedCrntColor = 'd';
 
 
 	//Create the output window
@@ -112,6 +113,8 @@ operationType GUI::GetUseroperation() const
 			case ICON_OVAL: return DRAW_OVAL;
 			case ICON_TRI:	return DRAW_TRI;
 			case ICON_REGPOLY: return DRAW_REGPOLY;
+			case ICON_PEN: return CHNG_DRAW_CLR;
+			case ICON_FILL: return CHNG_FILL_CLR;
 			case ICON_COLOR: return COLOR_PALETTE;
 			case ICON_PLAY: return TO_PLAY;
 			case ICON_EXIT: return EXIT;
@@ -180,16 +183,7 @@ void GUI::SetExit(window*pE) {
 	pE->ChangeTitle("Paint and Play");
 	pEWind = pE;
 }
-//////////////////////////////////////////////////////////////////////////////////////////
-
-
-void GUI::SetColor(window* pC) {
-	pC->ChangeTitle("Color Pallete");
-	pCWind = pC;
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////
-
+/////////////////////////////////////////////////////////////////////////////////////////
 
 void GUI::CreateStatusBar() const
 {
@@ -223,17 +217,37 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\Menu_Oval.jpg";
 	MenuIconImages[ICON_TRI] = "images\\MenuIcons\\Menu_Triangle.jpg";
 	MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\Menu_RegPoly.jpg";
+	MenuIconImages[ICON_PEN] = "No_image";
+	MenuIconImages[ICON_FILL] = "No_Image";
 	MenuIconImages[ICON_COLOR]="images\\MenuIcons\\Menu_Color.jpg";
 	MenuIconImages[ICON_PLAY] = "images\\MenuIcons\\Menu_Play.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
 
 	//TODO: Prepare images for each menu icon and add it to the list
-	pWind->SetPen(DARKRED, 4);
+	
 	//Draw menu icon one image at a time
 	for (int i = 0; i < DRAW_ICON_COUNT; i++) {
-		pWind->DrawImage(MenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth-5, ToolBarHeight);
-		pWind->DrawLine(MenuIconWidth*(i+1), 0,  (i+1) * MenuIconWidth, ToolBarHeight);
-
+		pWind->SetPen(DARKRED, 4);
+		pWind->DrawLine(MenuIconWidth * (i+1), 0, (i+1) * MenuIconWidth, ToolBarHeight);
+		if (i != ICON_PEN && i!=ICON_FILL) {
+			pWind->DrawImage(MenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth - 5, ToolBarHeight);
+		}
+		else {
+			string msg;
+			if (i == ICON_PEN) {
+				msg = "Pen Color";
+				pWind->SetBrush(DrawColor);
+			}
+			else if (i == ICON_FILL)
+			{
+				msg = "Fill Color";
+				pWind->SetBrush(FillColor);
+			}
+			pWind->SetFont(16, BOLD, BY_NAME, "Arial");
+			pWind->SetPen(BLACK, 2);
+			pWind->DrawString(MenuIconWidth * (i)+4, ToolBarHeight - 15, msg);//Nubers represents padding
+			pWind->DrawRectangle(MenuIconWidth * (i)+10, 5, (i + 1) * MenuIconWidth-10, ToolBarHeight-15);//10 represents the padding
+		}
 	}
 
 	//Draw a line under the toolbar
@@ -318,6 +332,43 @@ color GUI::getCrntFillColor() const	//get current filling color
 	return FillColor;
 }
 //////////////////////////////////////////////////////////////////////////////////////////
+
+void GUI::ChangeDrawColor(color draw_color)
+{
+	DrawColor = draw_color;
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+
+void GUI::ChangeFillColor(color fill_color)
+{
+	FillColor = fill_color;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+color GUI::getColor(Point mouse)const
+{
+	color Chosen;
+	Chosen =pWind->GetColor(mouse.x, mouse.y);
+	return Chosen;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+void GUI::setCrntSelectedColor(char s)
+{
+	SelectedCrntColor = s;	//d or f: representing draw or fill
+}
+
+char GUI::getCrntSelectedColor()const
+{
+	return SelectedCrntColor;
+}
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 
 int GUI::getCrntPenWidth() const		//get current pen width
 {
@@ -467,9 +518,9 @@ void GUI::FrameImage(image stick,int x,int y)
 	SetPixel(stick.getHDC(), x, y, (255, 255, 255));
 }
 
-void GUI::drawImage(image stick, Point P1, Point P2)
+void GUI::DrawImage(string Image, Point P1, Point P2)
 {
-	pWind->DrawImage(stick, P1.x, P1.y, P2.x, P2.y);
+	pWind->DrawImage(Image, P1.x, P1.y, P2.x, P2.y);
 }
 
 
@@ -479,11 +530,6 @@ void GUI::DeleteExitWind()
 	delete pEWind;
 }
 
-
-void GUI::DeleteColorPallate()
-{
-	delete pCWind;
-}
 
 
 //////////////////////////////////////////////////////////////////////////////////////////

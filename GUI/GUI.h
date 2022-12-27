@@ -52,6 +52,9 @@ class GUI
 		ICON_REGPOLY, //Regular polygon
 		//TODO: Add more icons names here
 		
+		ICON_PEN,
+		ICON_FILL,
+
 		ICON_COLOR,
 		ICON_PLAY,
 		ICON_EXIT,		//Exit icon
@@ -109,12 +112,11 @@ class GUI
 	int PenWidth;			//width of the pen that draws shapes
 
 	/// Add more members if needed
-
+	char SelectedCrntColor;
 
 
 	window* pWind;
 	window* pEWind;
-	window* pCWind;
 
 public:
 
@@ -133,9 +135,7 @@ public:
 	void CreatePlayToolBar();	//creates Play mode toolbar & menu
 	void CreateStatusBar() const;	//create the status bar
 	void SetExit(window*);		//Creates window
-	void SetColor(window*);	//creates a color pallete
 	void DeleteExitWind();
-	void DeleteColorPallate();
 
 	void ClearStatusBar() const;	//Clears the status bar
 	void ClearDrawArea() const;	//Clears the drawing area
@@ -156,12 +156,18 @@ public:
 
 	//Frame Image
 	void FrameImage(image,int,int);
-	void drawImage(image, Point, Point);
+	void DrawImage(string, Point, Point);
 
-
+	//Colors
 	color getCrntDrawColor() const;	//get current drwawing color
 	color getCrntFillColor() const;	//get current filling color
 	int getCrntPenWidth() const;		//get current pen width
+	color getColor(Point)const;
+	void setCrntSelectedColor(char);
+	char getCrntSelectedColor()const;
+
+	void ChangeDrawColor(color);
+	void ChangeFillColor(color);
 
 
 	//Keyboard events

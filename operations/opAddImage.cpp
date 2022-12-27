@@ -43,7 +43,6 @@ void opAddImage::Execute()
 			Frame->stickImage(Stick);
 		}
 		*/
-			pUI->drawImage(Stick, {0,0}, {0,100});
 			Image.close();
 		}
 	}

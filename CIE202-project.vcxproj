@@ -188,6 +188,7 @@
     <ClCompile Include="operations\opAddRegPoly.cpp" />
     <ClCompile Include="operations\opAddTriangle.cpp" />
     <ClCompile Include="operations\opClear.cpp" />
+    <ClCompile Include="operations\opColors.cpp" />
     <ClCompile Include="operations\opCopy.cpp" />
     <ClCompile Include="operations\opCut.cpp" />
     <ClCompile Include="operations\opExit.cpp" />
@@ -236,6 +237,7 @@
     <ClInclude Include="operations\opAddRegPoly.h" />
     <ClInclude Include="operations\opAddTriangle.h" />
     <ClInclude Include="operations\opClear.h" />
+    <ClInclude Include="operations\opColors.h" />
     <ClInclude Include="operations\opCopy.h" />
     <ClInclude Include="operations\opCut.h" />
     <ClInclude Include="operations\operation.h" />
