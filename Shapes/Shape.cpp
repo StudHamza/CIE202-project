@@ -25,6 +25,11 @@ void shape::ChngFillClr(color Fclr)
 	ShpGfxInfo.FillClr = Fclr; 
 }
 
+color shape::GetCrntColor() const
+{
+	return (ShpGfxInfo.DrawClr);
+}
+
 void shape::Selected(color previousC)	//Sets shape to selected and gets info through a virtual function
 {
 	ShpGfxInfo.PrevClr=color(previousC);	//sets prev Color of selected shape

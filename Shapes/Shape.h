@@ -27,6 +27,9 @@ public:
 	virtual bool HitBox(int,int)const =0;		//create hit box
 	void ChngDrawClr(color Dclr);	//changes the shape's drawing color
 	void ChngFillClr(color Fclr);	//changes the shape's filling color
+	color GetCrntColor()const;
+
+
 	void Selected(color);
 	void UnSelect();
 	void UpdateId();		//resposible for id updates when cloning(copy paste)

@@ -497,8 +497,8 @@ shape* Graph::GetSelectedShape()const
 
 void Graph::Paste() {
 	//UnselectShape();	//unselect previous shape to select by defualt the copied
-	const color pevClr = clipboard[0]->getPevDrawClr();
 	for (auto& c_shape : clipboard) {
+		const color pevClr = c_shape->GetCrntColor();
 		shape* Pasted_shape = c_shape->Clone();
 		Pasted_shape->UpdateId();
 		Pasted_shape->Shift(10,10);

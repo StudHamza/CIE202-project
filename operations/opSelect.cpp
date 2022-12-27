@@ -29,7 +29,7 @@ void opSelect::Execute()
 		shape* SelectedShapeG = G->Getshape(P.x, P.y);  //Gets clicked on shape if it is available
 		if (SelectedShapeG) {   //if selected
 			pUI->ClearStatusBar();
-			color pevClr = pUI->getCrntDrawColor(); //get crnt drawing pen colo
+			color pevClr =SelectedShapeG->GetCrntColor(); //get crnt drawing pen colo
 			string msg = G->SelectShape(P, pevClr, SelectedShapeG);   //selecte shape and return msg (shape info)
 			pUI->PrintMessage(msg);
 			//G->set_selected_list();
