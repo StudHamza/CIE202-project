@@ -244,7 +244,7 @@ void Graph::load(ifstream& file) {
 		int start, end,Sborder;
 		bool isFilled;
 
-		border = line.back() - 48;		//Circle border
+		Sborder = line.back() - 48;		//Circle border
 
 		start = find('(', line);
 		end = find(')', line);
@@ -278,7 +278,7 @@ void Graph::load(ifstream& file) {
 		//Constructing Circle
 		//Intialzing Gfx infp
 		GfxInfo CircleGfxInfo;
-		CircleGfxInfo.BorderWdth = border;
+		CircleGfxInfo.BorderWdth = Sborder;
 		CircleGfxInfo.DrawClr = DrawClr;
 		CircleGfxInfo.FillClr = FillClr;
 		CircleGfxInfo.isFilled = isFilled;
@@ -503,7 +503,7 @@ vector<shape*> Graph::GetShapeList()const
 void Graph::Paste() {
 	//UnselectShape();	//unselect previous shape to select by defualt the copied
 	for (auto& c_shape : clipboard) {
-		const color pevClr = c_shape->GetCrntColor();
+		const color pevClr = c_shape->getPevDrawClr();
 		shape* Pasted_shape = c_shape->Clone();
 		Pasted_shape->UpdateId();
 		Pasted_shape->Shift(10,10);
@@ -536,6 +536,7 @@ void Graph::delShape(shape* selecetedshape) {
 
 void Graph::cut()
 {
+	UnSelectAll();
 	shape* Cutted = selectedShape->Clone();
 	clipboard.clear();
 	clipboard.push_back(Cutted);

@@ -61,6 +61,8 @@ void Circle::Shift(int dy, int dx) {
 
 	Center.x += dx;
 	Center.y += dy;
+	Start.x += dx;
+	Start.y += dy;
 
 }
 
