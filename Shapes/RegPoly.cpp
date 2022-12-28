@@ -86,6 +86,10 @@ void RegPoly::Shift(int dy, int dx) {
 		Xv[i] += dx;
 		Yv[i] += dy;
 	}
+	Start.x += dx;
+	Start.y += dy;
+	Center.x += dx;
+	Center.y += dy;
 }
 
 
