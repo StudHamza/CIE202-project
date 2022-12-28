@@ -6,5 +6,6 @@ public:
 	opChngDraw(controller* pCont);
 	virtual ~opChngDraw();
 	virtual void Execute();
+	virtual void Undo()override;
 
 };

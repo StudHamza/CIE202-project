@@ -1,3 +1,4 @@
+#include"DefRev.h"
 #include "controller.h"
 #include "operations\opAddRect.h"
 #include "operations\opAddRegPoly.h"
@@ -17,6 +18,7 @@
 #include "operations\opColors.h"
 #include "operations\opChngDraw.h"
 #include "operations\opChngFill.h"
+#include "operations\opUndo.h"
 
 //Constructor
 controller::controller()
@@ -41,7 +43,6 @@ operation* controller::createOperation(operationType OpType)
 {
 	operation* pOp = nullptr;
 	
-	Present.push_back(OpType);//Sets the present timeline for undo/redo
 	
 	//According to operation Type, create the corresponding operation object
 	switch (OpType)
@@ -76,6 +77,7 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opColors(this);
 			break;
 		case UNDO:
+			pOp = new opUndo(this);
 			break;
 		case REDO:
 			break;
@@ -151,6 +153,20 @@ controller::~controller()
 }
 
 
+//Time line related Functions
+operation* controller::UpdateTimeLine() { cout << "size: "<<Present.size() << endl; operation* op = Present.back(); Present.pop_back(); future.push_back(op); return op; }
+
+void controller::pushToOperatedOn(shape* shp) { OperatedOn.push_back(shp); }
+
+shape* controller::getOperatedOn() { if (OperatedOn.size()) { return OperatedOn.back(); } }
+
+
+bool controller::checkPresent() { cout << Present.size()<<endl; return Present.size(); }
+
+void controller::popOperatedOn()
+{
+	OperatedOn.pop_back();
+}
 
 //==================================================================================//
 //							Run function											//
@@ -169,9 +185,24 @@ void controller::Run()
 		//3. Execute the created operation
 		if (pOpr)
 		{
+			char del = 'y';	//Create a char for not deleting/deallocating the pOpr 
+			for (auto& Op : Revertable)
+			{
+				if (OpType == Op)
+				{
+					del = 'n';
+				}
+			}
 			pOpr->Execute();//Execute
-			delete pOpr;	//operation is not needed any more ==> delete it
-			pOpr = nullptr;
+			if (del != 'y') {
+				Present.push_back(pOpr);//Sets the present timeline for undo/redo
+				cout <<"OP number:" << OpType << endl;
+				pOpr = nullptr;	//do not delete the pointer (not memeory leak)
+			}
+			else {
+				delete pOpr;	//operation is not needed any more ==> delete it
+				pOpr = nullptr;
+			}
 		}
 
 		//Update the interface

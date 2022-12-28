@@ -3,7 +3,6 @@
 
 #include "..\GUI\GUI.h"
 #include "..\Shapes\Graph.h"
-#include <iostream>
 
 opSelect::opSelect(controller* pCont) :operation(pCont)
 {}

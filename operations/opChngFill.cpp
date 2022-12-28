@@ -9,6 +9,16 @@ opChngFill::opChngFill(controller* pCont) : operation(pCont) {}
 
 opChngFill::~opChngFill() {}
 
+void opChngFill::Undo()
+{
+	GUI* pUI = pControl->GetUI();
+	shape* shp = pControl->getOperatedOn();	//Get shape
+	shp->ChngFillClr(shp->getPevFillClr());	//Change color
+
+	pControl->popOperatedOn();
+
+}
+
 
 
 void opChngFill::Execute()
@@ -22,6 +32,7 @@ void opChngFill::Execute()
 		for (shape* shape : pGrph->GetShapeList())
 		{
 			if (shape->IsSelected()) {
+				pControl->pushToOperatedOn(shape);	//always push modified shapes
 				shape->UnSelect();
 				shape->setPevFillColor();
 				shape->SetFill(true);

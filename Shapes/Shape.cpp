@@ -43,7 +43,13 @@ void shape::Selected(color previousC)	//Sets shape to selected and gets info thr
 
 color shape::getPevDrawClr() const
 {
-	return	ShpGfxInfo.PrevClr;
+	if (ShpGfxInfo.PevFillColors.size()) {
+		return	ShpGfxInfo.PevDrawColors.back();
+	}
+}
+color shape::getPevFillClr()const
+{
+	return ShpGfxInfo.PevFillColors.back();
 }
 void shape::setPevDrawClr()
 {

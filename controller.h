@@ -12,8 +12,9 @@ class controller
 
 	Graph* pGraph;	//pointe to the grapg
 	GUI* pGUI;		//Pointer to UI class
-	vector<operationType>Present;	
-	vector<operationType>future;	
+	vector<operation*>Present;	
+	vector<operation*>future;
+	vector<shape*>OperatedOn;
 
 	
 public:	
@@ -24,6 +25,23 @@ public:
 	//Reads the input command from the user and returns the corresponding operation type
 	operationType GetUseroperation() const;
 	operation* createOperation(operationType) ; //Creates an operation
+
+
+
+	// puts operation to future, pops operation from back
+	operation* UpdateTimeLine();	//1. Gets the latest op 2.Removes it from present 3.Adds it to future
+	void pushToOperatedOn(shape* shp);	//All shapes that are changed
+
+	void popOperatedOn();//pops last element/shape out
+
+	shape* getOperatedOn();	//gets recent shape
+
+
+	bool checkPresent(); //tells whether the vector is empty or not
+
+
+
+
 	void Run();
 	
 	Graph* getGraph() const;

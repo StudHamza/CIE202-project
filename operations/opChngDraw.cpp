@@ -9,7 +9,16 @@ opChngDraw::opChngDraw(controller* pCont) : operation(pCont) {}
 
 opChngDraw::~opChngDraw() {}
 
+void opChngDraw::Undo()
+{
+	GUI* pUI = pControl->GetUI();
+	pUI->PrintMessage("undid");
+	shape *shp=pControl->getOperatedOn();	//Get shape
+	shp->ChngDrawClr(shp->getPevDrawClr());	//Change color
 
+	pControl->popOperatedOn();
+
+}
 
 void opChngDraw::Execute()
 {
@@ -21,10 +30,10 @@ void opChngDraw::Execute()
 		for (shape* shape : pGrph->GetShapeList())
 		{
 			if (shape->IsSelected()) {
+				pControl->pushToOperatedOn(shape);
 				shape->UnSelect();
 				shape->setPevDrawClr();
 				shape->ChngDrawClr(pUI->getCrntDrawColor());
-
 			}
 		}
 	}
