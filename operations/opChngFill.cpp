@@ -23,6 +23,7 @@ void opChngFill::Execute()
 		{
 			if (shape->IsSelected()) {
 				shape->UnSelect();
+				shape->setPevFillColor();
 				shape->SetFill(true);
 				shape->ChngFillClr(pUI->getCrntFillColor());
 

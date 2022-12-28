@@ -116,6 +116,8 @@ operationType GUI::GetUseroperation() const
 			case ICON_PEN: return CHNG_DRAW_CLR;
 			case ICON_FILL: return CHNG_FILL_CLR;
 			case ICON_COLOR: return COLOR_PALETTE;
+			case ICON_UNDO: return UNDO;
+			case ICON_REDO: return REDO;
 			case ICON_PLAY: return TO_PLAY;
 			case ICON_EXIT: return EXIT;
 
@@ -220,6 +222,8 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_PEN] = "No_image";
 	MenuIconImages[ICON_FILL] = "No_Image";
 	MenuIconImages[ICON_COLOR]="images\\MenuIcons\\Menu_Color.jpg";
+	MenuIconImages[ICON_UNDO]="images\\MenuIcons\\Menu_Undo.jpg";
+	MenuIconImages[ICON_REDO]="images\\MenuIcons\\Menu_Redo.jpg";
 	MenuIconImages[ICON_PLAY] = "images\\MenuIcons\\Menu_Play.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
 

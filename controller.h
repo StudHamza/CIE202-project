@@ -12,8 +12,10 @@ class controller
 
 	Graph* pGraph;	//pointe to the grapg
 	GUI* pGUI;		//Pointer to UI class
-	
+	vector<operationType>Present;	
+	vector<operationType>future;	
 
+	
 public:	
 	controller(); 
 	~controller();

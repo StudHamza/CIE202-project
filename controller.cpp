@@ -41,6 +41,8 @@ operation* controller::createOperation(operationType OpType)
 {
 	operation* pOp = nullptr;
 	
+	Present.push_back(OpType);//Sets the present timeline for undo/redo
+	
 	//According to operation Type, create the corresponding operation object
 	switch (OpType)
 	{
@@ -72,6 +74,10 @@ operation* controller::createOperation(operationType OpType)
 			break;
 		case COLOR_PALETTE:
 			pOp = new opColors(this);
+			break;
+		case UNDO:
+			break;
+		case REDO:
 			break;
 		case SELECT_SHAPE:
 			pOp = new opSelect(this);
@@ -170,6 +176,11 @@ void controller::Run()
 
 		//Update the interface
 		UpdateInterface();
+
+		//3. Update present vector
+
+
+
 
 	} while (OpType!=ON_GOING);
 

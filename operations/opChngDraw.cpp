@@ -22,6 +22,7 @@ void opChngDraw::Execute()
 		{
 			if (shape->IsSelected()) {
 				shape->UnSelect();
+				shape->setPevDrawClr();
 				shape->ChngDrawClr(pUI->getCrntDrawColor());
 
 			}

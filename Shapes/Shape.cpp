@@ -45,6 +45,14 @@ color shape::getPevDrawClr() const
 {
 	return	ShpGfxInfo.PrevClr;
 }
+void shape::setPevDrawClr()
+{
+	ShpGfxInfo.PevDrawColors.push_back(ShpGfxInfo.DrawClr);
+}
+void shape::setPevFillColor()
+{
+	ShpGfxInfo.PevFillColors.push_back(ShpGfxInfo.FillClr);
+}
 
 void shape::UnSelect()
 {
