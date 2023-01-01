@@ -60,6 +60,7 @@ class GUI
 		ICON_COLOR,
 		ICON_UNDO,
 		ICON_REDO,
+		ICON_SCRAMBLE,
 		ICON_PLAY,
 		ICON_EXIT,		//Exit icon
 
@@ -77,6 +78,7 @@ class GUI
 		ICON_IMAGE,
 		ICON_SAVE,
 		ICON_LOAD,
+	
 
 		DRAW_ICON_COUNT_V
 	};

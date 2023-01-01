@@ -118,6 +118,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_COLOR: return COLOR_PALETTE;
 			case ICON_UNDO: return UNDO;
 			case ICON_REDO: return REDO;
+			case ICON_SCRAMBLE:return SCRAMBLE;
 			case ICON_PLAY: return TO_PLAY;
 			case ICON_EXIT: return EXIT;
 
@@ -226,6 +227,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_REDO]="images\\MenuIcons\\Menu_Redo.jpg";
 	MenuIconImages[ICON_PLAY] = "images\\MenuIcons\\Menu_Play.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
+	MenuIconImages[ICON_SCRAMBLE] = "images\\MenuIcons\\Menu_SCRAMBLE.jpg";
 
 	//TODO: Prepare images for each menu icon and add it to the list
 	

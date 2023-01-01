@@ -7,6 +7,8 @@ Line::Line(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 	Start = P1;
 	End = P2;
 	Distance = sqrt(pow(Start.x - End.x, 2) + pow(Start.y - End.y, 2));
+	midpoint.x = (Start.x + End.x) / 2;
+	midpoint.y = (Start.y + End.y) / 2;
 }
 
 Line::~Line()
@@ -72,4 +74,48 @@ shape* Line::Clone() {
 void Line::Save(ofstream& file) const {
 	string line = GetInfo('l');
 	file << line << endl;
+}
+
+void Line::Move(int x, int y) {
+
+	int dx;
+	int dy;
+
+
+
+
+	dx = abs(midpoint.x - x);
+	dy = abs(midpoint.y - y);
+
+
+	if (x > midpoint.x) {
+		Start.x += dx;
+		End.x += dx;
+	}
+	else
+	{
+		Start.x -= dx;
+		End.x -= dx;
+
+
+	}
+
+	if (y > midpoint.y) {
+		Start.y += dy;
+		End.y += dy;
+	}
+	else
+	{
+		Start.y -= dy;
+		End.y -= dy;
+
+
+	}
+
+	midpoint.x = (Start.x + End.x) / 2;
+	midpoint.y = (Start.y + End.y) / 2;
+
+	cout << dx << endl;
+	cout << dy << endl;
+
 }
