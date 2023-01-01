@@ -29,7 +29,6 @@ void opAddImage::Execute()
 			pUI->PrintMessage("Image is way too Large, reduce it dimensions");
 		}
 		else {	// I need to make a box around each shape inorder to stick an image into it
-			/*
 			shape* Frame = pGph->GetSelectedShape();
 			for (int i = 0; i < Stick.GetWidth(); i++)
 			{
@@ -43,7 +42,6 @@ void opAddImage::Execute()
 			}
 			Frame->stickImage(Stick);
 		}
-		*/
 			Image.close();
 		}
 	}
@@ -51,5 +49,5 @@ void opAddImage::Execute()
 	{
 		pUI->PrintMessage("Path does not exist");
 	}
-*/
+	*/
 }
