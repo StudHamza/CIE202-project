@@ -101,3 +101,7 @@ void RegPoly::Save(ofstream &file)const {
 	string line = GetInfo('l');	//get load info
 	file << line << endl;
 }
+
+
+
+

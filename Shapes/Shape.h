@@ -65,6 +65,6 @@ public:
 
 	//virtual void Rotate() = 0;	//Rotate the shape
 	//virtual void Resize() = 0;	//Resize the shape
-	//virtual void Move() = 0;		//Move the shape
+	virtual void Move(int x, int y) = 0;				//Move the shape
 
 };

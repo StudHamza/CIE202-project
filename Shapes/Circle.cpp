@@ -17,7 +17,21 @@ void Circle::Draw(GUI* pUI) const
 	pUI->DrawCircle(Center, Radius, ShpGfxInfo);
 }
 
+void Circle::Move(int x, int y) {
 
+
+
+
+	Center.x = x;
+	Center.y = y;
+
+
+
+
+
+
+
+}
 
 bool Circle::HitBox(int x, int y)const
 {

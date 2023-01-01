@@ -16,7 +16,7 @@ public:
 	virtual string GetInfo(char)const;
 	virtual void Shift(int, int);
 	virtual void Save(ofstream& outfile)const override;
-
+	virtual void Move(int x, int y) {};
 	shape* Clone();
 };
 

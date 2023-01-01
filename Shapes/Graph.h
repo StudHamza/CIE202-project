@@ -39,6 +39,7 @@ public:
 	void cut();
 
 	shape* GetSelectedShape()const;
+
 	vector<shape*> GetShapeList()const;
 
 	void Save(ofstream& outfile,color,color,int);	//Save all shapes to a file
@@ -48,4 +49,5 @@ public:
 
 	void Clear();
 	void CheckSaved();
+	void random_move();
 };

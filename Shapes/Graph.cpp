@@ -54,6 +54,18 @@ shape* Graph::Getshape(int x, int y) const
 	return nullptr;
 }
 
+void Graph::random_move() {
+	srand(time(0));
+	for (unsigned i = 0; i < shapesList.size(); i++) {
+		int x = rand() % (1130) + 100;
+		int y = rand() % (501) + 95;
+
+
+		shapesList[i]->Move(x, y);
+
+	}
+}
+
 string Graph::SelectShape(Point P, color pevClr,shape *selected)
 {
 	selectedShape = nullptr;

@@ -5,6 +5,11 @@ Rect::Rect(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo)
 {
 	Corner1 = P1;
 	Corner2 = P2; 
+
+
+	centeroid.x = ((P1.x + P2.x) / 2);
+	centeroid.y = ((P1.y + P2.y) / 2);
+
 }
 
 Rect::~Rect()
@@ -73,4 +78,55 @@ shape* Rect::Clone() {
 void Rect::Save(ofstream& file) const{
 	string line = GetInfo('l');
 	file << line << endl;
+}
+
+
+
+void Rect::Move(int x, int y) {
+	int dx, dy;
+
+
+	dx = abs(centeroid.x - x);
+	dy = abs(centeroid.y - y);
+	if (x >= centeroid.x) {
+		Corner1.x += dx;
+		Corner2.x += dx;
+
+	}                                                    //changing vertices x coocrdinates
+
+	else {
+		Corner1.x -= dx;
+		Corner2.x -= dx;
+
+
+	}
+
+
+
+
+
+	if (y >= centeroid.y) {
+		Corner1.y += dy;
+		Corner2.y += dy;
+
+	}
+	//changing vertices y coordinates
+	else {
+		Corner1.y -= dy;
+		Corner2.y -= dy;
+
+
+	}
+
+
+	centeroid.x = x;
+	centeroid.y = y;                       //setting the centroid to the new one
+
+
+
+
+
+
+
+
 }
