@@ -46,6 +46,7 @@ color shape::getPevDrawClr() const
 	if (ShpGfxInfo.PevFillColors.size()) {
 		return	ShpGfxInfo.PevDrawColors.back();
 	}
+	return BLUE;
 }
 color shape::getPevFillClr()const
 {

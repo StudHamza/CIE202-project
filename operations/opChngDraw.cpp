@@ -27,13 +27,13 @@ void opChngDraw::Execute()
 	pUI->setCrntSelectedColor('d');
 	if (pGrph->GetSelectedShape())
 	{
-		for (shape* shape : pGrph->GetShapeList())
+		for (shape* fshape : pGrph->GetShapeList())
 		{
-			if (shape->IsSelected()) {
-				pControl->pushToOperatedOn(shape);
-				shape->UnSelect();
-				shape->setPevDrawClr();
-				shape->ChngDrawClr(pUI->getCrntDrawColor());
+			if (fshape->IsSelected()) {
+				fshape->setPevDrawClr();
+				pControl->pushToOperatedOn(fshape);
+				fshape->UnSelect();
+				fshape->ChngDrawClr(pUI->getCrntDrawColor());
 			}
 		}
 	}

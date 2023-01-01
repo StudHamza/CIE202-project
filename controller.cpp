@@ -32,95 +32,95 @@ controller::controller()
 //==================================================================================//
 operationType controller::GetUseroperation() const
 {
-	
+
 	//Ask the input to get the operation from the user.
 
-	return pGUI->GetUseroperation();		
+	return pGUI->GetUseroperation();
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Creates an operation and executes it
 operation* controller::createOperation(operationType OpType)
 {
 	operation* pOp = nullptr;
-	
-	
+
+
 	//According to operation Type, create the corresponding operation object
 	switch (OpType)
 	{
-		case DRAW_RECT:
-			pOp = new opAddRect(this);
-			break;
+	case DRAW_RECT:
+		pOp = new opAddRect(this);
+		break;
 
-		case DRAW_LINE:
-			pOp = new opAddLine(this);
+	case DRAW_LINE:
+		pOp = new opAddLine(this);
 
-			break;
-		case DRAW_CIRC:
-			pOp = new opAddCircle(this);
-			break;
-		case DRAW_OVAL:
-			pOp = new opAddOval(this);
-			break;
-		case DRAW_TRI:
-			pOp = new opAddTriangle(this);
-			break;
-		case DRAW_REGPOLY:
-			pOp = new opAddRegPoly(this);
-			break;
-		case CHNG_DRAW_CLR:
-			pOp = new opChngDraw(this);
-			break;
-		case CHNG_FILL_CLR:
-			pOp = new opChngFill(this);
-			break;
-		case COLOR_PALETTE:
-			pOp = new opColors(this);
-			break;
-		case UNDO:
-			pOp = new opUndo(this);
-			break;
-		case REDO:
-			break;
-		case SELECT_SHAPE:
-			pOp = new opSelect(this);
-			break;
-		case DRAWING_AREA:
-			//Unselect Selected Shapes
-			pGraph->UnselectShape();
-			pGUI->ClearStatusBar(); 
-			break;
-		case SAVE:
-			pOp = new opSave(this);
-			break;
-		case LOAD:
-			pOp = new opLoad(this);
-			break;
-		case COPY:
-			pOp= new opCopy(this);
-			break;
-		case PASTE:
-			pOp = new opPaste(this);
-			break;
-		case CUT:
-			pOp = new opCut(this);
-			break;
-		case CLEAR:
-			pOp = new opClear(this);
-			break;
-		case POST_IMAGE:
-			pOp = new opAddImage(this);
-			break;
-		case EXIT:
-			pOp = new opExit(this);
-			///create Exitoperation here
-			break;
-		
-		case STATUS:	//a click on the status bar ==> no operation
-			break;
+		break;
+	case DRAW_CIRC:
+		pOp = new opAddCircle(this);
+		break;
+	case DRAW_OVAL:
+		pOp = new opAddOval(this);
+		break;
+	case DRAW_TRI:
+		pOp = new opAddTriangle(this);
+		break;
+	case DRAW_REGPOLY:
+		pOp = new opAddRegPoly(this);
+		break;
+	case CHNG_DRAW_CLR:
+		pOp = new opChngDraw(this);
+		break;
+	case CHNG_FILL_CLR:
+		pOp = new opChngFill(this);
+		break;
+	case COLOR_PALETTE:
+		pOp = new opColors(this);
+		break;
+	case UNDO:
+		pOp = new opUndo(this);
+		break;
+	case REDO:
+		break;
+	case SELECT_SHAPE:
+		pOp = new opSelect(this);
+		break;
+	case DRAWING_AREA:
+		//Unselect Selected Shapes
+		pGraph->UnselectShape();
+		pGUI->ClearStatusBar();
+		break;
+	case SAVE:
+		pOp = new opSave(this);
+		break;
+	case LOAD:
+		pOp = new opLoad(this);
+		break;
+	case COPY:
+		pOp = new opCopy(this);
+		break;
+	case PASTE:
+		pOp = new opPaste(this);
+		break;
+	case CUT:
+		pOp = new opCut(this);
+		break;
+	case CLEAR:
+		pOp = new opClear(this);
+		break;
+	case POST_IMAGE:
+		pOp = new opAddImage(this);
+		break;
+	case EXIT:
+		pOp = new opExit(this);
+		///create Exitoperation here
+		break;
+
+	case STATUS:	//a click on the status bar ==> no operation
+		break;
 	}
 
 	return pOp;
-	
+
 }
 //==================================================================================//
 //							Interface Management Functions							//
@@ -128,13 +128,15 @@ operation* controller::createOperation(operationType OpType)
 
 //Draw all shapes on the user interface
 void controller::UpdateInterface() const
-{	
+{
 	pGraph->Draw(pGUI);
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the UI
-GUI *controller::GetUI() const
-{	return pGUI; }
+GUI* controller::GetUI() const
+{
+	return pGUI;
+}
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the Graph
 Graph* controller::getGraph() const
@@ -149,19 +151,20 @@ controller::~controller()
 {
 	delete pGUI;
 	delete pGraph;
-	
+
 }
 
 
 //Time line related Functions
-operation* controller::UpdateTimeLine() { cout << "size: "<<Present.size() << endl; operation* op = Present.back(); Present.pop_back(); future.push_back(op); return op; }
+operation* controller::UpdateTimeLine() { cout << "size: " << Present.size() << endl; operation* op = Present.back(); Present.pop_back(); future.push_back(op); return op; }
 
 void controller::pushToOperatedOn(shape* shp) { OperatedOn.push_back(shp); }
 
 shape* controller::getOperatedOn() { if (OperatedOn.size()) { return OperatedOn.back(); } }
 
 
-bool controller::checkPresent() { cout << Present.size()<<endl; return Present.size(); }
+bool controller::checkPresent() { cout << Present.size() << endl; return Present.size(); }
+
 
 void controller::popOperatedOn()
 {
@@ -181,7 +184,7 @@ void controller::Run()
 
 		//2. Create an operation coresspondingly
 		operation* pOpr = createOperation(OpType);
-		 
+
 		//3. Execute the created operation
 		if (pOpr)
 		{
@@ -196,7 +199,7 @@ void controller::Run()
 			pOpr->Execute();//Execute
 			if (del != 'y') {
 				Present.push_back(pOpr);//Sets the present timeline for undo/redo
-				cout <<"OP number:" << OpType << endl;
+				cout << "OP number:" << OpType << endl;
 				pOpr = nullptr;	//do not delete the pointer (not memeory leak)
 			}
 			else {
@@ -213,6 +216,6 @@ void controller::Run()
 
 
 
-	} while (OpType!=ON_GOING);
+	} while (OpType != ON_GOING);
 
 }

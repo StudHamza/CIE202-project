@@ -34,6 +34,7 @@ void opChngFill::Execute()
 			if (shape->IsSelected()) {
 				pControl->pushToOperatedOn(shape);	//always push modified shapes
 				shape->UnSelect();
+				cout << "I am unselecting the shape and setting pev color" << endl;
 				shape->setPevFillColor();
 				shape->SetFill(true);
 				shape->ChngFillClr(pUI->getCrntFillColor());
