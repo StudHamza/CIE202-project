@@ -40,6 +40,16 @@ void Graph::Draw(GUI* pUI) const
 	pUI->CreateDrawVToolBar();
 }
 
+void Graph::pushShapeBack()
+{
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i] == selectedShape);
+		shape* temp = shapesList[i];
+		shapesList.erase(shapesList.begin() + i);
+		shapesList.push_back(temp);
+	}
+
+}
 
 
 shape* Graph::Getshape(int x, int y) const

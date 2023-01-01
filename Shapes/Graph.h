@@ -37,6 +37,7 @@ public:
 	void Paste();
 	void delShape(shape*);
 	void cut();
+	void pushShapeBack();
 
 	shape* GetSelectedShape()const;
 	vector<shape*> GetShapeList()const;
