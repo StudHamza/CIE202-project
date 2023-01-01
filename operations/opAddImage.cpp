@@ -18,6 +18,7 @@ void opAddImage::Execute()
 	Graph* pGph = pControl->getGraph();
 	pUI->PrintMessage("Please write the exact file path");
 	string path = pUI->GetSrting();
+	/*
 	fstream Image;
 	Point P1={0,0}, P2={0,100};
 	Image.open(path+".jpg");
@@ -50,4 +51,5 @@ void opAddImage::Execute()
 	{
 		pUI->PrintMessage("Path does not exist");
 	}
+*/
 }
