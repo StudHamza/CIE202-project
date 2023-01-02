@@ -52,4 +52,21 @@ void opAddCircle::Execute()
 
 	//Add the regular polygon to the list of shapes
 	pGr->Addshape(C);
+
+	//Update Operated on:
+	pControl->pushToOperatedOn(C);
+
 }
+
+
+
+void opAddCircle::Undo()
+{
+	shape* temp = pControl->getOperatedOn();
+	Graph* Gpr = pControl->getGraph();
+	Gpr->PopFromShapeList(temp);
+	pControl->UpdateDelete(temp);
+	pControl->popOperatedOn();
+}
+
+

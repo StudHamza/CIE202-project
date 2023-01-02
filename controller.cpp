@@ -1,4 +1,3 @@
-#include"DefRev.h"
 #include "controller.h"
 #include "operations\opAddRect.h"
 #include "operations\opAddRegPoly.h"
@@ -156,15 +155,24 @@ controller::~controller()
 
 
 //Time line related Functions
-operation* controller::UpdateTimeLine() { cout << "size: " << Present.size() << endl; operation* op = Present.back(); Present.pop_back(); future.push_back(op); return op; }
+operation* controller::UpdateTimeLine()
+{
+	operation* op = Present.back();	//get last element
+	Present.pop_back();	//remove
+	future.push_back(op); //Add
+	cout << op<<endl;
+	return op;
+}
 
 void controller::pushToOperatedOn(shape* shp) { OperatedOn.push_back(shp); }
 
 shape* controller::getOperatedOn() { if (OperatedOn.size()) { return OperatedOn.back(); } }
 
 
-bool controller::checkPresent() { cout << Present.size() << endl; return Present.size(); }
+bool controller::checkPresent() { return Present.size(); }
 
+
+void controller::UpdateDelete(shape* shp) { Deleted.push_back(shp); }
 
 void controller::popOperatedOn()
 {
@@ -189,7 +197,7 @@ void controller::Run()
 		if (pOpr)
 		{
 			char del = 'y';	//Create a char for not deleting/deallocating the pOpr 
-			for (auto& Op : Revertable)
+			for (auto& Op : revertable)
 			{
 				if (OpType == Op)
 				{
@@ -212,10 +220,6 @@ void controller::Run()
 		UpdateInterface();
 
 		//3. Update present vector
-
-
-
-
 	} while (OpType != ON_GOING);
 
 }

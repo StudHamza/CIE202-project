@@ -542,3 +542,13 @@ void Graph::cut()
 	clipboard.push_back(Cutted);
 	delShape(selectedShape);
 }
+
+void Graph::PopFromShapeList(shape* PopMe) {
+	for (int i = 0; i < shapesList.size(); i++)
+	{
+		if (shapesList[i] == PopMe)
+		{
+			shapesList.erase(shapesList.begin() + i);
+		}
+	}
+}

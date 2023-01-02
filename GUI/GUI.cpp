@@ -51,7 +51,6 @@ void GUI::GetPointClicked(int& x, int& y) const
 }
 bool GUI::GetKeyClicked()const
 {
-	char Key;
 	if (GetKeyState(VK_SHIFT) & 0x8000)
 		return true;
 	return false;

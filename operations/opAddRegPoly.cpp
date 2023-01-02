@@ -57,4 +57,17 @@ void opAddRegPoly::Execute()
 
 	//Add the regular polygon to the list of shapes
 	pGr->Addshape(R);
+
+	//Update Operated on:
+	pControl->pushToOperatedOn(R);
+}
+
+
+void opAddRegPoly::Undo()
+{
+	shape* temp = pControl->getOperatedOn();
+	Graph* Gpr = pControl->getGraph();
+	Gpr->PopFromShapeList(temp);
+	pControl->UpdateDelete(temp);
+	pControl->popOperatedOn();
 }
