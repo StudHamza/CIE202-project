@@ -45,12 +45,6 @@ public:
 	void delShape(shape*);
 	void cut();
 
-
-	shape* GetSelectedShape()const;
-
-	vector<shape*> GetShapeList()const;
-
-
 	void Save(ofstream& outfile,color,color,int);	//Save all shapes to a file
 	void load(ifstream& inputfile);	//Load all shapes from a file
 
