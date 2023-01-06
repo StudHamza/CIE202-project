@@ -195,6 +195,7 @@
     <ClCompile Include="opScramble.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
+    <ClCompile Include="opMultiMove.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -352,6 +353,7 @@
     <ClInclude Include="opScramble.h">
       <Filter>Operations</Filter>
     </ClInclude>
+    <ClInclude Include="opMultiMove.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">

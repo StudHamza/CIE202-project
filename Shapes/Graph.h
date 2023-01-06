@@ -49,5 +49,11 @@ public:
 
 	void Clear();
 	void CheckSaved();
-	void random_move();
+	void random_move();      //used in scramble;
+	void multimove(int x1, int y1, int x2, int y2);       //used in multimove
+
+
+	void getshapeslimitsX(int&,int&);//useed in multimove
+	void getshapeslimitsY(int&,int&);  //used in multimove
+
 };

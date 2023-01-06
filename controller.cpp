@@ -20,6 +20,7 @@
 #include "operations\opChngFill.h"
 #include "operations\opUndo.h"
 #include"opScramble.h"
+#include"opMultiMove.h"
 //Constructor
 controller::controller()
 {
@@ -83,7 +84,11 @@ operation* controller::createOperation(operationType OpType)
 		break;
 
 	case SCRAMBLE:
+		
 		pOp = new opScramble(this);
+		break;
+	case MULTIMOVE:
+		pOp = new opMultiMove(this);
 		break;
 	case SELECT_SHAPE:
 		pOp = new opSelect(this);
