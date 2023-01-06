@@ -42,6 +42,8 @@ public:
 
 	void UpdateDelete(shape*);
 
+	void DeleteTimeLine();	//Some times op is saved but not revesable since im following DRY: ex Fill/DrawColor
+
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
 

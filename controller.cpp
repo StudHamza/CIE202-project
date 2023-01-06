@@ -154,13 +154,12 @@ controller::~controller()
 }
 
 
-//Time line related Functions
+//Time line related Functions-----------------------------------------------------------------------------------
 operation* controller::UpdateTimeLine()
 {
 	operation* op = Present.back();	//get last element
 	Present.pop_back();	//remove
 	future.push_back(op); //Add
-	cout << op<<endl;
 	return op;
 }
 
@@ -178,6 +177,18 @@ void controller::popOperatedOn()
 {
 	OperatedOn.pop_back();
 }
+
+void controller::DeleteTimeLine()
+{
+	operation* op = Present.back();	//get last element
+	Present.pop_back();	//remove
+	delete op;
+}
+/////////////-------------------------------------------------------------------------------------------
+
+
+
+
 
 //==================================================================================//
 //							Run function											//
@@ -207,7 +218,6 @@ void controller::Run()
 			pOpr->Execute();//Execute
 			if (del != 'y') {
 				Present.push_back(pOpr);//Sets the present timeline for undo/redo
-				cout << "OP number:" << OpType << endl;
 				pOpr = nullptr;	//do not delete the pointer (not memeory leak)
 			}
 			else {

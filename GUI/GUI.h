@@ -29,6 +29,7 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 	bool isSaved;
 	vector<color>PevDrawColors;
 	vector<color>PevFillColors;
+	vector<bool>FillHistory;
 };
 
 
