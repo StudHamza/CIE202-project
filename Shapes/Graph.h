@@ -46,9 +46,9 @@ public:
 	void cut();
 
 
-	shape* GetSelectedShape()const;
+	//shape* GetSelectedShape()const;
 
-	vector<shape*> GetShapeList()const;
+	//vector<shape*> GetShapeList()const;
 
 
 	void Save(ofstream& outfile,color,color,int);	//Save all shapes to a file
