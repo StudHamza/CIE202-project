@@ -31,6 +31,7 @@ enum operationType //The operations supported (you can add more if needed)
 	SAVE,			//Save the whole graph to a file
 	LOAD,			//Load a graph from a file
 	SCRAMBLE,
+	MULTIMOVE,
 	CLEAR,			//Clears the drawing area
 	EXIT,			//Exit the application
 

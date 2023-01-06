@@ -62,6 +62,7 @@ class GUI
 		ICON_REDO,
 		ICON_SCRAMBLE,
 		ICON_PLAY,
+		ICON_MULTIMOVE,
 		ICON_EXIT,		//Exit icon
 
 		DRAW_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
