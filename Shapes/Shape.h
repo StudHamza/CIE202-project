@@ -31,16 +31,20 @@ public:
 	void ChngFillClr(color Fclr);	//changes the shape's filling color
 	//Getters
 	color GetCrntColor()const;
-	color getPevDrawClr() const;
-	color getPevFillClr()const;
+	color getPevDrawClr()const;
+
 	//setters
 	void SetFill(bool);		//Sets fill to true or false
-	void setPevDrawClr();	//vector of pev draw colors
-	void setPevFillColor();	//vector of pev fill colors
+	void setPevDrawColors();	//vector of pev draw colors
+	void setPevFillColors();	//vector of pev fill colors
+	void setPevFillBool();
+
+	//Hybrid Getters and setters
+	color UpdatePevDrawClr();
+	color UpdatePevFillClr();
 
 
-
-
+	//Selecting//
 	void Selected(color);
 	void UnSelect();
 	void UpdateId();		//resposible for id updates when cloning(copy paste)

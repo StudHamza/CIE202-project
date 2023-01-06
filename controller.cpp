@@ -1,4 +1,3 @@
-#include"DefRev.h"
 #include "controller.h"
 #include "operations\opAddRect.h"
 #include "operations\opAddRegPoly.h"
@@ -164,21 +163,41 @@ controller::~controller()
 }
 
 
-//Time line related Functions
-operation* controller::UpdateTimeLine() { cout << "size: " << Present.size() << endl; operation* op = Present.back(); Present.pop_back(); future.push_back(op); return op; }
+//Time line related Functions-----------------------------------------------------------------------------------
+operation* controller::UpdateTimeLine()
+{
+	operation* op = Present.back();	//get last element
+	Present.pop_back();	//remove
+	future.push_back(op); //Add
+	return op;
+}
 
 void controller::pushToOperatedOn(shape* shp) { OperatedOn.push_back(shp); }
 
 shape* controller::getOperatedOn() { if (OperatedOn.size()) { return OperatedOn.back(); } }
 
 
-bool controller::checkPresent() { cout << Present.size() << endl; return Present.size(); }
+bool controller::checkPresent() { return Present.size(); }
 
+
+void controller::UpdateDelete(shape* shp) { Deleted.push_back(shp); }
 
 void controller::popOperatedOn()
 {
 	OperatedOn.pop_back();
 }
+
+void controller::DeleteTimeLine()
+{
+	operation* op = Present.back();	//get last element
+	Present.pop_back();	//remove
+	delete op;
+}
+/////////////-------------------------------------------------------------------------------------------
+
+
+
+
 
 //==================================================================================//
 //							Run function											//
@@ -198,7 +217,7 @@ void controller::Run()
 		if (pOpr)
 		{
 			char del = 'y';	//Create a char for not deleting/deallocating the pOpr 
-			for (auto& Op : Revertable)
+			for (auto& Op : revertable)
 			{
 				if (OpType == Op)
 				{
@@ -208,7 +227,6 @@ void controller::Run()
 			pOpr->Execute();//Execute
 			if (del != 'y') {
 				Present.push_back(pOpr);//Sets the present timeline for undo/redo
-				cout << "OP number:" << OpType << endl;
 				pOpr = nullptr;	//do not delete the pointer (not memeory leak)
 			}
 			else {
@@ -221,10 +239,6 @@ void controller::Run()
 		UpdateInterface();
 
 		//3. Update present vector
-
-
-
-
 	} while (OpType != ON_GOING);
 
 }

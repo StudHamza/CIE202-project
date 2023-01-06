@@ -28,19 +28,28 @@ public:
 	~Graph();
 	void Addshape(shape* pFig); //Adds a new shape to the shapesList
 	void Draw(GUI* pUI) const;			//Draw the graph (draw all shapes)
+
+	//Select///////////////////--------------------------
 	shape* Getshape(int x, int y) const; //Search for a shape given a point inside the shape
 	string SelectShape(Point,color,shape *);	//Responsible for shape selection
 	bool UnselectShape();	//Unselects if clicked on drawing area
 	void UnSelectAll();
+	shape* GetSelectedShape()const;
+	vector<shape*> GetShapeList()const;
+	void PopFromShapeList(shape*);
+	////////////////////////---------------------------
+	//Copy and Paste and Cut//
 	void ClipBoard();		//sets a vector of the selected shapes
 	bool getClipBoard() const;
 	void Paste();
 	void delShape(shape*);
 	void cut();
 
+
 	shape* GetSelectedShape()const;
 
 	vector<shape*> GetShapeList()const;
+
 
 	void Save(ofstream& outfile,color,color,int);	//Save all shapes to a file
 	void load(ifstream& inputfile);	//Load all shapes from a file

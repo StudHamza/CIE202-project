@@ -347,6 +347,8 @@
     <ClInclude Include="operations\opUndo.h">
       <Filter>Operations</Filter>
     </ClInclude>
+
+
     <ClInclude Include="DefRev.h">
       <Filter>Shapes&amp;Graph</Filter>
     </ClInclude>
@@ -354,6 +356,7 @@
       <Filter>Operations</Filter>
     </ClInclude>
     <ClInclude Include="opMultiMove.h" />
+
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">

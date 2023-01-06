@@ -9,15 +9,17 @@ opChngFill::opChngFill(controller* pCont) : operation(pCont) {}
 
 opChngFill::~opChngFill() {}
 
+
 void opChngFill::Undo()
 {
 	GUI* pUI = pControl->GetUI();
 	shape* shp = pControl->getOperatedOn();	//Get shape
-	shp->ChngFillClr(shp->getPevFillClr());	//Change color
+	shp->ChngFillClr(shp->UpdatePevFillClr());	//Change color
 
 	pControl->popOperatedOn();
 
 }
+
 
 
 
@@ -34,14 +36,16 @@ void opChngFill::Execute()
 			if (shape->IsSelected()) {
 				pControl->pushToOperatedOn(shape);	//always push modified shapes
 				shape->UnSelect();
-				cout << "I am unselecting the shape and setting pev color" << endl;
-				shape->setPevFillColor();
+				shape->setPevFillColors();
 				shape->SetFill(true);
 				shape->ChngFillClr(pUI->getCrntFillColor());
 
 			}
 		}
 	}
+	else
 
-
+	{
+		pControl->DeleteTimeLine();
+	}
 }

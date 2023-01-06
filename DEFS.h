@@ -46,3 +46,4 @@ enum operationType //The operations supported (you can add more if needed)
 	ON_GOING
 };
 #endif
+
