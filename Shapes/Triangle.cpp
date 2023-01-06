@@ -7,6 +7,9 @@ Triangle::Triangle(Point P1, Point P2,Point P3 ,GfxInfo shapeGfxInfo) :shape(sha
 	F = P1;
 	S = P2;
 	T = P3;
+	 //to be used in move
+	centeroid.x = (F.x + S.x + T.x) / 3;
+	centeroid.y = (F.y + S.y + T.y) / 3;
 }
 
 
@@ -81,4 +84,55 @@ shape* Triangle::Clone() {
 void Triangle::Save(ofstream& file) const {
 	string line = GetInfo('l');
 	file << line << endl;
+}
+
+
+void Triangle::Move(int x, int y) {
+
+	int dx, dy;
+
+
+	dx = abs(centeroid.x - x);
+	dy = abs(centeroid.y - y);
+	if (x >= centeroid.x) {
+		F.x += dx;
+		S.x += dx;
+		T.x += dx;
+	}                                                    //changing vertices x coocrdinates
+
+	else {
+		F.x -= dx;
+		S.x -= dx;
+		T.x -= dx;
+
+	}
+
+
+
+
+
+	if (y >= centeroid.y) {
+		F.y += dy;
+		S.y += dy;
+		T.y += dy;
+	}
+	//changing vertices y coordinates
+	else {
+		F.y -= dy;
+		S.y -= dy;
+		T.y -= dy;
+
+	}
+
+
+	centeroid.x = x;
+	centeroid.y = y;                       //setting the centroid to the new one
+
+
+
+
+
+
+
+
 }

@@ -18,7 +18,7 @@ void opAddCircle::Execute()
 	//Get a Pointer to the Input / Output Interfaces
 	GUI* pUI = pControl->GetUI();
 
-	pUI->PrintMessage("Click on circle radius");
+	pUI->PrintMessage("Click on circle centre");
 	//Read center of polygon and store in point P1
 	pUI->GetPointClicked(P1.x, P1.y);
 

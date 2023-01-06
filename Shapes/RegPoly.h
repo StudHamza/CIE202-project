@@ -24,5 +24,55 @@ public:
 
 
 	shape* Clone();		 //Clone shape into new object
+
+	void getXlimits(int&, int&) {};   // used in multi move
+	void getYlimits(int&, int&) {}; // used in multi move
+	virtual void relative_move(int x1, int y1, int x2, int y2) {};
+
+
+	virtual void Move(int x, int y) override {
+
+
+
+		int dx;
+		int dy;
+
+		dx = abs(Center.x - x);
+		dy = abs(Center.y - y);
+
+
+		for (int i = 0; i < Side; i++) {
+			if (x > Center.x)
+				Xv[i] += dx;
+			else
+				Xv[i] -= dx;
+		}
+
+
+		for (int i = 0; i < Side; i++) {
+			if (y > Center.y)
+
+				Yv[i] += dy;
+			else
+				Yv[i] -= dy;
+
+
+		}
+
+		Center.x = x;
+		Center.y = y;
+
+
+
+
+	}
+
+
 };
+
+
+
+
+
+
 

@@ -90,3 +90,59 @@ void Oval::Save(ofstream& file) const {
 	string line = GetInfo('l');
 	file << line << endl;
 }
+
+
+ void Oval::Move(int x, int y) {
+	 int dx;
+	 int dy;
+
+
+
+
+	 dx = abs(Center.x - x);
+	 dy = abs(Center.y - y);
+
+
+	 if (x > Center.x) {
+		 Radius1.x += dx;
+		 Radius2.x += dx;
+	 }
+	 else
+	 {
+		 Radius1.x -= dx;
+		 Radius2.x -= dx;
+
+
+	 }
+
+	 if (y > Center.y) {
+		 Radius1.y += dy;
+		 Radius2.y += dy;
+	 }
+	 else
+	 {
+		 Radius1.y -= dy;
+		 Radius2.y -= dy;
+
+
+	 }
+
+
+	 if (Radius1.x > Radius2.x) {
+		 Center.x = (radiusX + Radius2.x);
+	 }
+	 else if (Radius1.x < Radius2.x)
+	 {
+		 Center.x = (radiusX + Radius1.x);
+	 }
+	 if (Radius1.y > Radius2.y) {
+		 Center.y = (radiusY + Radius2.y);
+	 }
+	 else if (Radius1.y < Radius2.y)
+	 {
+		 Center.y = (radiusY + Radius1.y);
+	 }
+ 
+ 
+ 
+ };
