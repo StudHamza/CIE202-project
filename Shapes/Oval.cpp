@@ -128,7 +128,7 @@ void Oval::Save(ofstream& file) const {
 	 }
 
 
-	 if (Radius1.x > Radius2.x) {
+	 if (Radius1.x > Radius2.x) {                            //centres must be redefiend with new vals after moving , scrambling or draggimg
 		 Center.x = (radiusX + Radius2.x);
 	 }
 	 else if (Radius1.x < Radius2.x)
@@ -146,3 +146,91 @@ void Oval::Save(ofstream& file) const {
  
  
  };
+ void Oval::getXlimits(int& xMAX, int& xMIN) {             // used in multi move
+
+	 xMAX = Center.x + radiusX;
+	 xMIN = Center.x - radiusX;
+
+
+
+
+
+ };   
+ void Oval::getYlimits(int& yMAX, int& yMIN) {                      // used in multi move
+ 
+ 
+	 yMAX = Center.y + radiusY;
+	 yMIN = Center.y - radiusY;
+
+ 
+ 
+ 
+ 
+ }; 
+
+
+
+
+
+  void Oval::relative_move(int x1, int y1, int x2, int y2) {    //used in multi-move
+	  Point centerS;        //center of a group of shapes
+
+	  centerS.x = x1;
+	  centerS.y = y1;
+  
+  
+	  int dx;
+	  int dy;
+
+
+
+
+	  dx = abs(centerS.x - x2);
+	  dy = abs(centerS.y - y2);
+
+
+	  if (x2 > centerS.x) {
+		  Radius1.x += dx;
+		  Radius2.x += dx;
+	  }
+	  else
+	  {
+		  Radius1.x -= dx;
+		  Radius2.x -= dx;
+
+
+	  }
+
+	  if (y2 > centerS.y) {
+		  Radius1.y += dy;
+		  Radius2.y += dy;
+	  }
+	  else
+	  {
+		  Radius1.y -= dy;
+		  Radius2.y -= dy;
+
+
+	  };
+
+
+	  if (Radius1.x > Radius2.x) {
+		  Center.x = (radiusX + Radius2.x);
+	  }
+	  else if (Radius1.x < Radius2.x)
+	  {
+		  Center.x = (radiusX + Radius1.x);
+	  }
+	  if (Radius1.y > Radius2.y) {
+		  Center.y = (radiusY + Radius2.y);
+	  }
+	  else if (Radius1.y < Radius2.y)
+	  {
+		  Center.y = (radiusY + Radius1.y);
+	  }
+  
+  
+  
+  
+  
+  }
