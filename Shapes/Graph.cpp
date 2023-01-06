@@ -22,6 +22,87 @@ Graph::~Graph()
 //						shapes Management Functions									//
 //==================================================================================//
 
+
+
+///////////////////MULTIMOVE FUNCTIONS
+
+void Graph:: getshapeslimitsX(int& xMA,int& xMI) {                   //useed in multimove
+	int xmax = 0, xmin = 0;
+int x1=0, x2=0;
+int T1=0, T2=3000;           // limits that cant be exceeded whether in max or min(ised as a memoery to get the max/min for all selected shapes)
+
+
+	for(unsigned i=0;i< shapesList.size();i++)
+		if (shapesList[i]->IsSelected()) {
+			
+			 shapesList[i]->getXlimits(x1,x2);
+			xmax = max(x1, T1);
+			xmin = min(x2, T2);
+			T1 = x1;
+			T2 = x2;
+		}
+			
+xMA=	xmax  ;
+		 
+  xMI=  xmin;
+
+
+
+
+}
+
+
+
+void Graph:: getshapeslimitsY(int& yMA,int& yMI){                                  //used in multimove
+	int ymax = 0, ymin = 0;
+	int y1=0, y2=0;
+	int T1 = 0, T2 = 3000;// limits that cant be exceeded whether in max or min(ised as a memoery to get the max/min for all selected shapes)
+
+	for (unsigned i = 0; i < shapesList.size(); i++)
+		if (shapesList[i]->IsSelected()) {
+
+			 shapesList[i]->getYlimits(y1,y2);
+			ymax = max(y1, T1);
+			ymin = min(y2, T2);
+			T1 = y1;
+			T2 = y2;
+		}
+
+	yMA = ymax;
+		 
+		 
+	yMI=ymin;
+	
+	
+	
+	
+};
+
+
+void Graph::multimove(int x1,int y1,int x2, int y2) {
+
+	for (unsigned i = 0; i < shapesList.size(); i++)
+		if (shapesList[i]->IsSelected()) {
+			shapesList[i]->relative_move(x1, y1, x2, y2);
+
+
+		}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////
+
 //Add a shape to the list of shapes
 void Graph::Addshape(shape* pShp)
 {
@@ -52,6 +133,18 @@ shape* Graph::Getshape(int x, int y) const
 
 	///Add your code here to search for a shape given a point x,y	
 	return nullptr;
+}
+
+void Graph::random_move() {
+	srand(time(0));
+	for (unsigned i = 0; i < shapesList.size(); i++) {
+		int x = rand() % (1130) + 100;
+		int y = rand() % (501) + 95;
+
+
+		shapesList[i]->Move(x, y);
+
+	}
 }
 
 string Graph::SelectShape(Point P, color pevClr,shape *selected)

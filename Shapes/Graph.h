@@ -44,8 +44,12 @@ public:
 	void Paste();
 	void delShape(shape*);
 	void cut();
-	//
-	
+
+
+	shape* GetSelectedShape()const;
+
+	vector<shape*> GetShapeList()const;
+
 
 	void Save(ofstream& outfile,color,color,int);	//Save all shapes to a file
 	void load(ifstream& inputfile);	//Load all shapes from a file
@@ -54,4 +58,11 @@ public:
 
 	void Clear();
 	void CheckSaved();
+	void random_move();      //used in scramble;
+	void multimove(int x1, int y1, int x2, int y2);       //used in multimove
+
+
+	void getshapeslimitsX(int&,int&);//useed in multimove
+	void getshapeslimitsY(int&,int&);  //used in multimove
+
 };

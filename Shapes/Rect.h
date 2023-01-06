@@ -7,6 +7,7 @@ class Rect : public shape
 private:
 	Point Corner1;	
 	Point Corner2;
+	Point centeroid;
 public:
 	Rect(Point , Point, GfxInfo shapeGfxInfo );
 	virtual ~Rect();
@@ -17,5 +18,10 @@ public:
 	virtual void Save(ofstream& outfile)const override;
 
 	shape* Clone();
+	virtual void Move(int x, int y) override;
+
+	void getXlimits(int&, int&) {};   // used in multi move
+	void getYlimits(int&, int&) {}; // used in multi move
+	virtual void relative_move(int x1, int y1, int x2, int y2) {};
 };
 
