@@ -55,4 +55,18 @@ void opAddLine::Execute()
 	//Add the rectangle to the list of shapes
 	pGr->Addshape(L);
 
+	//Update Operated on:
+	pControl->pushToOperatedOn(L);
+
+}
+
+
+
+void opAddLine::Undo()
+{
+	shape* temp=pControl->getOperatedOn();
+	Graph* Gpr = pControl->getGraph();
+	Gpr->PopFromShapeList(temp);
+	pControl->UpdateDelete(temp);
+	pControl->popOperatedOn();
 }

@@ -11,12 +11,13 @@ class controller
 {
 
 	Graph* pGraph;	//pointe to the grapg
-	GUI* pGUI;		//Pointer to UI class
+	GUI* pGUI;	//Pointer to UI class
+	int revertable[11]={ DRAW_LINE,DRAW_RECT,DRAW_TRI,DRAW_CIRC,DRAW_OVAL,DRAW_REGPOLY,CHNG_DRAW_CLR,
+		CHNG_FILL_CLR,MOVE,RESIZE,DEL};
 	vector<operation*>Present;	
 	vector<operation*>future;
 	vector<shape*>OperatedOn;
-
-	
+	vector<shape*>Deleted;
 public:	
 	controller(); 
 	~controller();
@@ -27,18 +28,8 @@ public:
 	operation* createOperation(operationType) ; //Creates an operation
 
 
-//Time line//////////////////////////////////////////////////////////////////////////////////////////////////
-	//Flow: 
-	//In controller run, if operation is revetable--> dont delete --> append to present
-	//If undo-->get latest op from UpdateTime
-		//Checks present list
-			//Update time -->adds latest op to future and removes it from present
-				//Op->undo()
-	/*For shapes: every shape that can be undo is stored in Operated on so that we can unopreate it later*/
 
-
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////
 	operation* UpdateTimeLine();	//1. Gets the latest op 2.Removes it from present 3.Adds it to future
 	void pushToOperatedOn(shape* shp);	//All shapes that are changed
 
@@ -49,6 +40,9 @@ public:
 
 	bool checkPresent(); //tells whether the vector is empty or not
 
+	void UpdateDelete(shape*);
+
+	void DeleteTimeLine();	//Some times op is saved but not revesable since im following DRY: ex Fill/DrawColor
 
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////

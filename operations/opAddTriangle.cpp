@@ -56,4 +56,17 @@ void opAddTriangle::Execute()
 	//Add the rectangle to the list of shapes
 	pGr->Addshape(T);
 
+	//Update Operated on:
+	pControl->pushToOperatedOn(T);
+
+}
+
+
+void opAddTriangle::Undo()
+{
+	shape* temp = pControl->getOperatedOn();
+	Graph* Gpr = pControl->getGraph();
+	Gpr->PopFromShapeList(temp);
+	pControl->UpdateDelete(temp);
+	pControl->popOperatedOn();
 }

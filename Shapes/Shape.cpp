@@ -29,6 +29,10 @@ color shape::GetCrntColor() const
 {
 	return (ShpGfxInfo.DrawClr);
 }
+color shape::getPevDrawClr()const
+{
+	return ShpGfxInfo.PevFillColors.back();
+}
 void shape::SetFill(bool isFilled)
 {
 	ShpGfxInfo.isFilled = isFilled;
@@ -41,26 +45,30 @@ void shape::Selected(color previousC)	//Sets shape to selected and gets info thr
 	ChngDrawClr(MAGENTA);		//change color
 }
 
-color shape::getPevDrawClr() const
+color shape::UpdatePevDrawClr() 
 {
-	if (ShpGfxInfo.PevFillColors.size()) {
-		return	ShpGfxInfo.PevDrawColors.back();
-	}
-	return BLUE;
+		color temp = ShpGfxInfo.PevDrawColors.back();
+		ShpGfxInfo.PevFillColors.pop_back();
+		return	temp;
 }
-color shape::getPevFillClr()const
+color shape::UpdatePevFillClr()
 {
-	return ShpGfxInfo.PevFillColors.back();
+	color pev = ShpGfxInfo.PevFillColors.back();
+	ShpGfxInfo.PevFillColors.pop_back();
+	return pev;
 }
-void shape::setPevDrawClr()
+//Histoy//-----------------------------
+void shape::setPevDrawColors()
 {
 	ShpGfxInfo.PevDrawColors.push_back(ShpGfxInfo.DrawClr);
+	cout<<"Draw c size: "<< ShpGfxInfo.PevDrawColors.size() << endl;
 }
-void shape::setPevFillColor()
+void shape::setPevFillColors()
 {
 	ShpGfxInfo.PevFillColors.push_back(ShpGfxInfo.FillClr);
+	cout << "Fil c size: " << ShpGfxInfo.PevFillColors.size() << endl;
 }
-
+//----------------------------------
 void shape::UnSelect()
 {
 	SetSelected(false);
