@@ -348,7 +348,12 @@
       <Filter>Operations</Filter>
     </ClInclude>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+
+
+>>>>>>> 7c493be1320b7b0a805ec4722ddc34691459df42
     <ClInclude Include="DefRev.h">
       <Filter>Shapes&amp;Graph</Filter>
     </ClInclude>
@@ -356,7 +361,11 @@
       <Filter>Operations</Filter>
     </ClInclude>
     <ClInclude Include="opMultiMove.h" />
+<<<<<<< HEAD
 >>>>>>> master
+=======
+
+>>>>>>> 7c493be1320b7b0a805ec4722ddc34691459df42
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">
