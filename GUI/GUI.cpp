@@ -49,6 +49,15 @@ void GUI::GetPointClicked(int& x, int& y) const
 {
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
+
+
+buttonstate GUI::GetButtonState(button b, int& x, int& y) {                           //added
+
+
+	return(pWind->GetButtonState(b, x, y));
+
+}
+
 bool GUI::GetKeyClicked()const
 {
 	if (GetKeyState(VK_SHIFT) & 0x8000)
@@ -132,6 +141,7 @@ operationType GUI::GetUseroperation() const
 			switch (ClickedIconOrderV)
 			{
 			case ICON_SELECT: return SELECT_SHAPE;
+			case ICON_DRAG:return DRAG;
 			case ICON_DELETE:  return DEL;
 			case ICON_COPY: return COPY;
 			case ICON_PASTE: return PASTE;
@@ -200,7 +210,20 @@ void GUI::ClearStatusBar() const
 	pWind->SetPen(StatusBarColor, 1);
 	pWind->SetBrush(StatusBarColor);
 	pWind->DrawRectangle(0, height - StatusBarHeight, width, height);
+
 }
+////////////////////////////////////////////
+
+void GUI::updatebuffer() {
+
+
+	pWind->UpdateBuffer();
+
+
+}
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
 void GUI::CreateDrawToolBar() 
 {
@@ -273,6 +296,7 @@ void GUI::CreatePlayToolBar()
 void GUI::CreateDrawVToolBar() {
 	string VToolBarIcon[DRAW_ICON_COUNT_V];
 	VToolBarIcon[ICON_SELECT] = "images\\VToolBar\\Select_Icon.jpg";
+	VToolBarIcon[ICON_DRAG]= "images\\VToolBar\\DRAG_Icon.jpg";
 	VToolBarIcon[ICON_DELETE] = "images\\VToolBar\\Delete_Icon.jpg";
 	VToolBarIcon[ICON_COPY] = "images\\VToolBar\\Copy_Icon.jpg";
 	VToolBarIcon[ICON_PASTE] = "images\\VToolBar\\Paste_Icon.jpg";

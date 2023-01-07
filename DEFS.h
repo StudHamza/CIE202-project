@@ -24,6 +24,7 @@ enum operationType //The operations supported (you can add more if needed)
 	PASTE,			//Pastes selected item(s)
 	CUT,
 	MOVE,			//Move a shape(s)
+	DRAG,     //move a shape by dragging it across the grid
 	RESIZE,			//Resize a shape(s)
 	ROTATE,			//Rotate a shape(s)
 	SEND_BACK,		//Send a shape to the back of all shapes

@@ -73,6 +73,7 @@ class GUI
 	enum VToolBarIcon //The icons displayed on the vertical tool bar
 	{
 		ICON_SELECT,
+		ICON_DRAG,
 		ICON_DELETE,
 		ICON_COPY,
 		ICON_PASTE,
@@ -133,6 +134,7 @@ public:
 
 	// Input Functions  ---------------------------
 	void GetPointClicked(int& x, int& y) const;//Get coordinate where user clicks
+	buttonstate GetButtonState(button, int&, int&);
 	string GetSrting(char c='c') const;	 //Returns a string entered by the user
 	bool GetKeyClicked()const;		//Return key modifiers
 	operationType GetUseroperation() const; //Read the user click and map to an operation
@@ -145,6 +147,7 @@ public:
 	void CreateStatusBar() const;	//create the status bar
 	void SetExit(window*);		//Creates window
 	void DeleteExitWind();
+	void updatebuffer();
 
 	void ClearStatusBar() const;	//Clears the status bar
 	void ClearDrawArea() const;	//Clears the drawing area

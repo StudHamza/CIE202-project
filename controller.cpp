@@ -21,6 +21,7 @@
 #include"opScramble.h"
 #include"opMultiMove.h"
 #include"opDelete.h"
+#include"opDRAG.h"
 //Constructor
 controller::controller()
 {
@@ -86,6 +87,10 @@ operation* controller::createOperation(operationType OpType)
 	case SCRAMBLE:
 		
 		pOp = new opScramble(this);
+		break;
+
+	case DRAG:
+		pOp = new opDRAG(this);
 		break;
 	case MULTIMOVE:
 		pOp = new opMultiMove(this);
