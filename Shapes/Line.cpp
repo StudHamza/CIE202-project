@@ -122,7 +122,35 @@ void Line::Move(int x, int y) {
 
 
 
+void Line::Resize(double scaling_factor) {
+	int dx1;
+	int dx2;
+	int dy1;
+	int dy2;
 
+	dx1 = Start.x - midpoint.x;
+	dy1 = Start.y - midpoint.y;
+	dx2 = End.x - midpoint.x;
+	dy2 = End.y - midpoint.y;
+
+
+	Start.x = midpoint.x + (dx1 * scaling_factor);
+	Start.y = midpoint.y + (dy1 * scaling_factor);
+	End.x = midpoint.x + (dx2 * scaling_factor);
+	End.y = midpoint.y + (dy2 * scaling_factor);
+
+
+
+
+}
+
+
+
+
+
+
+
+//multimove functions
 void Line:: getXlimits(int& xMA, int& xMI) {
 
 	xMA = max(Start.x, End.x);

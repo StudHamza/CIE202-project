@@ -127,6 +127,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_UNDO: return UNDO;
 			case ICON_REDO: return REDO;
 			case ICON_SCRAMBLE:return SCRAMBLE;
+			case ICON_RESIZE:return RESIZE;
 			case ICON_PLAY: return TO_PLAY;
 			case ICON_EXIT: return EXIT;
 			case ICON_MULTIMOVE:return MULTIMOVE;
@@ -247,6 +248,8 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_COLOR]="images\\MenuIcons\\Menu_Color.jpg";
 	MenuIconImages[ICON_UNDO]="images\\MenuIcons\\Menu_Undo.jpg";
 	MenuIconImages[ICON_REDO]="images\\MenuIcons\\Menu_Redo.jpg";
+	MenuIconImages[ICON_RESIZE] = "images\\MenuIcons\\Menu_RESIZE.jpg";
+	
 	MenuIconImages[ICON_PLAY] = "images\\MenuIcons\\Menu_Play.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
 	MenuIconImages[ICON_SCRAMBLE] = "images\\MenuIcons\\Menu_SCRAMBLE.jpg";

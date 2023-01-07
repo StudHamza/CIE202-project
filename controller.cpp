@@ -22,6 +22,7 @@
 #include"opMultiMove.h"
 #include"opDelete.h"
 #include"opDRAG.h"
+#include"opRESIZE.h"
 //Constructor
 controller::controller()
 {
@@ -91,6 +92,9 @@ operation* controller::createOperation(operationType OpType)
 
 	case DRAG:
 		pOp = new opDRAG(this);
+		break;
+	case RESIZE:
+		pOp = new opRESIZE(this);
 		break;
 	case MULTIMOVE:
 		pOp = new opMultiMove(this);

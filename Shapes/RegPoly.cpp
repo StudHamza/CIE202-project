@@ -105,6 +105,31 @@ void RegPoly::Save(ofstream &file)const {
 
 
 
+void RegPoly::Resize(double scaling_factor) {
+
+	int dx;
+	int dy;
+
+	for (unsigned int i = 0; i < Xv.size(); i++) {
+
+		dx = Xv[i] - Center.x;
+		dy = Yv[i] - Center.y;
+		Xv[i] = Center.x + (dx * scaling_factor);
+		Yv[i] = Center.y + (dy * scaling_factor);
+
+
+
+
+	}
+}
+
+
+
+
+
+
+
+
 ///////////////////MULTIMOVE FUNCTIONS
 
 

@@ -138,6 +138,42 @@ void Triangle::Move(int x, int y) {
 }
 
 
+void Triangle::Resize(double scaling_factor) {
+	Point  midpoint1; //midpoint for one of the sides
+
+
+
+
+	int dx1;
+	int dx2;
+	int dy1;
+	int dy2;
+	int dx3;
+	int dy3;
+
+
+	dx1 = F.x - centeroid.x;
+	dy1 = F.y - centeroid.y;
+	dx2 = S.x - centeroid.x;
+	dy2 = S.y - centeroid.y;
+	dx3 = T.x - centeroid.x;
+	dy3 = T.y - centeroid.y;
+
+	F.x = centeroid.x + (dx1 * scaling_factor);
+	F.y = centeroid.y + (dy1 * scaling_factor);
+	S.x = centeroid.x + (dx2 * scaling_factor);
+	S.y = centeroid.y + (dy2 * scaling_factor);
+	T.x = centeroid.x + (dx3 * scaling_factor);
+	T.y = centeroid.y + (dy3 * scaling_factor);
+
+
+
+
+	midpoint1.x = (F.x + S.x) / 2;
+	midpoint1.y = (F.y + S.y) / 2;
+
+}
+
 
 
 //////////////////////multimove functions

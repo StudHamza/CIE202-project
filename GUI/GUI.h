@@ -63,6 +63,7 @@ class GUI
 		ICON_REDO,
 		ICON_SCRAMBLE,
 		ICON_MULTIMOVE,
+		ICON_RESIZE,
 		ICON_PLAY,
 	
 		ICON_EXIT,		//Exit icon
