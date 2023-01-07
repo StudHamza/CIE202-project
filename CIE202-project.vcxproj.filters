@@ -202,6 +202,7 @@
     <ClCompile Include="opMultiMove.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
+    <ClCompile Include="opRESIZE.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -363,6 +364,7 @@
     <ClInclude Include="opMultiMove.h">
       <Filter>Operations</Filter>
     </ClInclude>
+    <ClInclude Include="opRESIZE.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">

@@ -18,6 +18,7 @@ public:
 	virtual void Save(ofstream& outfile)const override;
 
 	shape* Clone();
+	virtual void Resize(double sacling_factor);
 	virtual void Move(int x, int y) override;
 
 	void getXlimits(int&, int&) ;   // used in multi move

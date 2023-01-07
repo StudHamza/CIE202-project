@@ -21,7 +21,7 @@ public:
 
 
 
-
+	virtual void Resize(double scaling_factor)   ;
 
 	void getXlimits(int&, int&) ;   // used in multi move
 	void getYlimits(int&, int&) ; // used in multi move

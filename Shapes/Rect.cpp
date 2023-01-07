@@ -132,6 +132,31 @@ void Rect::Move(int x, int y) {
 }
 
 
+
+
+void Rect::Resize(double scaling_factor) {
+
+	int dx1;
+	int dx2;
+	int dy1;
+	int dy2;
+
+
+	dx1 = Corner1.x - centeroid.x;
+	dy1 = Corner1.y - centeroid.y;
+	dx2 = Corner2.x - centeroid.x;
+	dy2 = Corner2.y - centeroid.y;
+
+	Corner1.x = centeroid.x + (dx1 * scaling_factor);
+	Corner1.y = centeroid.y + (dy1 * scaling_factor);
+	Corner2.x = centeroid.x + (dx2 * scaling_factor);
+	Corner2.y = centeroid.y + (dy2 * scaling_factor);
+
+}
+
+
+
+//multimove functions
  void Rect::relative_move(int x1, int y1, int x2, int y2) {              
  
 	 //Point centerS;         //center for a gp of shapes

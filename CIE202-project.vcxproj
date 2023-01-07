@@ -202,6 +202,7 @@
     <ClCompile Include="operations\opSave.cpp" />
     <ClCompile Include="operations\opUndo.cpp" />
     <ClCompile Include="opMultiMove.cpp" />
+    <ClCompile Include="opRESIZE.cpp" />
     <ClCompile Include="opScramble.cpp" />
     <ClCompile Include="Shapes\Circle.cpp" />
     <ClCompile Include="Shapes\Graph.cpp" />
@@ -259,6 +260,7 @@
     <ClInclude Include="operations\opSelect.h" />
     <ClInclude Include="operations\opUndo.h" />
     <ClInclude Include="opMultiMove.h" />
+    <ClInclude Include="opRESIZE.h" />
     <ClInclude Include="opScramble.h" />
     <ClInclude Include="Shapes\Circle.h" />
     <ClInclude Include="Shapes\Graph.h" />

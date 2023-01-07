@@ -24,6 +24,9 @@ public:
 	virtual ~RegPoly();
 
 
+	virtual void Resize(double sacling_factor) override;
+
+
 	shape* Clone();		 //Clone shape into new object
 
 	void getXlimits(int&, int&) ;   // used in multi move

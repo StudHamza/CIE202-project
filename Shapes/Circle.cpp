@@ -91,6 +91,23 @@ void Circle::Save(ofstream &file) const{
 }
 
 
+
+
+void Circle::Resize(double scaling_factor) {
+
+
+
+	Radius = Radius * scaling_factor;
+
+
+
+
+}
+
+
+
+//multimove functions
+
 void Circle::relative_move(int x1, int y1, int x2, int y2) {
 
 	int dx, dy;

@@ -92,6 +92,33 @@ void Oval::Save(ofstream& file) const {
 }
 
 
+void Oval::Resize(double scaling_factor) {
+	int dx1;
+	int dx2;
+	int dy1;
+	int dy2;
+
+	dx1 = Radius1.x - Center.x;
+	dy1 = Radius1.y - Center.y;
+	dx2 = Radius2.x - Center.x;
+	dy2 = Radius2.y - Center.y;
+
+	Radius1.x = Center.x + (dx1 * scaling_factor);
+	Radius1.y = Center.y + (dy1 * scaling_factor);
+	Radius2.x = Center.x + (dx2 * scaling_factor);
+	Radius2.y = Center.y + (dy2 * scaling_factor);
+
+
+
+
+
+ }
+
+
+
+
+
+
  void Oval::Move(int x, int y) {
 	 int dx;
 	 int dy;
