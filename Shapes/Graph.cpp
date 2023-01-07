@@ -114,9 +114,12 @@ void Graph::Addshape(shape* pShp)
 void Graph::Draw(GUI* pUI) const
 {
 	pUI->ClearDrawArea();
-	for (auto shapePointer : shapesList) {
-		shapePointer->Draw(pUI);
-	}
+	
+		for (auto shapePointer : shapesList) {
+			if(shapePointer)
+			shapePointer->Draw(pUI);
+		}
+	
 	pUI->CreateDrawToolBar(); //Prevents Shapes to flow into Tool bar
 	pUI->CreateDrawVToolBar();
 }
@@ -615,16 +618,30 @@ bool Graph::getClipBoard() const {
 		return false;
 }
 
-void Graph::delShape(shape* selecetedshape) {
-	for (unsigned int i = 0; i < shapesList.size(); i++) {
+void Graph::delShape() {
+	for ( int i = 0; i < shapesList.size(); i++) {
+		
 
-		if (selecetedshape ==shapesList[i]) {
-			shapesList.erase(shapesList.begin() + i);
-			delete selectedShape;
-			selectedShape = nullptr;
+		if (shapesList.size()>0  && shapesList[i]->IsSelected()) {
+			delete shapesList[i];
+			shapesList[i] = nullptr;
+			
+			shapesList.erase(shapesList.begin()+i);
+			
+			i = -1;
+			
+			
+			
+		
+			
+			
+			
 		}
-
+		
+		
 	}
+	
+	
 }
 
 void Graph::cut()
@@ -633,7 +650,7 @@ void Graph::cut()
 	shape* Cutted = selectedShape->Clone();
 	clipboard.clear();
 	clipboard.push_back(Cutted);
-	delShape(selectedShape);
+	delShape();
 }
 
 void Graph::PopFromShapeList(shape* PopMe) {

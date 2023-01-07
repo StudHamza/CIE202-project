@@ -34,7 +34,7 @@ public:
 	virtual void Move(int x, int y) override {
 
 
-
+		
 		int dx;
 		int dy;
 		int dx2;
