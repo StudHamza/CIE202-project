@@ -126,7 +126,7 @@ void Triangle::Move(int x, int y) {
 
 
 	centeroid.x = x;
-	centeroid.y = y;                       //setting the centroid to the new one
+	centeroid.y = y;                       //setting the centroid to the new coordinates
 
 
 
@@ -136,3 +136,82 @@ void Triangle::Move(int x, int y) {
 
 
 }
+
+
+
+
+//////////////////////multimove functions
+
+ void Triangle:: relative_move(int x1, int y1, int x2, int y2) {
+
+
+	 int dx, dy;
+
+
+	 dx = abs(x1 - x2);
+	 dy = abs(y1 - y2);
+	 if (x2 >= x1) {
+		 F.x += dx;
+		 S.x += dx;
+		 T.x += dx;
+		 centeroid.x += dx;
+
+	 }                                                    //changing vertices x coocrdinates
+
+	 else {
+		 F.x -= dx;
+		 S.x -= dx;
+		 T.x -= dx;
+		 centeroid.x -= dx;
+	
+
+	 }
+
+
+
+
+
+	 if (y2 >= y1) {
+		 F.y += dy;
+		 S.y += dy;
+		 T.y += dy;
+		 centeroid.y += dy;
+	
+	 }
+	 //changing vertices y coordinates
+	 else {
+		 F.y -= dy;
+		 S.y -= dy;
+		 T.y -= dy;
+		 centeroid.y -= dy;
+	 }
+
+
+	 centeroid.x += dx;
+	 centeroid.y += dy;                       //setting the centroid to the new coordinates
+
+
+
+
+
+};
+void Triangle::getXlimits(int& xMAX, int& xMIN) {
+
+
+	xMAX = max(F.x, S.x, T.x);
+	xMIN = min(F.x, S.x, T.x);
+
+
+
+};   // used in multi move
+void Triangle:: getYlimits(int& yMAX, int& yMIN) {
+
+	yMAX = max(F.y, S.y, T.y);
+
+	yMIN = min(F.y, S.y, T.y);
+
+
+
+
+
+}; // used in multi move

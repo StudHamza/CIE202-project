@@ -130,3 +130,77 @@ void Rect::Move(int x, int y) {
 
 
 }
+
+
+ void Rect::relative_move(int x1, int y1, int x2, int y2) {              
+ 
+	 //Point centerS;         //center for a gp of shapes
+ 
+	 //centerS.x = centeroid.x;
+	 //centerS.y = centeroid.y;
+ 
+	 int dx, dy;
+
+
+	 dx = abs(x1- x2);
+	 dy = abs(y1 - y2);
+	 if (x2 >= x1) {
+		 Corner1.x += dx;
+		 Corner2.x += dx;
+
+	 }                                                    //changing vertices x coocrdinates
+
+	 else {
+		 Corner1.x -= dx;
+		 Corner2.x -= dx;
+
+
+	 }
+
+
+
+
+
+	 if (y2 >= y1) {
+		 Corner1.y += dy;
+		 Corner2.y += dy;
+
+	 }
+	 //changing vertices y coordinates
+	 else {
+		 Corner1.y -= dy;
+		 Corner2.y -= dy;
+
+
+	 }
+
+	 centeroid.x = ((Corner1.x + Corner2.x) / 2);
+	 centeroid.y = ((Corner1.y + Corner2.y) / 2);                     //setting the centroid to its new vals(not the new destination )
+
+ 
+ 
+ };
+
+
+
+
+
+ void Rect::getXlimits(int& xMAX, int& xMIN) {
+	
+
+	 xMAX = max(Corner1.x, Corner2.x);
+	 xMIN = min(Corner1.x, Corner2.x);
+
+
+
+ };   // used in multi move
+ void Rect::getYlimits(int& yMAX, int& yMIN) {
+
+
+	 yMAX = max(Corner1.y, Corner2.y);
+	 yMIN = min(Corner1.y, Corner2.y);
+
+
+
+
+ }; // used in multi move

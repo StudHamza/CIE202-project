@@ -84,6 +84,7 @@ void Graph::multimove(int x1,int y1,int x2, int y2) {
 	for (unsigned i = 0; i < shapesList.size(); i++)
 		if (shapesList[i]->IsSelected()) {
 			shapesList[i]->relative_move(x1, y1, x2, y2);
+			shapesList[i]->UnSelect();
 
 
 		}
