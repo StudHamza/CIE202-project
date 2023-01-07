@@ -646,11 +646,14 @@ void Graph::delShape() {
 
 void Graph::cut()
 {
-	UnSelectAll();
 	shape* Cutted = selectedShape->Clone();
+
+	
 	clipboard.clear();
 	clipboard.push_back(Cutted);
 	delShape();
+	
+	UnSelectAll();
 }
 
 void Graph::PopFromShapeList(shape* PopMe) {
