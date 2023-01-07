@@ -121,6 +121,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_OVAL: return DRAW_OVAL;
 			case ICON_TRI:	return DRAW_TRI;
 			case ICON_REGPOLY: return DRAW_REGPOLY;
+			case ICON_IREGPOLY:return DRAW_IREG;
 			case ICON_PEN: return CHNG_DRAW_CLR;
 			case ICON_FILL: return CHNG_FILL_CLR;
 			case ICON_COLOR: return COLOR_PALETTE;
@@ -243,6 +244,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\Menu_Oval.jpg";
 	MenuIconImages[ICON_TRI] = "images\\MenuIcons\\Menu_Triangle.jpg";
 	MenuIconImages[ICON_REGPOLY] = "images\\MenuIcons\\Menu_RegPoly.jpg";
+	MenuIconImages[ICON_IREGPOLY] = "images\\MenuIcons\\Menu_IregPoly.jpg";
 	MenuIconImages[ICON_PEN] = "No_image";
 	MenuIconImages[ICON_FILL] = "No_Image";
 	MenuIconImages[ICON_COLOR]="images\\MenuIcons\\Menu_Color.jpg";
@@ -541,6 +543,33 @@ void GUI::DrawOval(Point P1, Point P2, GfxInfo OvalGfxInfo) const
 	else
 		style = FRAME;
 	pWind->DrawEllipse(P1.x,P1.y,P2.x,P2.y,style);
+
+}
+
+
+void GUI::DrawIREG(int n, int* array_ofxs, int* array_ofys, GfxInfo IREGPolGfxInfo) const {
+	color DrawingClr;
+	if (IREGPolGfxInfo.isSelected)	//shape is selected
+		DrawingClr = HighlightColor; //shape should be drawn highlighted
+	else
+		DrawingClr = IREGPolGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, IREGPolGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (IREGPolGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(IREGPolGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+
+	pWind->DrawPolygon(array_ofxs, array_ofys,n, style);
+
+
+
 
 }
 

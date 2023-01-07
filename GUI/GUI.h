@@ -53,6 +53,7 @@ class GUI
 		ICON_OVAL,
 		ICON_TRI,
 		ICON_REGPOLY, //Regular polygon
+		ICON_IREGPOLY,
 		//TODO: Add more icons names here
 		
 		ICON_PEN,
@@ -160,6 +161,8 @@ public:
 	void DrawTriangle(Point, Point, Point, GfxInfo)const;	//Draw Triangle
 	void DrawOval(Point, Point, GfxInfo)const;
 	void DrawLine(Point, Point,GfxInfo)const;	//Draw a line
+	void DrawIREG(int n, int*, int*, GfxInfo IREGPolGfxInfo) const;
+		
 
 	///Make similar functions for drawing all other shapes.
 
