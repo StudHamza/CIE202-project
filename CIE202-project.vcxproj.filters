@@ -195,8 +195,13 @@
     <ClCompile Include="opScramble.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
-    <ClCompile Include="opMultiMove.cpp" />
     <ClCompile Include="opDelete.cpp" />
+    <ClCompile Include="opDRAG.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="opMultiMove.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -351,8 +356,13 @@
     <ClInclude Include="opScramble.h">
       <Filter>Operations</Filter>
     </ClInclude>
-    <ClInclude Include="opMultiMove.h" />
     <ClInclude Include="opDelete.h" />
+    <ClInclude Include="opDRAG.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="opMultiMove.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">
