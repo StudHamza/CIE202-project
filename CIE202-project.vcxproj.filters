@@ -196,6 +196,7 @@
       <Filter>Operations</Filter>
     </ClCompile>
     <ClCompile Include="opMultiMove.cpp" />
+    <ClCompile Include="opDelete.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -347,16 +348,11 @@
     <ClInclude Include="operations\opUndo.h">
       <Filter>Operations</Filter>
     </ClInclude>
-
-
-    <ClInclude Include="DefRev.h">
-      <Filter>Shapes&amp;Graph</Filter>
-    </ClInclude>
     <ClInclude Include="opScramble.h">
       <Filter>Operations</Filter>
     </ClInclude>
     <ClInclude Include="opMultiMove.h" />
-
+    <ClInclude Include="opDelete.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">

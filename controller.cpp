@@ -20,6 +20,7 @@
 #include "operations\opUndo.h"
 #include"opScramble.h"
 #include"opMultiMove.h"
+#include"opDelete.h"
 //Constructor
 controller::controller()
 {
@@ -122,7 +123,9 @@ operation* controller::createOperation(operationType OpType)
 		pOp = new opExit(this);
 		///create Exitoperation here
 		break;
-
+	case DEL:
+		pOp = new opDelete(this);
+		break;
 	case STATUS:	//a click on the status bar ==> no operation
 		break;
 	}
