@@ -23,6 +23,7 @@
 #include"opDelete.h"
 #include"opDRAG.h"
 #include"opRESIZE.h"
+#include"opaddIREG.h"
 //Constructor
 controller::controller()
 {
@@ -70,6 +71,11 @@ operation* controller::createOperation(operationType OpType)
 	case DRAW_REGPOLY:
 		pOp = new opAddRegPoly(this);
 		break;
+
+	case DRAW_IREG:
+	pOp = new opaddIREG(this);
+		break;
+
 	case CHNG_DRAW_CLR:
 		pOp = new opChngDraw(this);
 		break;

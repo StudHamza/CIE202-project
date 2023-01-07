@@ -179,7 +179,9 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="controller.cpp" />
+    <ClCompile Include="IregularPoly.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="opaddIREG.cpp" />
     <ClCompile Include="opDelete.cpp" />
     <ClCompile Include="opDRAG.cpp" />
     <ClCompile Include="operations\opAddCircle.cpp" />
@@ -237,6 +239,8 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="IregularPoly.h" />
+    <ClInclude Include="opaddIREG.h" />
     <ClInclude Include="opDelete.h" />
     <ClInclude Include="opDRAG.h" />
     <ClInclude Include="operations\opAddCircle.h" />

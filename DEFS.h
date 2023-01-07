@@ -11,6 +11,7 @@ enum operationType //The operations supported (you can add more if needed)
 	DRAW_CIRC,		//Draw Circle
 	DRAW_OVAL,
 	DRAW_REGPOLY,	//Draw Regular polygon
+	DRAW_IREG,          //Draw Iregular polygon
 	COLOR_PALETTE,
 	SELECT_SHAPE,	//Selects shape
 	POST_IMAGE,		//Post image into shape
