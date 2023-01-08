@@ -27,6 +27,8 @@ void opHide::Execute() {
 
 	Graph* ptG = pControl->getGraph();
 
+	cout << "hide" << endl;
+
 
 
 	ptG->Draw_cards(pUI);
