@@ -22,7 +22,7 @@ public:
 	void SetSelected(bool s);	//select/unselect the shape
 	bool IsSelected() const;	//check whether fig is selected
 	
-
+	int getId();
 	virtual void Draw(GUI* pUI) const =0 ;		//Draw the shape
 	virtual bool HitBox(int,int)const =0;		//create hit box
 

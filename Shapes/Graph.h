@@ -38,6 +38,7 @@ public:
 	void delShape(shape*);
 	void cut();
 	void pushShapeBack();
+	void Duplicate();
 
 	shape* GetSelectedShape()const;
 	vector<shape*> GetShapeList()const;

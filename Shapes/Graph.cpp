@@ -51,6 +51,20 @@ void Graph::pushShapeBack()
 
 }
 
+void Graph::Duplicate()
+{
+	for (int i = 0; i < shapesList.size(); i++) {
+	
+		
+		shape* temp = shapesList[i];
+		
+		shapesList.push_back(temp);
+		
+	}
+
+}
+
+
 
 shape* Graph::Getshape(int x, int y) const
 {
