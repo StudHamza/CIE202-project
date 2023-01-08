@@ -156,6 +156,36 @@ void Rect::Resize(double scaling_factor) {
 
 
 
+ void Rect:: ResizebyDrag(int x, int y) {
+	 int dx1;
+	
+	 int dy1;
+
+	 Corner1.x = x;
+	 Corner1.y = y;
+
+
+	int  d = sqrt(pow((Corner1.x - centeroid.x), 2) + pow((Corner1.y - centeroid.y), 2));
+	 dx1 = Corner1.x - centeroid.x;
+	 dy1 = Corner1.y - centeroid.y;
+	
+	int Radius1 = sqrt(pow((centeroid.x - x), 2) + pow((centeroid.y - y), 2));
+ 
+	int R1 = Radius1 / d;
+
+
+
+	 Corner1.x = centeroid.x + (dx1*R1);
+	 Corner1.y = centeroid.y + (dy1*R1);
+	 Corner2.x = centeroid.x - (dx1*R1);
+	 Corner2.y = centeroid.y - (dy1*R1);
+
+
+
+
+}
+
+
 //multimove functions
  void Rect::relative_move(int x1, int y1, int x2, int y2) {              
  

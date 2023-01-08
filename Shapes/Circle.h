@@ -23,6 +23,7 @@ public:
 
 
 	virtual void Resize(double scaling_factor)  override;
+	virtual void ResizebyDrag(int, int);
 
 	 void getXlimits(int&,int&)   override;   // used in multi move
 	 void getYlimits(int&,int&) override; // used in multi move

@@ -25,6 +25,7 @@ public:
 
 
 	virtual void Resize(double sacling_factor) override;
+	virtual void ResizebyDrag(int, int);
 
 
 	shape* Clone();		 //Clone shape into new object

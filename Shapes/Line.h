@@ -24,6 +24,7 @@ public:
 
 
 	virtual void Resize(double sacling_factor) override;
+	virtual void ResizebyDrag(int,int) override;
 
 	void getXlimits(int&, int&) override;   // used in multi move
 	void getYlimits(int&, int&) override; // used in multi move

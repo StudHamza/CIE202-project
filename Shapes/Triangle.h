@@ -18,6 +18,7 @@ public:
 	virtual void Move(int x, int y) override;
 	shape* Clone();
 	virtual void Resize(double sacling_factor);
+	virtual void ResizebyDrag(int, int) ;
 
 
 	void getXlimits(int&, int&)   ;   // used in multi move

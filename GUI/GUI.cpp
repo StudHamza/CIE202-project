@@ -7,8 +7,8 @@ GUI::GUI()
 	//Initialize user interface parameters
 	InterfaceMode = MODE_DRAW;
 
-	width = 1300;
-	height = 700;
+	width = 1500;
+	height = 800;
 	wx = 5;
 	wy = 5;
 
@@ -37,6 +37,15 @@ GUI::GUI()
 	CreateDrawToolBar();
 	CreateStatusBar();
 	CreateDrawVToolBar();
+
+	
+
+
+
+
+
+
+
 }
 
 
@@ -144,6 +153,7 @@ operationType GUI::GetUseroperation() const
 			{
 			case ICON_SELECT: return SELECT_SHAPE;
 			case ICON_DRAG:return DRAG;
+			case ICON_Resize_by_Drag:return Resize_by_DRAG;
 			case ICON_DELETE:  return DEL;
 			case ICON_COPY: return COPY;
 			case ICON_PASTE: return PASTE;
@@ -302,6 +312,7 @@ void GUI::CreateDrawVToolBar() {
 	string VToolBarIcon[DRAW_ICON_COUNT_V];
 	VToolBarIcon[ICON_SELECT] = "images\\VToolBar\\Select_Icon.jpg";
 	VToolBarIcon[ICON_DRAG]= "images\\VToolBar\\DRAG_Icon.jpg";
+	VToolBarIcon[ICON_Resize_by_Drag] = "images\\VToolBar\\ResizebyDrag_Icon.jpg";
 	VToolBarIcon[ICON_DELETE] = "images\\VToolBar\\Delete_Icon.jpg";
 	VToolBarIcon[ICON_COPY] = "images\\VToolBar\\Copy_Icon.jpg";
 	VToolBarIcon[ICON_PASTE] = "images\\VToolBar\\Paste_Icon.jpg";
@@ -433,6 +444,9 @@ void GUI::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 
+
+	cout << pWind->GetWidth() << endl;
+	cout << pWind->GetHeight() << endl;
 }
 
 

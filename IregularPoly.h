@@ -37,6 +37,7 @@ public:
 	virtual void Shift(int, int);
 	virtual void Save(ofstream& outfile)const override;
 	virtual void Resize(double sacling_factor) {};
+	virtual void ResizebyDrag(int, int) {}
 
 
 	shape* Clone();
