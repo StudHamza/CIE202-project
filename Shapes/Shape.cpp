@@ -5,6 +5,7 @@ shape::shape(GfxInfo shapeGfxInfo)
 {	
 	counter++;
 	ID = counter;
+	shapeGfxInfo.FillHistory.push_back(false);
 	ShpGfxInfo = shapeGfxInfo;	//Default status is non-filled.
 }
  
@@ -33,8 +34,13 @@ color shape::getPevDrawClr()const
 {
 	return ShpGfxInfo.PevDrawColors.back();
 }
+bool shape::getFillHistory()const
+{
+	return ShpGfxInfo.FillHistory.back();
+}
 void shape::SetFill(bool isFilled)
 {
+	ShpGfxInfo.FillHistory.push_back(isFilled);
 	ShpGfxInfo.isFilled = isFilled;
 }
 
@@ -53,20 +59,26 @@ color shape::UpdatePevDrawClr()
 }
 color shape::UpdatePevFillClr()
 {
-	color pev = ShpGfxInfo.PevFillColors.back();
-	ShpGfxInfo.PevFillColors.pop_back();
-	return pev;
+	if (ShpGfxInfo.FillHistory.back())
+	{
+		color pev = ShpGfxInfo.PevFillColors.back();
+		ShpGfxInfo.PevFillColors.pop_back();
+		return pev;
+	}
+	return FRAME;
 }
 //Histoy//-----------------------------
 void shape::setPevDrawColors()
 {
-	ShpGfxInfo.PevDrawColors.push_back(ShpGfxInfo.DrawClr);
-	cout<<"Draw c size: "<< ShpGfxInfo.PevDrawColors.size() << endl;
+	ShpGfxInfo.PevDrawColors.push_back(ShpGfxInfo.PrevClr);
 }
 void shape::setPevFillColors()
 {
 	ShpGfxInfo.PevFillColors.push_back(ShpGfxInfo.FillClr);
-	cout << "Fil c size: " << ShpGfxInfo.PevFillColors.size() << endl;
+}
+void shape::UpdatePevFillHistory()
+{
+	ShpGfxInfo.FillHistory.pop_back();
 }
 //----------------------------------
 void shape::UnSelect()
@@ -118,6 +130,7 @@ void shape::popFactor()		//Removes last resize factor from history
 }
 
 void shape::setPevPoint(Point p) {
+	cout << p.x << " " << p.y;
 	ShpGfxInfo.PevMovedFrom.push_back(p);
 }
 Point shape::GetPevPoint()const

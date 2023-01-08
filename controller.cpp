@@ -202,6 +202,7 @@ void controller::UpdateDelete(shape* shp) { Deleted.push_back(shp); }
 
 void controller::popOperatedOn()
 {
+	UpdateDelete(OperatedOn.back());
 	OperatedOn.pop_back();
 }
 
@@ -241,13 +242,12 @@ void controller::Run()
 				{
 					del = 'n';
 				}
-			}
-			pOpr->Execute();//Execute
+			}	
 			if (del != 'y') {
 				Present.push_back(pOpr);//Sets the present timeline for undo/redo
-				pOpr = nullptr;	//do not delete the pointer (not memeory leak)
 			}
-			else {
+			pOpr->Execute();//Execute
+			if(del == 'y') {
 				delete pOpr;	//operation is not needed any more ==> delete it
 				pOpr = nullptr;
 			}

@@ -34,8 +34,4 @@ void opChngDraw::Execute()
 			}
 		}
 	}
-	else
-	{
-		pControl->DeleteTimeLine();
-	}
 }

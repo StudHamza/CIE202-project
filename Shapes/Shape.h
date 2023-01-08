@@ -32,16 +32,17 @@ public:
 	//Getters
 	color GetCrntColor()const;
 	color getPevDrawClr()const;
+	bool getFillHistory()const;
 
 	//setters
 	void SetFill(bool);		//Sets fill to true or false
 	void setPevDrawColors();	//vector of pev draw colors
 	void setPevFillColors();	//vector of pev fill colors
-	void setPevFillBool();
 
 	//Hybrid Getters and setters
 	color UpdatePevDrawClr();
 	color UpdatePevFillClr();
+	void UpdatePevFillHistory();
 
 
 	//Selecting//

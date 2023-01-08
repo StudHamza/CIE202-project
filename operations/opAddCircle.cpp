@@ -71,7 +71,6 @@ void opAddCircle::Undo()
 	shape* temp = pControl->getOperatedOn();
 	Graph* Gpr = pControl->getGraph();
 	Gpr->PopFromShapeList(temp);
-	pControl->UpdateDelete(temp);
 }
 
 
