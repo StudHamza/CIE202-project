@@ -14,5 +14,5 @@ public:
 
 
 	virtual void Undo()override;
-
+	virtual void Redo()override;
 };

@@ -18,6 +18,7 @@
 #include "operations\opChngDraw.h"
 #include "operations\opChngFill.h"
 #include "operations\opUndo.h"
+#include "operations\opRedo.h"
 #include"opScramble.h"
 #include"opMultiMove.h"
 #include"opDelete.h"
@@ -89,6 +90,7 @@ operation* controller::createOperation(operationType OpType)
 		pOp = new opUndo(this);
 		break;
 	case REDO:
+		pOp = new opRedo(this);
 		break;
 
 	case SCRAMBLE:
@@ -198,12 +200,21 @@ shape* controller::getOperatedOn() { if (OperatedOn.size()) { return OperatedOn.
 bool controller::checkPresent() { return Present.size(); }
 
 
-void controller::UpdateDelete(shape* shp) { Deleted.push_back(shp); }
+void controller::pushToFutureOperatedOn(shape* shp) { FutureOperatedOn.push_back(shp); }
+
+shape* controller::getFutureOperatedOn() { return FutureOperatedOn.back(); }
 
 void controller::popOperatedOn()
 {
-	UpdateDelete(OperatedOn.back());
+	pushToFutureOperatedOn(OperatedOn.back());
 	OperatedOn.pop_back();
+}
+
+void controller::popOperatedOnToPresent()
+{
+	pushToOperatedOn(FutureOperatedOn.back());
+	FutureOperatedOn.pop_back();
+
 }
 
 void controller::DeleteTimeLine()
@@ -211,6 +222,18 @@ void controller::DeleteTimeLine()
 	operation* op = Present.back();	//get last element
 	Present.pop_back();	//remove
 	delete op;
+}
+
+bool controller::checkFuture()
+{
+	return future.size();
+}
+operation* controller::UpdateFuture()
+{
+	operation* op = future.back();	//get last element
+	future.pop_back();	//remove
+	Present.push_back(op); //Add
+	return op;
 }
 /////////////-------------------------------------------------------------------------------------------
 

@@ -10,6 +10,13 @@ opAddCircle::opAddCircle(controller* pCont) :operation(pCont)
 opAddCircle::~opAddCircle()
 {}
 
+void opAddCircle::Redo()
+{
+	Graph* Gpr = pControl->getGraph();
+	shape* temp = pControl->getFutureOperatedOn();
+	Gpr->Addshape(temp);
+}
+
 //Execute the operation
 void opAddCircle::Execute()
 {

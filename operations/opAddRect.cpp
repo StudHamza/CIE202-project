@@ -71,3 +71,14 @@ void opAddRect::Undo()
 	Graph* Gpr = pControl->getGraph();
 	Gpr->PopFromShapeList(temp);
 }
+
+
+
+
+
+void opAddRect::Redo()
+{
+	Graph* Gpr = pControl->getGraph();
+	shape* temp = pControl->getFutureOperatedOn();
+	Gpr->Addshape(temp);
+}

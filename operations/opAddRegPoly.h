@@ -12,7 +12,7 @@ class opAddRegPoly : public operation
 		//Add rectangle to the controller
 		virtual void Execute();
 
-
+		virtual void Redo()override;
 		virtual void Undo()override;
 
 };

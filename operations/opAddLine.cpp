@@ -12,6 +12,17 @@ opAddLine::opAddLine(controller* pCont) :operation(pCont)
 opAddLine::~opAddLine()
 {}
 
+
+
+void opAddLine::Redo()
+{
+	Graph* Gpr = pControl->getGraph();
+	shape* temp = pControl->getFutureOperatedOn();
+	Gpr->Addshape(temp);
+}
+
+
+
 //Execute the operation
 void opAddLine::Execute()
 {

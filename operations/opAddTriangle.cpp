@@ -10,6 +10,8 @@ opAddTriangle::opAddTriangle(controller* pCont) :operation(pCont)
 opAddTriangle::~opAddTriangle()
 {}
 
+
+
 //Execute the operation
 void opAddTriangle::Execute()
 {
@@ -73,4 +75,11 @@ void opAddTriangle::Undo()
 	shape* temp = pControl->getOperatedOn();
 	Graph* Gpr = pControl->getGraph();
 	Gpr->PopFromShapeList(temp);
+}
+
+void opAddTriangle::Redo()
+{
+	Graph* Gpr = pControl->getGraph();
+	shape* temp = pControl->getFutureOperatedOn();
+	Gpr->Addshape(temp);
 }

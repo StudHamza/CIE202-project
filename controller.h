@@ -17,7 +17,7 @@ class controller
 	vector<operation*>Present;	
 	vector<operation*>future;
 	vector<shape*>OperatedOn;
-	vector<shape*>Deleted;
+	vector<shape*>FutureOperatedOn;
 public:	
 	controller(); 
 	~controller();
@@ -31,6 +31,7 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 	operation* UpdateTimeLine();	//1. Gets the latest op 2.Removes it from present 3.Adds it to future
+
 	void pushToOperatedOn(shape* shp);	//All shapes that are changed
 
 	void popOperatedOn();//pops last element/shape out
@@ -40,13 +41,24 @@ public:
 
 	bool checkPresent(); //tells whether the vector is empty or not
 
-	void UpdateDelete(shape*);
+	/////////////////Future/////////
 
+	void pushToFutureOperatedOn(shape*); //Vector to store undone operations
+
+	shape* getFutureOperatedOn();
+
+	bool checkFuture();		//checks if size of vector>0
+
+	
+
+	operation* UpdateFuture();	//Removes last op from Future and pushes it to present
+
+	void popOperatedOnToPresent();		//returns undone to present timeline
+
+
+	/////////////////             Special cases                   ///////////////////////////////////////////////
 	void DeleteTimeLine();	//Some times op is saved but not revesable since im following DRY: ex Fill/DrawColor
-
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	//////////////////////////////////////////////////////////
 
 	void Run();
 	

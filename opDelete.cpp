@@ -13,7 +13,7 @@ void opDelete::Undo()
 	shape* temp = pControl->getOperatedOn();
 	Graph* Gpr = pControl->getGraph();
 	Gpr->Addshape(temp);
-	pControl->UpdateDelete(temp);
+	pControl->pushToFutureOperatedOn(temp);
 }
 
 void opDelete::Redo()
