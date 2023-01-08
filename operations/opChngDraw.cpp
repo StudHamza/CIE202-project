@@ -17,6 +17,12 @@ void opChngDraw::Undo()
 }
 
 
+
+void opChngDraw::Redo()
+{
+	cout << "not complete";
+}
+
 void opChngDraw::Execute()
 {
 	GUI* pUI = pControl->GetUI();

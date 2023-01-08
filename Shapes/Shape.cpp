@@ -134,10 +134,15 @@ void shape::popFactor()		//Removes last resize factor from history
 void shape::setPevPoint(Point p) {
 	ShpGfxInfo.PevMovedFrom.push_back(p);
 }
+Point shape::OnlyGetPevPoint()
+{
+	return ShpGfxInfo.PevMovedFrom.back();
+}
+
 Point shape::GetPevPoint()
 {
 	Point Temp;
-	Temp = ShpGfxInfo.PevMovedFrom.back();;
+	Temp = ShpGfxInfo.PevMovedFrom.back();
 	ShpGfxInfo.PevMovedFrom.pop_back();
 	return Temp;
 }
@@ -153,4 +158,27 @@ Point shape::updateFuturePoint()
 	temp = ShpGfxInfo.FutureMovedFrom.back();
 	ShpGfxInfo.FutureMovedFrom.pop_back();
 	return temp;
+}
+
+void shape::setFutureDrawColor(color c)
+{
+	ShpGfxInfo.FutureDrawClr.push_back(c);
+}
+void shape::setFutureFillColor(color c)
+{
+	ShpGfxInfo.FutureFillClr.push_back(c);
+}
+color shape::updateFutureDraw()
+{
+	color Temp;
+	Temp = ShpGfxInfo.FutureDrawClr.back();;
+	ShpGfxInfo.FutureDrawClr.pop_back();
+	return Temp;
+}
+color shape::updateFutureFill()
+{
+	color Temp;
+	Temp = ShpGfxInfo.FutureFillClr.back();;
+	ShpGfxInfo.FutureFillClr.pop_back();
+	return Temp;
 }

@@ -15,6 +15,7 @@ opDRAG::~opDRAG()
 void opDRAG::Undo()
 {
 	shape* temp = pControl->getOperatedOn();
+	temp->setFuturePoint(temp->OnlyGetPevPoint());
 	Point Move = temp->GetPevPoint();
 	temp->Move(Move.x, Move.y);
 }

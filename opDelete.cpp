@@ -23,7 +23,6 @@ void opDelete::Redo()
 	shape* cloned = temp->Clone();	//Dynamically allocated
 	pControl->pushToOperatedOn(cloned);	//Used to store the shape incase of undo operation
 	Gpr->deleteSingleShape(temp);
-	pControl->pushToFutureOperatedOn(temp);
 }
 
 void opDelete::Execute() {
