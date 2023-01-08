@@ -10,6 +10,8 @@ opAddTriangle::opAddTriangle(controller* pCont) :operation(pCont)
 opAddTriangle::~opAddTriangle()
 {}
 
+
+
 //Execute the operation
 void opAddTriangle::Execute()
 {
@@ -36,13 +38,19 @@ void opAddTriangle::Execute()
 	GfxInfo TriangleGfxInfo;
 
 	//get drawing, filling colors and pen width from the interface
-	TriangleGfxInfo.DrawClr = pUI->getCrntDrawColor();
-	TriangleGfxInfo.FillClr = pUI->getCrntFillColor();
+	color Fill, Draw;
+	Fill = pUI->getCrntFillColor();
+	Draw = pUI->getCrntDrawColor();
+	TriangleGfxInfo.DrawClr = Draw;
+	TriangleGfxInfo.FillClr = Fill;
 	TriangleGfxInfo.BorderWdth = pUI->getCrntPenWidth();
 	TriangleGfxInfo.PrevClr = TriangleGfxInfo.DrawClr;
+	TriangleGfxInfo.PevDrawColors.push_back(Draw);
+	TriangleGfxInfo.PevFillColors.push_back(Fill);
 
 
 	TriangleGfxInfo.isFilled = false;	//default is not filled
+	TriangleGfxInfo.FillHistory.push_back(false);
 	TriangleGfxInfo.isSelected = false;	//defualt is not selected
 	TriangleGfxInfo.isSaved = false;	//defualt is not saved
 
@@ -67,6 +75,11 @@ void opAddTriangle::Undo()
 	shape* temp = pControl->getOperatedOn();
 	Graph* Gpr = pControl->getGraph();
 	Gpr->PopFromShapeList(temp);
-	pControl->UpdateDelete(temp);
-	pControl->popOperatedOn();
+}
+
+void opAddTriangle::Redo()
+{
+	Graph* Gpr = pControl->getGraph();
+	shape* temp = pControl->getFutureOperatedOn();
+	Gpr->Addshape(temp);
 }

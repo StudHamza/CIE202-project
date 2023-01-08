@@ -19,17 +19,8 @@ void Circle::Draw(GUI* pUI) const
 
 void Circle::Move(int x, int y) {
 
-
-
-
 	Center.x = x;
 	Center.y = y;
-
-
-
-
-
-
 
 }
 

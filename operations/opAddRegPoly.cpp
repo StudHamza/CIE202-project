@@ -38,13 +38,19 @@ void opAddRegPoly::Execute()
 	GfxInfo RegPolyGfxInfo;
 
 	//get drawing, filling colors and pen width from the interface
-	RegPolyGfxInfo.DrawClr = pUI->getCrntDrawColor();
-	RegPolyGfxInfo.FillClr = pUI->getCrntFillColor();
+	color Fill, Draw;
+	Fill = pUI->getCrntFillColor();
+	Draw = pUI->getCrntDrawColor();
+	RegPolyGfxInfo.DrawClr = Draw;
+	RegPolyGfxInfo.FillClr = Fill;
 	RegPolyGfxInfo.BorderWdth = pUI->getCrntPenWidth();
 	RegPolyGfxInfo.PrevClr = RegPolyGfxInfo.DrawClr;	//sets first color to draw color
+	RegPolyGfxInfo.PevDrawColors.push_back(Draw);
+	RegPolyGfxInfo.PevFillColors.push_back(Fill);
 
 
 	RegPolyGfxInfo.isFilled = false;	//default is not filled
+	RegPolyGfxInfo.FillHistory.push_back(false);
 	RegPolyGfxInfo.isSelected = false;	//defualt is not selected
 	RegPolyGfxInfo.isSaved = false;		//defualt is not save
 
@@ -68,6 +74,11 @@ void opAddRegPoly::Undo()
 	shape* temp = pControl->getOperatedOn();
 	Graph* Gpr = pControl->getGraph();
 	Gpr->PopFromShapeList(temp);
-	pControl->UpdateDelete(temp);
-	pControl->popOperatedOn();
+}
+
+void opAddRegPoly::Redo()
+{
+	Graph* Gpr = pControl->getGraph();
+	shape* temp = pControl->getFutureOperatedOn();
+	Gpr->Addshape(temp);
 }

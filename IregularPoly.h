@@ -9,20 +9,9 @@
 class iregpoly : public shape
 {
 private:
-
-
-
-
-
-
-
-
-
-
-
 	int numsides;
 	int* array_ofxs;
-		int* array_ofys;
+	int* array_ofys;
 	
 public:
 	iregpoly(int, int*,int*, GfxInfo shapeGfxInfo);
@@ -40,7 +29,7 @@ public:
 	virtual void ResizebyDrag(int, int) {}
 
 
-	shape* Clone();
+	shape* Clone() override;
 
 
 	virtual void Move(int x, int y) override {}

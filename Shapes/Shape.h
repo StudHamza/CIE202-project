@@ -32,16 +32,17 @@ public:
 	//Getters
 	color GetCrntColor()const;
 	color getPevDrawClr()const;
+	bool getFillHistory()const;
 
 	//setters
 	void SetFill(bool);		//Sets fill to true or false
 	void setPevDrawColors();	//vector of pev draw colors
 	void setPevFillColors();	//vector of pev fill colors
-	void setPevFillBool();
 
 	//Hybrid Getters and setters
 	color UpdatePevDrawClr();
 	color UpdatePevFillClr();
+	void UpdatePevFillHistory();
 
 
 	//Selecting//
@@ -75,4 +76,23 @@ public:
 	virtual void getYlimits(int&,int&) = 0; // used in multi move
 	virtual void relative_move(int x1,int y1 ,int x2,int y2) = 0;       //used in multimove
 
+	///////////////////////Undo and Redo Functions///////////////////
+	//Resizing
+	float getFactor()const;
+	void setFactor(float);
+	void popFactor();
+
+	//moving
+	void setPevPoint(Point);
+	Point GetPevPoint();		//updates pev point
+	void setFuturePoint(Point);
+	Point updateFuturePoint();
+	Point OnlyGetPevPoint();
+
+
+	//color future
+	void setFutureDrawColor(color);
+	void setFutureFillColor(color);
+	color updateFutureDraw();
+	color updateFutureFill();
 };

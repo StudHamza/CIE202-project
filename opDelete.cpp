@@ -8,6 +8,22 @@ opDelete::opDelete(controller* pcont) :operation(pcont)
 {}
 opDelete::~opDelete()
 {}
+void opDelete::Undo()
+{
+	shape* temp = pControl->getOperatedOn();
+	Graph* Gpr = pControl->getGraph();
+	Gpr->Addshape(temp);
+	pControl->pushToFutureOperatedOn(temp);
+}
+
+void opDelete::Redo()
+{
+	shape* temp = pControl->getFutureOperatedOn();
+	Graph* Gpr = pControl->getGraph();
+	shape* cloned = temp->Clone();	//Dynamically allocated
+	pControl->pushToOperatedOn(cloned);	//Used to store the shape incase of undo operation
+	Gpr->deleteSingleShape(temp);
+}
 
 void opDelete::Execute() {
 
@@ -20,7 +36,8 @@ void opDelete::Execute() {
 
 
 	if (selectedshape) {
-
+		shape* cloned = selectedshape->Clone();	//Dynamically allocated
+		pControl->pushToOperatedOn(cloned);	//Used to store the shape incase of undo operation
 		ptG->delShape();
 
 		pUI->PrintMessage("selected Shape(s) was deleted succesfully");
