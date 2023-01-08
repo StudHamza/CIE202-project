@@ -27,11 +27,19 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 	int BorderWdth;	//Width of shape borders
 	bool isSelected;	//true if the shape is selected.
 	bool isSaved;
+	//Undo storage
 	vector<color>PevDrawColors;
 	vector<color>PevFillColors;
 	vector<bool>FillHistory;
 	vector<float>ResizeFactors;
 	vector<Point>PevMovedFrom;
+	//redo storage
+	vector<float>FutureResize;
+	vector<Point>FutureMovedFrom;
+	vector<color>FutureDrawClr;
+	vector<color>FutureFillClr;
+	vector<bool>FutureFillHistory;
+
 };
 
 

@@ -58,7 +58,9 @@ public:
 
 	/////////////////             Special cases                   ///////////////////////////////////////////////
 	void DeleteTimeLine();	//Some times op is saved but not revesable since im following DRY: ex Fill/DrawColor
-	//////////////////////////////////////////////////////////
+	
+	void clearFuture();
+
 
 	void Run();
 	

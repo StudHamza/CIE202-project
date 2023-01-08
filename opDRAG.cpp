@@ -16,7 +16,15 @@ void opDRAG::Undo()
 {
 	shape* temp = pControl->getOperatedOn();
 	Point Move = temp->GetPevPoint();
-	cout << Move.x << " " << Move.y<<"Im in undo drag"<<endl;
+	temp->Move(Move.x, Move.y);
+}
+
+
+
+void opDRAG::Redo()
+{
+	shape* temp = pControl->getFutureOperatedOn();
+	Point Move = temp->updateFuturePoint();
 	temp->Move(Move.x, Move.y);
 }
 
@@ -64,6 +72,7 @@ void opDRAG::Execute() {
 
 					if (pUI->GetButtonState(LEFT_BUTTON, xN, yN) == BUTTON_UP) {
 						pUI->PrintMessage("shape has been dragged succesfully::to drag another shape hold  it::to get out of dragging mode click on an empty space");
+						clickedshape->setFuturePoint({xN,yN});
 						break;
 					}
 

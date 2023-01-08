@@ -83,6 +83,8 @@ public:
 
 	//moving
 	void setPevPoint(Point);
-	Point GetPevPoint()const;
+	Point GetPevPoint();		//updates pev point
+	void setFuturePoint(Point);
+	Point updateFuturePoint();
 
 };

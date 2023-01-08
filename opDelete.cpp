@@ -18,7 +18,12 @@ void opDelete::Undo()
 
 void opDelete::Redo()
 {
-
+	shape* temp = pControl->getFutureOperatedOn();
+	Graph* Gpr = pControl->getGraph();
+	shape* cloned = temp->Clone();	//Dynamically allocated
+	pControl->pushToOperatedOn(cloned);	//Used to store the shape incase of undo operation
+	Gpr->deleteSingleShape(temp);
+	pControl->pushToFutureOperatedOn(temp);
 }
 
 void opDelete::Execute() {

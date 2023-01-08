@@ -235,6 +235,17 @@ operation* controller::UpdateFuture()
 	Present.push_back(op); //Add
 	return op;
 }
+
+void controller::clearFuture()
+{
+	for (int i = 0; i < future.size(); i++)
+	{
+		delete future[i];
+	}
+	FutureOperatedOn.clear();
+	future.shrink_to_fit();
+	FutureOperatedOn.shrink_to_fit();
+}
 /////////////-------------------------------------------------------------------------------------------
 
 
@@ -246,6 +257,7 @@ operation* controller::UpdateFuture()
 //==================================================================================//
 void controller::Run()
 {
+	char Clear = 'F';
 	operationType OpType;
 	do
 	{
@@ -259,6 +271,7 @@ void controller::Run()
 		if (pOpr)
 		{
 			char del = 'y';	//Create a char for not deleting/deallocating the pOpr 
+
 			for (auto& Op : revertable)
 			{
 				if (OpType == Op)
