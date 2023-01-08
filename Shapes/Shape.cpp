@@ -31,7 +31,7 @@ color shape::GetCrntColor() const
 }
 color shape::getPevDrawClr()const
 {
-	return ShpGfxInfo.PevFillColors.back();
+	return ShpGfxInfo.PevDrawColors.back();
 }
 void shape::SetFill(bool isFilled)
 {

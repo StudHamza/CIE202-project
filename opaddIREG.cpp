@@ -46,9 +46,14 @@ void opaddIREG::Execute() {
 	GfxInfo IREGpolGfxInfo;
 
 	//get drawing, filling colors and pen width from the interface
-	IREGpolGfxInfo.DrawClr = pUI->getCrntDrawColor(); ///////////////////////////////////////////////////////////////////////////////////////////
-	IREGpolGfxInfo.FillClr = pUI->getCrntFillColor();
+	color Draw, Fill;
+	Draw = pUI->getCrntDrawColor();
+	Fill = pUI->getCrntFillColor();
+	IREGpolGfxInfo.DrawClr = Draw;
+	IREGpolGfxInfo.FillClr = Fill;
 	IREGpolGfxInfo.BorderWdth = pUI->getCrntPenWidth();
+	IREGpolGfxInfo.PevDrawColors.push_back(Draw);
+	IREGpolGfxInfo.PevFillColors.push_back(Fill);
 
 
 	IREGpolGfxInfo.isFilled = false;	//default is not filled

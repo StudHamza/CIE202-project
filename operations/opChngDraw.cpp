@@ -13,7 +13,7 @@ void opChngDraw::Undo()
 {
 	GUI* pUI = pControl->GetUI();
 	shape *shp=pControl->getOperatedOn();	//Get shape
-	shp->ChngDrawClr(shp->UpdatePevFillClr());	//Change color
+	shp->ChngDrawClr(shp->UpdatePevDrawClr());	//Change color
 
 	pControl->popOperatedOn();
 

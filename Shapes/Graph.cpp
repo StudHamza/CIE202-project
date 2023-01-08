@@ -530,8 +530,6 @@ void Graph::load(ifstream& file) {
 			isFilled = false;			//is not filled
 		}
 
-
-
 		//Constructing LineGfxInfo
 		//Creating the line
 		GfxInfo LineGfxInfo;
@@ -630,12 +628,7 @@ void Graph::delShape() {
 			
 			i = -1;
 			
-			
-			
-		
-			
-			
-			
+
 		}
 		
 		
@@ -648,7 +641,6 @@ void Graph::cut()
 {
 	shape* Cutted = selectedShape->Clone();
 
-	
 	clipboard.clear();
 	clipboard.push_back(Cutted);
 	delShape();
