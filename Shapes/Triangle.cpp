@@ -139,7 +139,7 @@ void Triangle::Move(int x, int y) {
 
 
 void Triangle::Resize(double scaling_factor) {
-	Point  midpoint1; //midpoint for one of the sides
+	/*Point  midpoint1;*/ //midpoint for one of the sides
 
 
 
@@ -169,11 +169,74 @@ void Triangle::Resize(double scaling_factor) {
 
 
 
-	midpoint1.x = (F.x + S.x) / 2;
-	midpoint1.y = (F.y + S.y) / 2;
+	//midpoint1.x = (F.x + S.x) / 2;
+	//midpoint1.y = (F.y + S.y) / 2;
 
 }
 
+
+
+ void Triangle:: ResizebyDrag(int x, int y) {
+	 Point midpoint1;
+
+	 int dx1;
+	 int dx2;
+	 int dy1;
+	 int dy2;
+	 int dx3;
+	 int dy3;
+
+	 int dTx;
+	 int dTy;
+
+	 dx1 = F.x - centeroid.x;
+	 dy1 = F.y - centeroid.y;
+	 dx2 = S.x - centeroid.x;
+	 dy2 = S.y - centeroid.y;
+	 dx3 = T.x - centeroid.x;
+	 dy3 = T.y - centeroid.y;
+
+	 int dxa =x + centeroid.x;
+	 int dya =y+ centeroid.y;
+	 int dxb = x + centeroid.x;
+	 int dyb = y + centeroid.y;
+	 int dxc = x + centeroid.x;
+	 int dyc = y + centeroid.y;
+
+	 int R1 = abs(dx1 / dxa);
+	 int R2 = abs(dy1 / dya);
+	 int R3 = abs(dx2 / dxb);
+	 int R4 = abs(dy2 / dxb);
+	 int R5 = abs(dx3 / dxc);
+	 int R6 = abs(dy3 / dxc);
+
+
+
+
+		 
+
+
+
+		
+
+
+	 F.x = centeroid.x + (dx1*R1);
+	 F.y = centeroid.y + (dy1 *R2);
+	 S.x = centeroid.x + (dx2 *R3);
+	 S.y = centeroid.y + (dy2 *R4);
+	 T.x = centeroid.x + (dx3 *R5);
+	 T.y = centeroid.y + (dy3 *R6);
+
+
+
+
+	 midpoint1.x = (F.x + S.x) / 2;
+	 midpoint1.y = (F.y + S.y) / 2;
+
+
+
+
+}
 
 
 //////////////////////multimove functions

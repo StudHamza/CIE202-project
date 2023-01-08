@@ -24,6 +24,8 @@
 #include"opDRAG.h"
 #include"opRESIZE.h"
 #include"opaddIREG.h"
+#include"opResizebyDrag.h"
+#include "opResizebyDrag.h"
 //Constructor
 controller::controller()
 {
@@ -98,7 +100,11 @@ operation* controller::createOperation(operationType OpType)
 
 	case DRAG:
 		pOp = new opDRAG(this);
+		
 		break;
+	case Resize_by_DRAG:
+		pOp = new opResizebyDrag(this);
+			break;
 	case RESIZE:
 		pOp = new opRESIZE(this);
 		break;

@@ -13,6 +13,12 @@ struct Point	//To be used for shapes points
 	int x, y;
 };
 
+
+
+
+
+
+
 struct Box		//a two cordered rectangle for the hit box
 {
 	Point P1, P2;
@@ -35,10 +41,20 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 };
 
 
+		/// <summary>
+		/// a 4*4 grid
+		/// </summary>
 
 
 class GUI
+
 {
+
+
+
+		                          
+
+
 	enum GUI_MODE	//Graphical user interface mode
 	{
 		MODE_DRAW,	//Drawing mode (startup mode)
@@ -78,6 +94,7 @@ class GUI
 	{
 		ICON_SELECT,
 		ICON_DRAG,
+		ICON_Resize_by_Drag,
 		ICON_DELETE,
 		ICON_COPY,
 		ICON_PASTE,
@@ -164,8 +181,15 @@ public:
 	void DrawOval(Point, Point, GfxInfo)const;
 	void DrawLine(Point, Point,GfxInfo)const;	//Draw a line
 	void DrawIREG(int n, int*, int*, GfxInfo IREGPolGfxInfo) const;
-		
+	int getheight() {
+		return pWind->GetHeight();
 
+	}
+		
+	int getwidth() {
+		return pWind->GetWidth();
+
+	}
 	///Make similar functions for drawing all other shapes.
 
 	void PrintMessage(string msg) const;	//Print a message on Status bar
