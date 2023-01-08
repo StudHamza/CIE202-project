@@ -104,15 +104,23 @@ int shape::counter = 0;
 
 
 //////////////////////////////////Redo and undo
-float shape::getFactor()const
+float shape::getFactor()const		//Gets last resized with factor
 {
 	return ShpGfxInfo.ResizeFactors.back();
 }
-void shape::setFactor(float factor) {
+void shape::setFactor(float factor) {		//Sets factor of resize
 	ShpGfxInfo.ResizeFactors.push_back(factor);
 	cout << factor << endl;
 }
-void shape::popFactor()
+void shape::popFactor()		//Removes last resize factor from history
 {
 	ShpGfxInfo.ResizeFactors.pop_back();
+}
+
+void shape::setPevPoint(Point p) {
+	ShpGfxInfo.PevMovedFrom.push_back(p);
+}
+Point shape::GetPevPoint()const
+{
+	return ShpGfxInfo.PevMovedFrom.back();
 }

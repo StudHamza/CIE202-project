@@ -12,6 +12,13 @@ opDRAG::opDRAG(controller* pcont) :operation(pcont) {
 opDRAG::~opDRAG()
 {}
 
+void opDRAG::Undo()
+{
+	shape* temp = pControl->getOperatedOn();
+	Point Move = temp->GetPevPoint();
+	temp->Move(Move.x, Move.y);
+	pControl->UpdateDelete(temp);
+}
 
 void opDRAG::Execute() {
 
@@ -28,19 +35,7 @@ void opDRAG::Execute() {
 	int yN = 0;
 	bool flag = false;
 
-
-
-
-
 	/*	pUI->GetPointClicked(x, y);*/
-
-
-
-
-
-
-
-
 
 	pUI->PrintMessage("hold on to a shape to drag it::to get out of dragging mode click on an empty space");
 
@@ -53,6 +48,8 @@ void opDRAG::Execute() {
 		if (pUI->GetButtonState(LEFT_BUTTON, xN, yN) == BUTTON_DOWN) {
 
 			clickedshape = ptG->Getshape(xN, yN);
+			Point P_intial={xN,yN};
+			clickedshape->setPevPoint(P_intial);
 			if (clickedshape)
 				while (!flag)
 
@@ -68,6 +65,7 @@ void opDRAG::Execute() {
 
 					if (pUI->GetButtonState(LEFT_BUTTON, xN, yN) == BUTTON_UP) {
 						pUI->PrintMessage("shape has been dragged succesfully::to drag another shape hold  it::to get out of dragging mode click on an empty space");
+						pControl->pushToOperatedOn(clickedshape);
 						break;
 					}
 
