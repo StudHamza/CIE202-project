@@ -115,6 +115,45 @@ void Oval::Resize(double scaling_factor) {
  }
 
 
+ void Oval:: ResizebyDrag(int x, int y) {
+//
+//int dx1;
+//int dx2;
+//int dy1;
+//int dy2;
+//
+//int dx1a = abs(x - Center.x)/2;
+//int dy1a = y - Center.y;
+//
+//radiusX = 200+abs(Radius1.x - Radius2.x) / 2;
+//
+//radiusY = abs(Radius1.y - Radius2.y) / 2;
+//
+//int Rx = radiusX / dx1a;
+//
+//dx1 = Radius1.x - Center.x;
+//dy1 = Radius1.y - Center.y;
+//dx2 = Radius2.x - Center.x;
+//dy2 = Radius2.y - Center.y;
+//
+//
+//radiusX = abs(P1.x - P2.x) / 2;
+//
+//
+//
+//Radius1.x = Center.x + (dx1 *Rx);
+//Radius1.y = Center.y + (dy1 *Rx);
+//Radius2.x = Center.x + (dx2 *Rx);
+//Radius2.y = Center.y + (dy2 *Rx);
+//
+
+
+
+
+ 
+ 
+ }
+
 
 
 

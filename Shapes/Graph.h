@@ -66,7 +66,7 @@ public:
 	/// <summary>
 	/// scramble and multimove functions
 	/// </summary>
-	void random_move();      //used in scramble;
+	void random_move(Point Grid[][4]);      //used in scramble;
 	void multimove(int x1, int y1, int x2, int y2);       //used in multimove
 
 

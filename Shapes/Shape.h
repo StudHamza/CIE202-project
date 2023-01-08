@@ -69,6 +69,7 @@ public:
 
 
 	//virtual void Rotate() = 0;	//Rotate the shape
+	virtual void ResizebyDrag(int, int)  = 0;	//Resize the shape
 	virtual void Resize(double sacling_factor) = 0;	//Resize the shape
 	virtual void Move(int x, int y) = 0;				//Move the shape
 	virtual void getXlimits(int&,int&) = 0; // used in multi move

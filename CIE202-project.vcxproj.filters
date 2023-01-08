@@ -212,6 +212,9 @@
     <ClCompile Include="operations\opRedo.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
+
+    <ClCompile Include="opResizebyDrag.cpp" />
+
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -380,9 +383,13 @@
     <ClInclude Include="IregularPoly.h">
       <Filter>Shapes&amp;Graph</Filter>
     </ClInclude>
+
     <ClInclude Include="operations\opRedo.h">
       <Filter>Operations</Filter>
     </ClInclude>
+
+    <ClInclude Include="opResizebyDrag.h" />
+
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">

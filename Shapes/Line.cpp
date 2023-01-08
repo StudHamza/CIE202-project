@@ -145,6 +145,31 @@ void Line::Resize(double scaling_factor) {
 }
 
 
+ void Line:: ResizebyDrag(int x, int y) {
+
+	 int dx1;
+	 int dx2;
+	 int dy1;
+	 int dy2;
+
+	 dx1 = x - midpoint.x;
+	 dy1 = y - midpoint.y;
+	 dx2 = x - midpoint.x;
+	 dy2 = y - midpoint.y;
+
+	 Start.x = midpoint.x + (dx1 );
+	 Start.y = midpoint.y + (dy1 );
+	 End.x = midpoint.x - (dx2 );
+	 End.y = midpoint.y - (dy2 );
+
+
+
+
+
+
+
+}
+
 
 
 

@@ -138,16 +138,51 @@ shape* Graph::Getshape(int x, int y) const
 	return nullptr;
 }
 
-void Graph::random_move() {
+void Graph::random_move(Point Grid[][4]) {
+	
+
+	int x;
+	int y;
+
 	srand(time(0));
 	for (unsigned i = 0; i < shapesList.size(); i++) {
-		int x = rand() % (1130) + 100;
-		int y = rand() % (501) + 95;
+	
+
+	x = rand() % (3 - 0 + 1) ;
+	y = rand() % (3 - 0 + 1) ;
+
+	if (Grid[x][y].x !=6666) {                                // an algorithm to prevent re-occurences of the same point(overlapping)
 
 
-		shapesList[i]->Move(x, y);
 
+
+		shape* shape = shapesList[i];
+
+
+		                                                        
+		shape->Move(Grid[x][y].x, Grid[x][y].y);
+		
+		Grid[x][y].x = 6666;
+		cout << x << "   " << y << "   " << endl;
 	}
+	else {
+		i--;
+	}
+	
+	
+
+
+	/*for (unsigned i = 0; i < shapesList.size(); i++) {
+			int x = rand() % (1130) + 100;
+			int y = rand() % (501) + 95;
+
+
+			shapesList[i]->Move(x, y);
+
+		}*/
+	}
+
+	cout << "finiiiiiiiiiiiiiiiii" << endl;
 }
 
 string Graph::SelectShape(Point P, color pevClr,shape *selected)

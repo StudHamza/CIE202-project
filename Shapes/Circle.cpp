@@ -95,6 +95,20 @@ void Circle::Resize(double scaling_factor) {
 
 }
 
+ void Circle:: ResizebyDrag(int x, int y) {
+
+	 int R;
+	 
+	double d = Radius = sqrt(pow((Center.x - x), 2) + pow((Center.y - y), 2));
+	R = d / Radius;
+
+
+	Radius = Radius * R;
+
+
+
+}
+
 
 
 //multimove functions
