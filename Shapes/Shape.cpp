@@ -16,7 +16,9 @@ bool shape::IsSelected() const
 {
 	return ShpGfxInfo.isSelected;
 }
-
+int shape::getId() {
+	return ID;
+}
 void shape::ChngDrawClr(color Dclr)
 {	ShpGfxInfo.DrawClr = Dclr; }
 

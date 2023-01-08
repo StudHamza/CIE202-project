@@ -192,6 +192,12 @@
     <ClCompile Include="operations\opUndo.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
+
+    <ClCompile Include="opPushBack.cpp" />
+    <ClCompile Include="opDuplicate.cpp" />
+    <ClCompile Include="opMatch.cpp" />
+    <ClCompile Include="opMultiSelect.cpp" />
+
     <ClCompile Include="opScramble.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
@@ -216,6 +222,7 @@
     <ClCompile Include="opResizebyDrag.cpp" />
 
     <ClCompile Include="opHide.cpp" />
+
 
   </ItemGroup>
   <ItemGroup>
@@ -386,6 +393,15 @@
       <Filter>Shapes&amp;Graph</Filter>
     </ClInclude>
 
+    <ClInclude Include="..\..\Project Startup Code\operations\opPushShapeBack.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="opPushBack.h" />
+    <ClInclude Include="opDuplicate.h" />
+    <ClInclude Include="opMatch.h" />
+    <ClInclude Include="opMultiSelect.h" />
+
+
     <ClInclude Include="operations\opRedo.h">
       <Filter>Operations</Filter>
     </ClInclude>
@@ -393,6 +409,7 @@
     <ClInclude Include="opResizebyDrag.h" />
 
     <ClInclude Include="opHide.h" />
+
 
 
 

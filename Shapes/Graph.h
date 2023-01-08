@@ -50,6 +50,9 @@ public:
 	void delShape();         //delete and multi-delete
 	void deleteSingleShape(shape*);
 	void cut();
+	void pushShapeBack();
+	void Duplicate();
+	string MultiSelect(Point, color, shape*);
 
 
 
