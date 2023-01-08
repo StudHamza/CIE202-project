@@ -43,7 +43,11 @@ string iregpoly::GetInfo(char s)const
 
 
 void iregpoly::Shift(int dy, int dx) {
-	// Not done
+	for (int i = 0; i < numsides; i++)
+	{
+		array_ofxs[i]+dx;
+		array_ofys[i]+dy;
+	}
 }
 
 

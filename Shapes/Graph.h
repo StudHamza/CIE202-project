@@ -48,6 +48,7 @@ public:
 	bool getClipBoard() const;
 	void Paste();
 	void delShape();         //delete and multi-delete
+	void deleteSingleShape(shape*);
 	void cut();
 
 

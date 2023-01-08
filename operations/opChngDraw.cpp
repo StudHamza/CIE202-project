@@ -13,12 +13,15 @@ void opChngDraw::Undo()
 {
 	GUI* pUI = pControl->GetUI();
 	shape *shp=pControl->getOperatedOn();	//Get shape
-	shp->ChngDrawClr(shp->UpdatePevFillClr());	//Change color
-
-	pControl->popOperatedOn();
-
+	shp->ChngDrawClr(shp->UpdatePevDrawClr());	//Change color
 }
 
+
+
+void opChngDraw::Redo()
+{
+	cout << "not complete";
+}
 
 void opChngDraw::Execute()
 {
@@ -36,9 +39,5 @@ void opChngDraw::Execute()
 				fshape->ChngDrawClr(pUI->getCrntDrawColor());
 			}
 		}
-	}
-	else
-	{
-		pControl->DeleteTimeLine();
 	}
 }

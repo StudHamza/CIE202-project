@@ -32,13 +32,19 @@ void opAddOval::Execute()
 	GfxInfo OvalGfxInfo;
 
 	//get drawing, filling colors and pen width from the interface
-	OvalGfxInfo.DrawClr = pUI->getCrntDrawColor();
-	OvalGfxInfo.FillClr = pUI->getCrntFillColor();
+	color Fill, Draw;
+	Fill = pUI->getCrntFillColor();
+	Draw = pUI->getCrntDrawColor();
+	OvalGfxInfo.DrawClr =Draw;
+	OvalGfxInfo.FillClr = Fill;
 	OvalGfxInfo.BorderWdth = pUI->getCrntPenWidth();
 	OvalGfxInfo.PrevClr = OvalGfxInfo.DrawClr;	//sets first color to draw color
+	OvalGfxInfo.PevDrawColors.push_back(Draw);
+	OvalGfxInfo.PevFillColors.push_back(Fill);
 
 
 	OvalGfxInfo.isFilled = false;	//default is not filled
+	OvalGfxInfo.FillHistory.push_back(false);
 	OvalGfxInfo.isSelected = false;	//defualt is not selected
 	OvalGfxInfo.isSaved = false;		//defualt is not save
 
@@ -62,6 +68,11 @@ void opAddOval::Undo()
 	shape* temp = pControl->getOperatedOn();
 	Graph* Gpr = pControl->getGraph();
 	Gpr->PopFromShapeList(temp);
-	pControl->UpdateDelete(temp);
-	pControl->popOperatedOn();
+}
+
+void opAddOval::Redo()
+{
+	Graph* Gpr = pControl->getGraph();
+	shape* temp = pControl->getFutureOperatedOn();
+	Gpr->Addshape(temp);
 }

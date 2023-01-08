@@ -20,7 +20,7 @@ public:
 	virtual void Save(ofstream& outfile)const override;
 	virtual void Move(int x, int y) override;
 
-	shape* Clone();
+	shape* Clone() override;
 
 
 	virtual void Resize(double sacling_factor) override;

@@ -591,8 +591,6 @@ void Graph::load(ifstream& file) {
 			isFilled = false;			//is not filled
 		}
 
-
-
 		//Constructing LineGfxInfo
 		//Creating the line
 		GfxInfo LineGfxInfo;
@@ -691,12 +689,7 @@ void Graph::delShape() {
 			
 			i = -1;
 			
-			
-			
-		
-			
-			
-			
+
 		}
 		
 		
@@ -705,14 +698,37 @@ void Graph::delShape() {
 	
 }
 
+
+
+void Graph::deleteSingleShape(shape* shp)
+
+{
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList.size() > 0 && shapesList[i] == shp) {
+			delete shapesList[i];
+			shapesList[i] = nullptr;
+
+			shapesList.erase(shapesList.begin() + i);
+
+			i = -1;
+			break;
+		}
+	}
+
+}
+
 void Graph::cut()
 {
-	shape* Cutted = selectedShape->Clone();
+	for (auto& cutted : shapesList)
+	{
+		if (cutted->IsSelected())
+		{
+			shape* cuttedd  = selectedShape->Clone();
+			clipboard.push_back(cuttedd);
+			delShape();
+		}
+	}
 
-	
-	clipboard.clear();
-	clipboard.push_back(Cutted);
-	delShape();
 	
 	UnSelectAll();
 }

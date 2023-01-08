@@ -200,6 +200,7 @@
     <ClCompile Include="operations\opExit.cpp" />
     <ClCompile Include="operations\opLoad.cpp" />
     <ClCompile Include="operations\opPaste.cpp" />
+    <ClCompile Include="operations\opRedo.cpp" />
     <ClCompile Include="operations\opSelect.cpp" />
     <ClCompile Include="operations\opSave.cpp" />
     <ClCompile Include="operations\opUndo.cpp" />
@@ -262,6 +263,7 @@
     <ClInclude Include="operations\opExit.h" />
     <ClInclude Include="operations\opLoad.h" />
     <ClInclude Include="operations\opPaste.h" />
+    <ClInclude Include="operations\opRedo.h" />
     <ClInclude Include="operations\opSave.h" />
     <ClInclude Include="operations\opSelect.h" />
     <ClInclude Include="operations\opUndo.h" />

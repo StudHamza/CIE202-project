@@ -7,5 +7,5 @@ public:
 	virtual ~opChngDraw();
 	virtual void Execute();
 	virtual void Undo()override;
-
+	virtual void Redo()override;
 };

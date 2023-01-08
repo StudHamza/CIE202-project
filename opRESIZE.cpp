@@ -4,12 +4,23 @@
 
 
 
-opRESIZE::opRESIZE(controller* pcont) :operation(pcont) {
+opRESIZE::opRESIZE(controller* pcont) :operation(pcont) {}
 
-}
 
 opRESIZE::~opRESIZE()
 {}
+
+void opRESIZE::Undo()
+{
+	float scaleFactor=1;
+	shape* undoThis=pControl->getOperatedOn();	//get last shape
+	scaleFactor = (1/(undoThis->getFactor()));	// Get last factor
+	undoThis->Resize(scaleFactor);
+
+	undoThis->popFactor();		//Remove last factor from history
+}
+
+
 
 void opRESIZE::Execute() {
 
@@ -20,9 +31,11 @@ void opRESIZE::Execute() {
 
 	if (selectedshsape) {
 
+		pControl->pushToOperatedOn(selectedshsape);
+
 		string factstr;
 
-		double factor;
+		double factor=1;
 
 		pUI->PrintMessage("RESIZING 1 shape: choose a RESIZING factor---->2::4::0.5::0.25");
 
@@ -37,11 +50,7 @@ void opRESIZE::Execute() {
 		else if (factstr == "0.25")
 			factor = 0.25;
 
-
-
-
-
-
+		selectedshsape->setFactor(factor);
 		selectedshsape->Resize(factor);
 		selectedshsape->UnSelect();
 		ptG->set_tonull();       //set selectedshape pointer to null ptr(unselect was not enoug)
@@ -49,8 +58,5 @@ void opRESIZE::Execute() {
 	}
 	else {
 		pUI->PrintMessage("no shape is selecetd to be resized");
-
-
-
 	}
 }
