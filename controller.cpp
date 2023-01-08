@@ -26,6 +26,7 @@
 #include"opaddIREG.h"
 #include"opResizebyDrag.h"
 #include "opResizebyDrag.h"
+#include "opHide.h"
 //Constructor
 controller::controller()
 {
@@ -106,7 +107,8 @@ operation* controller::createOperation(operationType OpType)
 		pOp = new opResizebyDrag(this);
 			break;
 	case RESIZE:
-		pOp = new opRESIZE(this);
+		/*pOp = new opRESIZE(this);*/
+		pOp = new opHide(this);
 		break;
 	case MULTIMOVE:
 		pOp = new opMultiMove(this);

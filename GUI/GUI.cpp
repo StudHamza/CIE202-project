@@ -214,6 +214,13 @@ void GUI::CreateStatusBar() const
 	pWind->SetPen(StatusBarColor, 1);
 	pWind->SetBrush(StatusBarColor);
 	pWind->DrawRectangle(0, height - StatusBarHeight, width, height);
+
+	
+	
+
+
+
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 void GUI::ClearStatusBar() const
@@ -603,6 +610,7 @@ void GUI::FrameImage(image stick,int x,int y)
 
 void GUI::DrawImage(string Image, Point P1, Point P2)
 {
+	
 	pWind->DrawImage(Image, P1.x, P1.y, P2.x, P2.y);
 }
 void GUI::DrawImage(string Image, int x1,int x2,int y1, int y2)

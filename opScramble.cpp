@@ -22,10 +22,8 @@ void opScramble::Execute() {
 Graph* ptG = pControl->getGraph();
 
 
-	string Fhide;
+	string Fhide="y";
 
-	pUI->PrintMessage("do you want to hide the shapes after scrambling them");
-	Fhide=pUI->GetSrting();
 	
 	
 	

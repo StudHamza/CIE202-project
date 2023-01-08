@@ -126,10 +126,21 @@ void Graph::Draw(GUI* pUI) const
 
 
 void Graph::Draw_cards(GUI* pUI) const {
+	
 	for (int i = 0; i < shapesList.size(); i++) {
+		cout << "hide2" << endl;
+
+		Point p1;
+		Point p2;
+
+		p1.x = 300;
+		p1.y = 200;
+		p2.x = 400;
+		p2.y = 300;
 
 
-		pUI->DrawImage(  "images\\MenuIcons\\hide_card.jpg" , 5, 5, 10, 10);
+		pUI->DrawImage("images\\MenuIcons\\hide_card.jpg" , p1,p2);
+		Draw(pUI);
 
 
 
