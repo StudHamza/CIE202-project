@@ -14,10 +14,14 @@ void opChngFill::Undo()
 {
 	GUI* pUI = pControl->GetUI();
 	shape* shp = pControl->getOperatedOn();	//Get shape
-	shp->ChngFillClr(shp->UpdatePevFillClr());	//Change color
-
-	pControl->popOperatedOn();
-
+	shp->UpdatePevFillHistory();		//Updates the sequence of fill booleans
+	if (shp->getFillHistory())
+	{
+		shp->ChngFillClr(shp->UpdatePevFillClr());	//Change color
+	}
+	else {
+		shp->ChngFillClr(WHITE);
+	}
 }
 
 

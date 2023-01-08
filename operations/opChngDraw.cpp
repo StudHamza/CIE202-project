@@ -14,9 +14,6 @@ void opChngDraw::Undo()
 	GUI* pUI = pControl->GetUI();
 	shape *shp=pControl->getOperatedOn();	//Get shape
 	shp->ChngDrawClr(shp->UpdatePevDrawClr());	//Change color
-
-	pControl->popOperatedOn();
-
 }
 
 
@@ -36,9 +33,5 @@ void opChngDraw::Execute()
 				fshape->ChngDrawClr(pUI->getCrntDrawColor());
 			}
 		}
-	}
-	else
-	{
-		pControl->DeleteTimeLine();
 	}
 }

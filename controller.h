@@ -13,7 +13,7 @@ class controller
 	Graph* pGraph;	//pointe to the grapg
 	GUI* pGUI;	//Pointer to UI class
 	int revertable[11]={ DRAW_LINE,DRAW_RECT,DRAW_TRI,DRAW_CIRC,DRAW_OVAL,DRAW_REGPOLY,CHNG_DRAW_CLR,
-		CHNG_FILL_CLR,MOVE,RESIZE,DEL};
+		CHNG_FILL_CLR,RESIZE,DEL,DRAG};
 	vector<operation*>Present;	
 	vector<operation*>future;
 	vector<shape*>OperatedOn;

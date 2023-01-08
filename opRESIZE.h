@@ -10,8 +10,7 @@ public:
 	virtual ~opRESIZE();
 
 	virtual void Execute() override;
-
-
+	virtual void Undo()override;
 
 };
 
