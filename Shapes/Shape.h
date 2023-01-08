@@ -74,4 +74,9 @@ public:
 	virtual void getYlimits(int&,int&) = 0; // used in multi move
 	virtual void relative_move(int x1,int y1 ,int x2,int y2) = 0;       //used in multimove
 
+	//Resize getter and setter
+	float getFactor()const;
+	void setFactor(float);
+	void popFactor();
+
 };

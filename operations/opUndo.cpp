@@ -20,6 +20,7 @@ void opUndo::Execute()
 		cout << "Excuting op: " << endl;
 		UnOp=pControl->UpdateTimeLine();	//remove prev op and adds it to future
 		UnOp->Undo();
+		pControl->popOperatedOn();
 	}
 
 }

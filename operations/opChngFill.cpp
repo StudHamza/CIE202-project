@@ -15,9 +15,6 @@ void opChngFill::Undo()
 	GUI* pUI = pControl->GetUI();
 	shape* shp = pControl->getOperatedOn();	//Get shape
 	shp->ChngFillClr(shp->UpdatePevFillClr());	//Change color
-
-	pControl->popOperatedOn();
-
 }
 
 

@@ -102,3 +102,17 @@ void shape::stickImage(image stick)
 
 int shape::counter = 0;
 
+
+//////////////////////////////////Redo and undo
+float shape::getFactor()const
+{
+	return ShpGfxInfo.ResizeFactors.back();
+}
+void shape::setFactor(float factor) {
+	ShpGfxInfo.ResizeFactors.push_back(factor);
+	cout << factor << endl;
+}
+void shape::popFactor()
+{
+	ShpGfxInfo.ResizeFactors.pop_back();
+}
