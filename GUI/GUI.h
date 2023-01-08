@@ -13,6 +13,12 @@ struct Point	//To be used for shapes points
 	int x, y;
 };
 
+
+
+
+
+
+
 struct Box		//a two cordered rectangle for the hit box
 {
 	Point P1, P2;
@@ -27,15 +33,36 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 	int BorderWdth;	//Width of shape borders
 	bool isSelected;	//true if the shape is selected.
 	bool isSaved;
+	//Undo storage
 	vector<color>PevDrawColors;
 	vector<color>PevFillColors;
+	vector<bool>FillHistory;
+	vector<float>ResizeFactors;
+	vector<Point>PevMovedFrom;
+	//redo storage
+	vector<float>FutureResize;
+	vector<Point>FutureMovedFrom;
+	vector<color>FutureDrawClr;
+	vector<color>FutureFillClr;
+	vector<bool>FutureFillHistory;
+
 };
 
 
+/// <summary>
+/// a 4*4 grid
+/// </summary>
 
 
 class GUI
+
 {
+
+
+
+
+
+
 	enum GUI_MODE	//Graphical user interface mode
 	{
 		MODE_DRAW,	//Drawing mode (startup mode)
@@ -52,15 +79,20 @@ class GUI
 		ICON_OVAL,
 		ICON_TRI,
 		ICON_REGPOLY, //Regular polygon
+		ICON_IREGPOLY,
 		//TODO: Add more icons names here
-		
+
 		ICON_PEN,
 		ICON_FILL,
 
 		ICON_COLOR,
 		ICON_UNDO,
 		ICON_REDO,
+		ICON_SCRAMBLE,
+		ICON_MULTIMOVE,
+		ICON_RESIZE,
 		ICON_PLAY,
+
 		ICON_EXIT,		//Exit icon
 
 		DRAW_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
@@ -69,6 +101,8 @@ class GUI
 	enum VToolBarIcon //The icons displayed on the vertical tool bar
 	{
 		ICON_SELECT,
+		ICON_DRAG,
+		ICON_Resize_by_Drag,
 		ICON_DELETE,
 		ICON_COPY,
 		ICON_PASTE,
@@ -77,6 +111,7 @@ class GUI
 		ICON_IMAGE,
 		ICON_SAVE,
 		ICON_LOAD,
+
 
 		DRAW_ICON_COUNT_V
 	};
@@ -128,7 +163,8 @@ public:
 
 	// Input Functions  ---------------------------
 	void GetPointClicked(int& x, int& y) const;//Get coordinate where user clicks
-	string GetSrting(char c='c') const;	 //Returns a string entered by the user
+	buttonstate GetButtonState(button, int&, int&);
+	string GetSrting(char c = 'c') const;	 //Returns a string entered by the user
 	bool GetKeyClicked()const;		//Return key modifiers
 	operationType GetUseroperation() const; //Read the user click and map to an operation
 
@@ -140,26 +176,36 @@ public:
 	void CreateStatusBar() const;	//create the status bar
 	void SetExit(window*);		//Creates window
 	void DeleteExitWind();
+	void updatebuffer();
 
 	void ClearStatusBar() const;	//Clears the status bar
 	void ClearDrawArea() const;	//Clears the drawing area
 
 	// -- shapes Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const;//Draw a rectangle
-	void DrawRegPoly(Point P1, vector<int> Vx, vector<int> Vy,int s, GfxInfo RegPolyGfxInfo)const; //Draw a Regular polygon
+	void DrawRegPoly(Point P1, vector<int> Vx, vector<int> Vy, int s, GfxInfo RegPolyGfxInfo)const; //Draw a Regular polygon
 	void DrawCircle(Point P1, int Radius, GfxInfo CircleGfxInfo)const;
 	void DrawTriangle(Point, Point, Point, GfxInfo)const;	//Draw Triangle
 	void DrawOval(Point, Point, GfxInfo)const;
-	void DrawLine(Point, Point,GfxInfo)const;	//Draw a line
+	void DrawLine(Point, Point, GfxInfo)const;	//Draw a line
+	void DrawIREG(int n, int*, int*, GfxInfo IREGPolGfxInfo) const;
+	int getheight() {
+		return pWind->GetHeight();
 
+	}
+
+	int getwidth() {
+		return pWind->GetWidth();
+
+	}
 	///Make similar functions for drawing all other shapes.
 
 	void PrintMessage(string msg) const;	//Print a message on Status bar
 
-	void PrintExitMessage(string msg,char p='u') const;	//Print a message on Exit window
+	void PrintExitMessage(string msg, char p = 'u') const;	//Print a message on Exit window
 
 	//Frame Image
-	void FrameImage(image,int,int);
+	void FrameImage(image, int, int);
 	void DrawImage(string, Point, Point);
 
 	//Colors
@@ -180,4 +226,3 @@ public:
 
 	~GUI();
 };
-

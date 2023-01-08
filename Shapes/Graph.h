@@ -39,6 +39,7 @@ public:
 	void cut();
 	void pushShapeBack();
 	void Duplicate();
+	string MultiSelect(Point, color, shape*);
 
 	shape* GetSelectedShape()const;
 	vector<shape*> GetShapeList()const;

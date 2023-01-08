@@ -195,6 +195,7 @@
     <ClCompile Include="opPushBack.cpp" />
     <ClCompile Include="opDuplicate.cpp" />
     <ClCompile Include="opMatch.cpp" />
+    <ClCompile Include="opMultiSelect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -355,6 +356,7 @@
     <ClInclude Include="opPushBack.h" />
     <ClInclude Include="opDuplicate.h" />
     <ClInclude Include="opMatch.h" />
+    <ClInclude Include="opMultiSelect.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">

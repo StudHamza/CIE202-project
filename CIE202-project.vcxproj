@@ -201,6 +201,7 @@
     <ClCompile Include="operations\opSave.cpp" />
     <ClCompile Include="operations\opUndo.cpp" />
     <ClCompile Include="opMatch.cpp" />
+    <ClCompile Include="opMultiSelect.cpp" />
     <ClCompile Include="opPushBack.cpp" />
     <ClCompile Include="Shapes\Circle.cpp" />
     <ClCompile Include="Shapes\Graph.cpp" />
@@ -259,6 +260,7 @@
     <ClInclude Include="operations\opSelect.h" />
     <ClInclude Include="operations\opUndo.h" />
     <ClInclude Include="opMatch.h" />
+    <ClInclude Include="opMultiSelect.h" />
     <ClInclude Include="opPushBack.h" />
     <ClInclude Include="Shapes\Circle.h" />
     <ClInclude Include="Shapes\Graph.h" />
