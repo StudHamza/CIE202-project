@@ -108,6 +108,10 @@ class GUI
 
 	enum PlayMenuIcon //The icons of the Play menu (you should add more icons)
 	{
+		ICON_START,
+		ICON_RESTART,
+		ICON_HIDE,
+		ICON_UNHIDE,
 		//Note: Icons are ordered here as they appear in menu
 		//If you want to change the menu icons order, change the order here
 
@@ -197,6 +201,7 @@ public:
 	//Frame Image
 	void FrameImage(image,int,int);
 	void DrawImage(string, Point, Point);
+	void DrawImage(string, int,int,int,int);
 
 	//Colors
 	color getCrntDrawColor() const;	//get current drwawing color

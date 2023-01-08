@@ -13,8 +13,19 @@ opScramble::~opScramble()
 {}
 
 
-void opScramble::Execute() {	GUI* pUI = pControl->GetUI();
-	Graph* ptG = pControl->getGraph();
+void opScramble::Execute() {	
+	
+	GUI* pUI = pControl->GetUI();
+
+
+
+Graph* ptG = pControl->getGraph();
+
+
+	string Fhide;
+
+	pUI->PrintMessage("do you want to hide the shapes after scrambling them");
+	Fhide=pUI->GetSrting();
 	
 	
 	
@@ -62,7 +73,7 @@ void opScramble::Execute() {	GUI* pUI = pControl->GetUI();
 
 
 
-	ptG->random_move(Grid);
+	ptG->random_move(Grid,Fhide);
 
 	pUI->PrintMessage("Shapes has been scrambled ");
 

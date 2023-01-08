@@ -210,6 +210,7 @@
       <Filter>Shapes&amp;Graph</Filter>
     </ClCompile>
     <ClCompile Include="opResizebyDrag.cpp" />
+    <ClCompile Include="opHide.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -379,6 +380,7 @@
       <Filter>Shapes&amp;Graph</Filter>
     </ClInclude>
     <ClInclude Include="opResizebyDrag.h" />
+    <ClInclude Include="opHide.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">

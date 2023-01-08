@@ -28,6 +28,7 @@ public:
 	~Graph();
 	void Addshape(shape* pFig); //Adds a new shape to the shapesList
 	void Draw(GUI* pUI) const;			//Draw the graph (draw all shapes)
+	void Draw_cards(GUI* pUI) const;     //Hide each shape by drawing a card on it
 
 	//Select///////////////////--------------------------
 	shape* Getshape(int x, int y) const; //Search for a shape given a point inside the shape
@@ -65,7 +66,7 @@ public:
 	/// <summary>
 	/// scramble and multimove functions
 	/// </summary>
-	void random_move(Point Grid[][4]);      //used in scramble;
+	void random_move(Point Grid[][4],string flag);      //used in scramble;
 	void multimove(int x1, int y1, int x2, int y2);       //used in multimove
 
 
