@@ -75,3 +75,10 @@ void opAddRegPoly::Undo()
 	Graph* Gpr = pControl->getGraph();
 	Gpr->PopFromShapeList(temp);
 }
+
+void opAddRegPoly::Redo()
+{
+	Graph* Gpr = pControl->getGraph();
+	shape* temp = pControl->getFutureOperatedOn();
+	Gpr->Addshape(temp);
+}

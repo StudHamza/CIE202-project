@@ -54,6 +54,7 @@ void shape::Selected(color previousC)	//Sets shape to selected and gets info thr
 color shape::UpdatePevDrawClr() 
 {
 		color temp = ShpGfxInfo.PevDrawColors.back();
+		ShpGfxInfo.FutureDrawClr.push_back(temp);
 		ShpGfxInfo.PevFillColors.pop_back();
 		return	temp;
 }
@@ -62,6 +63,7 @@ color shape::UpdatePevFillClr()
 	if (ShpGfxInfo.FillHistory.back())
 	{
 		color pev = ShpGfxInfo.PevFillColors.back();
+		ShpGfxInfo.FutureFillClr.push_back(pev);
 		ShpGfxInfo.PevFillColors.pop_back();
 		return pev;
 	}
@@ -78,6 +80,7 @@ void shape::setPevFillColors()
 }
 void shape::UpdatePevFillHistory()
 {
+	ShpGfxInfo.FutureFillHistory.push_back(ShpGfxInfo.FillHistory.back());
 	ShpGfxInfo.FillHistory.pop_back();
 }
 //----------------------------------
@@ -102,7 +105,6 @@ void shape::SetSaved(bool s)
 
 void shape::UpdateId() {
 	counter++;
-	cout << "updated id: " << counter<<endl;
 	ID = counter;
 }
 
@@ -122,18 +124,61 @@ float shape::getFactor()const		//Gets last resized with factor
 }
 void shape::setFactor(float factor) {		//Sets factor of resize
 	ShpGfxInfo.ResizeFactors.push_back(factor);
-	cout << factor << endl;
 }
 void shape::popFactor()		//Removes last resize factor from history
 {
+	ShpGfxInfo.FutureResize.push_back(ShpGfxInfo.ResizeFactors.back());
 	ShpGfxInfo.ResizeFactors.pop_back();
 }
 
 void shape::setPevPoint(Point p) {
-	cout << p.x << " " << p.y;
 	ShpGfxInfo.PevMovedFrom.push_back(p);
 }
-Point shape::GetPevPoint()const
+Point shape::OnlyGetPevPoint()
 {
 	return ShpGfxInfo.PevMovedFrom.back();
+}
+
+Point shape::GetPevPoint()
+{
+	Point Temp;
+	Temp = ShpGfxInfo.PevMovedFrom.back();
+	ShpGfxInfo.PevMovedFrom.pop_back();
+	return Temp;
+}
+
+void shape::setFuturePoint(Point P)
+{
+	ShpGfxInfo.FutureMovedFrom.push_back(P);
+}
+
+Point shape::updateFuturePoint()
+{
+	Point temp;
+	temp = ShpGfxInfo.FutureMovedFrom.back();
+	ShpGfxInfo.FutureMovedFrom.pop_back();
+	return temp;
+}
+
+void shape::setFutureDrawColor(color c)
+{
+	ShpGfxInfo.FutureDrawClr.push_back(c);
+}
+void shape::setFutureFillColor(color c)
+{
+	ShpGfxInfo.FutureFillClr.push_back(c);
+}
+color shape::updateFutureDraw()
+{
+	color Temp;
+	Temp = ShpGfxInfo.FutureDrawClr.back();;
+	ShpGfxInfo.FutureDrawClr.pop_back();
+	return Temp;
+}
+color shape::updateFutureFill()
+{
+	color Temp;
+	Temp = ShpGfxInfo.FutureFillClr.back();;
+	ShpGfxInfo.FutureFillClr.pop_back();
+	return Temp;
 }

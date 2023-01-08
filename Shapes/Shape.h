@@ -84,6 +84,15 @@ public:
 
 	//moving
 	void setPevPoint(Point);
-	Point GetPevPoint()const;
+	Point GetPevPoint();		//updates pev point
+	void setFuturePoint(Point);
+	Point updateFuturePoint();
+	Point OnlyGetPevPoint();
 
+
+	//color future
+	void setFutureDrawColor(color);
+	void setFutureFillColor(color);
+	color updateFutureDraw();
+	color updateFutureFill();
 };

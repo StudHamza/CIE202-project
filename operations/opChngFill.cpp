@@ -22,6 +22,12 @@ void opChngFill::Undo()
 	else {
 		shp->ChngFillClr(WHITE);
 	}
+	pControl->pushToFutureOperatedOn(shp);
+}
+
+void opChngFill::Redo()
+{
+	cout << "Not done i dont have time";
 }
 
 

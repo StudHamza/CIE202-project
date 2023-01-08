@@ -13,6 +13,7 @@ public:
 
 	virtual void Execute() override;
 	virtual void Undo()override;
+	virtual void Redo()override;
 
 
 };
