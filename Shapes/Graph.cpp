@@ -125,7 +125,16 @@ void Graph::Draw(GUI* pUI) const
 }
 
 
+void Graph::Draw_cards(GUI* pUI) const {
+	for (int i = 0; i < shapesList.size(); i++) {
 
+
+		pUI->DrawImage(  "images\\MenuIcons\\hide_card.jpg" , 5, 5, 10, 10);
+
+
+
+	}
+}
 shape* Graph::Getshape(int x, int y) const
 {
 	//If a shape is found return a pointer to it.
@@ -138,7 +147,7 @@ shape* Graph::Getshape(int x, int y) const
 	return nullptr;
 }
 
-void Graph::random_move(Point Grid[][4]) {
+void Graph::random_move(Point Grid[][4],string flag) {
 	
 
 	int x;
@@ -183,6 +192,12 @@ void Graph::random_move(Point Grid[][4]) {
 	}
 
 	cout << "finiiiiiiiiiiiiiiiii" << endl;
+	
+
+
+
+
+	
 }
 
 string Graph::SelectShape(Point P, color pevClr,shape *selected)

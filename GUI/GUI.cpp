@@ -303,6 +303,13 @@ void GUI::CreateDrawToolBar()
 void GUI::CreatePlayToolBar() 
 {
 	InterfaceMode = MODE_PLAY;
+	string MenuIconImages[PLAY_ICON_COUNT];
+		MenuIconImages[ICON_START] = "images\\MenuIcons\\Menu_START.jpg";
+	MenuIconImages[ICON_RESTART] = "images\\MenuIcons\\Menu_RESTART.jpg";
+
+	MenuIconImages[ICON_HIDE] = "images\\MenuIcons\\Menu_Hide.jpg";
+	MenuIconImages[ICON_UNHIDE] = "images\\MenuIcons\\menu_unhide.jpg";
+
 	///TODO: write code to create Play mode menu
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -597,6 +604,10 @@ void GUI::FrameImage(image stick,int x,int y)
 void GUI::DrawImage(string Image, Point P1, Point P2)
 {
 	pWind->DrawImage(Image, P1.x, P1.y, P2.x, P2.y);
+}
+void GUI::DrawImage(string Image, int x1,int x2,int y1, int y2)
+{
+	pWind->DrawImage(Image, x1, y1, x2, y2);
 }
 
 

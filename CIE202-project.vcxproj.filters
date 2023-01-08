@@ -215,6 +215,8 @@
 
     <ClCompile Include="opResizebyDrag.cpp" />
 
+    <ClCompile Include="opHide.cpp" />
+
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -389,6 +391,10 @@
     </ClInclude>
 
     <ClInclude Include="opResizebyDrag.h" />
+
+    <ClInclude Include="opHide.h" />
+
+
 
   </ItemGroup>
   <ItemGroup>
