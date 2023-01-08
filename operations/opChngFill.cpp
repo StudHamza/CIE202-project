@@ -9,15 +9,27 @@ opChngFill::opChngFill(controller* pCont) : operation(pCont) {}
 
 opChngFill::~opChngFill() {}
 
+
 void opChngFill::Undo()
 {
 	GUI* pUI = pControl->GetUI();
 	shape* shp = pControl->getOperatedOn();	//Get shape
-	shp->ChngFillClr(shp->getPevFillClr());	//Change color
-
-	pControl->popOperatedOn();
-
+	shp->UpdatePevFillHistory();		//Updates the sequence of fill booleans
+	if (shp->getFillHistory())
+	{
+		shp->ChngFillClr(shp->UpdatePevFillClr());	//Change color
+	}
+	else {
+		shp->ChngFillClr(WHITE);
+	}
+	pControl->pushToFutureOperatedOn(shp);
 }
+
+void opChngFill::Redo()
+{
+	cout << "Not done i dont have time";
+}
+
 
 
 
@@ -34,13 +46,16 @@ void opChngFill::Execute()
 			if (shape->IsSelected()) {
 				pControl->pushToOperatedOn(shape);	//always push modified shapes
 				shape->UnSelect();
-				shape->setPevFillColor();
+				shape->setPevFillColors();
 				shape->SetFill(true);
 				shape->ChngFillClr(pUI->getCrntFillColor());
 
 			}
 		}
 	}
+	else
 
-
+	{
+		pControl->DeleteTimeLine();
+	}
 }

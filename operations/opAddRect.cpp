@@ -33,13 +33,19 @@ void opAddRect::Execute()
 	GfxInfo RectGfxInfo;
 	
 	//get drawing, filling colors and pen width from the interface
-	RectGfxInfo.DrawClr = pUI->getCrntDrawColor();
-	RectGfxInfo.FillClr = pUI->getCrntFillColor();
+	color Fill, Draw;
+	Fill = pUI->getCrntFillColor();
+	Draw = pUI->getCrntDrawColor();
+	RectGfxInfo.DrawClr = Draw;
+	RectGfxInfo.FillClr = Fill;
 	RectGfxInfo.BorderWdth = pUI->getCrntPenWidth();
 	RectGfxInfo.PrevClr= RectGfxInfo.DrawClr;
+	RectGfxInfo.PevDrawColors.push_back(RectGfxInfo.DrawClr);
+	RectGfxInfo.PevFillColors.push_back(RectGfxInfo.FillClr);
 
 
 	RectGfxInfo.isFilled = false;	//default is not filled
+	RectGfxInfo.FillHistory.push_back(false);
 	RectGfxInfo.isSelected = false;	//defualt is not selected
 	RectGfxInfo.isSaved = false;	//defualt is not saved
 
@@ -53,4 +59,26 @@ void opAddRect::Execute()
 	//Add the rectangle to the list of shapes
 	pGr->Addshape(R);
 
+	//Update Operated on:
+	pControl->pushToOperatedOn(R);
+
+}
+
+
+void opAddRect::Undo()
+{
+	shape* temp = pControl->getOperatedOn();
+	Graph* Gpr = pControl->getGraph();
+	Gpr->PopFromShapeList(temp);
+}
+
+
+
+
+
+void opAddRect::Redo()
+{
+	Graph* Gpr = pControl->getGraph();
+	shape* temp = pControl->getFutureOperatedOn();
+	Gpr->Addshape(temp);
 }

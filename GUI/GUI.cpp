@@ -214,6 +214,13 @@ void GUI::CreateStatusBar() const
 	pWind->SetPen(StatusBarColor, 1);
 	pWind->SetBrush(StatusBarColor);
 	pWind->DrawRectangle(0, height - StatusBarHeight, width, height);
+
+	
+	
+
+
+
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 void GUI::ClearStatusBar() const
@@ -257,11 +264,12 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_IREGPOLY] = "images\\MenuIcons\\Menu_IregPoly.jpg";
 	MenuIconImages[ICON_PEN] = "No_image";
 	MenuIconImages[ICON_FILL] = "No_Image";
-	MenuIconImages[ICON_COLOR] = "images\\MenuIcons\\Menu_Color.jpg";
-	MenuIconImages[ICON_UNDO] = "images\\MenuIcons\\Menu_Undo.jpg";
-	MenuIconImages[ICON_REDO] = "images\\MenuIcons\\Menu_Redo.jpg";
-	MenuIconImages[ICON_RESIZE] = "images\\MenuIcons\\Menu_RESIZE.jpg";
 
+	MenuIconImages[ICON_COLOR]="images\\MenuIcons\\Menu_Color.jpg";
+	MenuIconImages[ICON_UNDO]="images\\MenuIcons\\Menu_Undo.jpg";
+	MenuIconImages[ICON_REDO]="images\\MenuIcons\\Menu_Redo.jpg";
+	MenuIconImages[ICON_RESIZE] = "images\\MenuIcons\\Menu_RESIZE.jpg";
+	
 	MenuIconImages[ICON_PLAY] = "images\\MenuIcons\\Menu_Play.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
 	MenuIconImages[ICON_SCRAMBLE] = "images\\MenuIcons\\Menu_SCRAMBLE.jpg";
@@ -303,6 +311,13 @@ void GUI::CreateDrawToolBar()
 void GUI::CreatePlayToolBar()
 {
 	InterfaceMode = MODE_PLAY;
+	string MenuIconImages[PLAY_ICON_COUNT];
+		MenuIconImages[ICON_START] = "images\\MenuIcons\\Menu_START.jpg";
+	MenuIconImages[ICON_RESTART] = "images\\MenuIcons\\Menu_RESTART.jpg";
+
+	MenuIconImages[ICON_HIDE] = "images\\MenuIcons\\Menu_Hide.jpg";
+	MenuIconImages[ICON_UNHIDE] = "images\\MenuIcons\\menu_unhide.jpg";
+
 	///TODO: write code to create Play mode menu
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -311,7 +326,9 @@ void GUI::CreatePlayToolBar()
 void GUI::CreateDrawVToolBar() {
 	string VToolBarIcon[DRAW_ICON_COUNT_V];
 	VToolBarIcon[ICON_SELECT] = "images\\VToolBar\\Select_Icon.jpg";
-	VToolBarIcon[ICON_DRAG] = "images\\VToolBar\\DRAG_Icon.jpg";
+
+	VToolBarIcon[ICON_DRAG]= "images\\VToolBar\\DRAG_Icon.jpg";
+
 	VToolBarIcon[ICON_Resize_by_Drag] = "images\\VToolBar\\ResizebyDrag_Icon.jpg";
 	VToolBarIcon[ICON_DELETE] = "images\\VToolBar\\Delete_Icon.jpg";
 	VToolBarIcon[ICON_COPY] = "images\\VToolBar\\Copy_Icon.jpg";
@@ -587,6 +604,33 @@ void GUI::DrawIREG(int n, int* array_ofxs, int* array_ofys, GfxInfo IREGPolGfxIn
 
 }
 
+
+void GUI::DrawIREG(int n, int* array_ofxs, int* array_ofys, GfxInfo IREGPolGfxInfo) const {
+	color DrawingClr;
+	if (IREGPolGfxInfo.isSelected)	//shape is selected
+		DrawingClr = HighlightColor; //shape should be drawn highlighted
+	else
+		DrawingClr = IREGPolGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, IREGPolGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (IREGPolGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(IREGPolGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+
+	pWind->DrawPolygon(array_ofxs, array_ofys,n, style);
+
+
+
+
+}
+
 /////////////////////////////////////////////////////////////////////////////////\
 
 void GUI::FrameImage(image stick, int x, int y)
@@ -596,7 +640,12 @@ void GUI::FrameImage(image stick, int x, int y)
 
 void GUI::DrawImage(string Image, Point P1, Point P2)
 {
+	
 	pWind->DrawImage(Image, P1.x, P1.y, P2.x, P2.y);
+}
+void GUI::DrawImage(string Image, int x1,int x2,int y1, int y2)
+{
+	pWind->DrawImage(Image, x1, y1, x2, y2);
 }
 
 

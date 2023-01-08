@@ -28,21 +28,34 @@ public:
 	~Graph();
 	void Addshape(shape* pFig); //Adds a new shape to the shapesList
 	void Draw(GUI* pUI) const;			//Draw the graph (draw all shapes)
+	void Draw_cards(GUI* pUI) const;     //Hide each shape by drawing a card on it
+
+	//Select///////////////////--------------------------
 	shape* Getshape(int x, int y) const; //Search for a shape given a point inside the shape
 	string SelectShape(Point,color,shape *);	//Responsible for shape selection
 	bool UnselectShape();	//Unselects if clicked on drawing area
 	void UnSelectAll();
+	shape* GetSelectedShape()const;
+	vector<shape*> GetShapeList()const;
+	void PopFromShapeList(shape*);
+	void set_tonull() {
+		 selectedShape= nullptr;
+
+	}
+	////////////////////////---------------------------
+	//Copy and Paste and Cut//
 	void ClipBoard();		//sets a vector of the selected shapes
 	bool getClipBoard() const;
 	void Paste();
-	void delShape(shape*);
+	void delShape();         //delete and multi-delete
+	void deleteSingleShape(shape*);
 	void cut();
 	void pushShapeBack();
 	void Duplicate();
 	string MultiSelect(Point, color, shape*);
 
-	shape* GetSelectedShape()const;
-	vector<shape*> GetShapeList()const;
+
+
 
 	void Save(ofstream& outfile,color,color,int);	//Save all shapes to a file
 	void load(ifstream& inputfile);	//Load all shapes from a file
@@ -51,4 +64,17 @@ public:
 
 	void Clear();
 	void CheckSaved();
+
+
+	
+	/// <summary>
+	/// scramble and multimove functions
+	/// </summary>
+	void random_move(Point Grid[][4],string flag);      //used in scramble;
+	void multimove(int x1, int y1, int x2, int y2);       //used in multimove
+
+
+	void getshapeslimitsX(int&,int&);//useed in multimove
+	void getshapeslimitsY(int&,int&);  //used in multimove
+
 };

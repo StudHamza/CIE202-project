@@ -11,6 +11,7 @@ enum operationType //The operations supported (you can add more if needed)
 	DRAW_CIRC,		//Draw Circle
 	DRAW_OVAL,
 	DRAW_REGPOLY,	//Draw Regular polygon
+	DRAW_IREG,          //Draw Iregular polygon
 	COLOR_PALETTE,
 	SELECT_SHAPE,	//Selects shape
 	POST_IMAGE,		//Post image into shape
@@ -24,12 +25,16 @@ enum operationType //The operations supported (you can add more if needed)
 	PASTE,			//Pastes selected item(s)
 	CUT,
 	MOVE,			//Move a shape(s)
+	DRAG,     //move a shape by dragging it across the grid
 	RESIZE,			//Resize a shape(s)
+	Resize_by_DRAG,          //resize and rotate shapes by dragging
 	ROTATE,			//Rotate a shape(s)
 	SEND_BACK,		//Send a shape to the back of all shapes
 	BRNG_FRNT,		//Bring a shape to the front of all shapes
 	SAVE,			//Save the whole graph to a file
 	LOAD,			//Load a graph from a file
+	SCRAMBLE,
+	MULTIMOVE,
 	CLEAR,			//Clears the drawing area
 	EXIT,			//Exit the application
 
@@ -44,3 +49,4 @@ enum operationType //The operations supported (you can add more if needed)
 	ON_GOING
 };
 #endif
+

@@ -49,15 +49,16 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 };
 
 
-/// <summary>
-/// a 4*4 grid
-/// </summary>
+
+		/// <summary>
+		/// a 4*4 grid
+		/// </summary>
+
 
 
 class GUI
 
 {
-
 
 
 
@@ -111,6 +112,7 @@ class GUI
 		ICON_IMAGE,
 		ICON_SAVE,
 		ICON_LOAD,
+	
 
 
 		DRAW_ICON_COUNT_V
@@ -118,6 +120,10 @@ class GUI
 
 	enum PlayMenuIcon //The icons of the Play menu (you should add more icons)
 	{
+		ICON_START,
+		ICON_RESTART,
+		ICON_HIDE,
+		ICON_UNHIDE,
 		//Note: Icons are ordered here as they appear in menu
 		//If you want to change the menu icons order, change the order here
 
@@ -164,7 +170,9 @@ public:
 	// Input Functions  ---------------------------
 	void GetPointClicked(int& x, int& y) const;//Get coordinate where user clicks
 	buttonstate GetButtonState(button, int&, int&);
-	string GetSrting(char c = 'c') const;	 //Returns a string entered by the user
+
+	string GetSrting(char c='c') const;	 //Returns a string entered by the user
+
 	bool GetKeyClicked()const;		//Return key modifiers
 	operationType GetUseroperation() const; //Read the user click and map to an operation
 
@@ -187,15 +195,19 @@ public:
 	void DrawCircle(Point P1, int Radius, GfxInfo CircleGfxInfo)const;
 	void DrawTriangle(Point, Point, Point, GfxInfo)const;	//Draw Triangle
 	void DrawOval(Point, Point, GfxInfo)const;
-	void DrawLine(Point, Point, GfxInfo)const;	//Draw a line
+
+	void DrawLine(Point, Point,GfxInfo)const;	//Draw a line
+
 	void DrawIREG(int n, int*, int*, GfxInfo IREGPolGfxInfo) const;
 	int getheight() {
 		return pWind->GetHeight();
 
 	}
 
+		
 	int getwidth() {
 		return pWind->GetWidth();
+
 
 	}
 	///Make similar functions for drawing all other shapes.
@@ -207,6 +219,7 @@ public:
 	//Frame Image
 	void FrameImage(image, int, int);
 	void DrawImage(string, Point, Point);
+	void DrawImage(string, int,int,int,int);
 
 	//Colors
 	color getCrntDrawColor() const;	//get current drwawing color

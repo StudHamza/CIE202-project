@@ -10,6 +10,13 @@ opAddCircle::opAddCircle(controller* pCont) :operation(pCont)
 opAddCircle::~opAddCircle()
 {}
 
+void opAddCircle::Redo()
+{
+	Graph* Gpr = pControl->getGraph();
+	shape* temp = pControl->getFutureOperatedOn();
+	Gpr->Addshape(temp);
+}
+
 //Execute the operation
 void opAddCircle::Execute()
 {
@@ -18,7 +25,7 @@ void opAddCircle::Execute()
 	//Get a Pointer to the Input / Output Interfaces
 	GUI* pUI = pControl->GetUI();
 
-	pUI->PrintMessage("Click on circle radius");
+	pUI->PrintMessage("Click on circle centre");
 	//Read center of polygon and store in point P1
 	pUI->GetPointClicked(P1.x, P1.y);
 
@@ -33,10 +40,16 @@ void opAddCircle::Execute()
 	GfxInfo CircleGfxInfo;
 
 	//get drawing, filling colors and pen width from the interface
-	CircleGfxInfo.DrawClr = pUI->getCrntDrawColor();
-	CircleGfxInfo.FillClr = pUI->getCrntFillColor();
+	color Fill, Draw;
+	Fill = pUI->getCrntFillColor();
+	Draw = pUI->getCrntDrawColor();
+	CircleGfxInfo.DrawClr = Draw;
+	CircleGfxInfo.FillClr = Fill;
 	CircleGfxInfo.BorderWdth = pUI->getCrntPenWidth();
 	CircleGfxInfo.PrevClr = CircleGfxInfo.DrawClr;	//sets first color to draw color
+	CircleGfxInfo.PevDrawColors.push_back(Draw);
+	CircleGfxInfo.PevFillColors.push_back(Fill);
+
 
 
 	CircleGfxInfo.isFilled = false;	//default is not filled
@@ -52,4 +65,19 @@ void opAddCircle::Execute()
 
 	//Add the regular polygon to the list of shapes
 	pGr->Addshape(C);
+
+	//Update Operated on:
+	pControl->pushToOperatedOn(C);
+
 }
+
+
+
+void opAddCircle::Undo()
+{
+	shape* temp = pControl->getOperatedOn();
+	Graph* Gpr = pControl->getGraph();
+	Gpr->PopFromShapeList(temp);
+}
+
+

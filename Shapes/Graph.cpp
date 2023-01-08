@@ -22,6 +22,87 @@ Graph::~Graph()
 //						shapes Management Functions									//
 //==================================================================================//
 
+
+
+///////////////////MULTIMOVE FUNCTIONS
+
+void Graph:: getshapeslimitsX(int& xMA,int& xMI) {                   //useed in multimove
+	int xmax = 0, xmin = 0;
+int x1=0, x2=0;
+int T1=0, T2=3000;           // limits that cant be exceeded whether in max or min(ised as a memoery to get the max/min for all selected shapes)
+
+
+	for(unsigned i=0;i< shapesList.size();i++)
+		if (shapesList[i]->IsSelected()) {
+			
+			 shapesList[i]->getXlimits(x1,x2);
+			xmax = max(x1, T1);
+			xmin = min(x2, T2);
+			T1 = x1;
+			T2 = x2;
+		}
+			
+xMA=	xmax  ;
+		 
+  xMI=  xmin;
+
+
+
+
+}
+
+
+
+void Graph:: getshapeslimitsY(int& yMA,int& yMI){                                  //used in multimove
+	int ymax = 0, ymin = 0;
+	int y1=0, y2=0;
+	int T1 = 0, T2 = 3000;// limits that cant be exceeded whether in max or min(ised as a memoery to get the max/min for all selected shapes)
+
+	for (unsigned i = 0; i < shapesList.size(); i++)
+		if (shapesList[i]->IsSelected()) {
+
+			 shapesList[i]->getYlimits(y1,y2);
+			ymax = max(y1, T1);
+			ymin = min(y2, T2);
+			T1 = y1;
+			T2 = y2;
+		}
+
+	yMA = ymax;
+		 
+		 
+	yMI=ymin;
+	
+	
+	
+	
+};
+
+
+void Graph::multimove(int x1,int y1,int x2, int y2) {
+
+	for (unsigned i = 0; i < shapesList.size(); i++)
+		if (shapesList[i]->IsSelected()) {
+			shapesList[i]->relative_move(x1, y1, x2, y2);
+			shapesList[i]->UnSelect();
+
+
+		}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////
+
 //Add a shape to the list of shapes
 void Graph::Addshape(shape* pShp)
 {
@@ -33,9 +114,12 @@ void Graph::Addshape(shape* pShp)
 void Graph::Draw(GUI* pUI) const
 {
 	pUI->ClearDrawArea();
-	for (auto shapePointer : shapesList) {
-		shapePointer->Draw(pUI);
-	}
+	
+		for (auto shapePointer : shapesList) {
+			if(shapePointer)
+			shapePointer->Draw(pUI);
+		}
+	
 	pUI->CreateDrawToolBar(); //Prevents Shapes to flow into Tool bar
 	pUI->CreateDrawVToolBar();
 }
@@ -68,7 +152,27 @@ void Graph::Duplicate()
 }
 
 
+void Graph::Draw_cards(GUI* pUI) const {
+	
+	for (int i = 0; i < shapesList.size(); i++) {
+		cout << "hide2" << endl;
 
+		Point p1;
+		Point p2;
+
+		p1.x = 300;
+		p1.y = 200;
+		p2.x = 400;
+		p2.y = 300;
+
+
+		pUI->DrawImage("images\\MenuIcons\\hide_card.jpg" , p1,p2);
+		Draw(pUI);
+
+
+
+	}
+}
 shape* Graph::Getshape(int x, int y) const
 {
 	//If a shape is found return a pointer to it.
@@ -79,6 +183,59 @@ shape* Graph::Getshape(int x, int y) const
 
 	///Add your code here to search for a shape given a point x,y	
 	return nullptr;
+}
+
+void Graph::random_move(Point Grid[][4],string flag) {
+	
+
+	int x;
+	int y;
+
+	srand(time(0));
+	for (unsigned i = 0; i < shapesList.size(); i++) {
+	
+
+	x = rand() % (3 - 0 + 1) ;
+	y = rand() % (3 - 0 + 1) ;
+
+	if (Grid[x][y].x !=6666) {                                // an algorithm to prevent re-occurences of the same point(overlapping)
+
+
+
+
+		shape* shape = shapesList[i];
+
+
+		                                                        
+		shape->Move(Grid[x][y].x, Grid[x][y].y);
+		
+		Grid[x][y].x = 6666;
+		cout << x << "   " << y << "   " << endl;
+	}
+	else {
+		i--;
+	}
+	
+	
+
+
+	/*for (unsigned i = 0; i < shapesList.size(); i++) {
+			int x = rand() % (1130) + 100;
+			int y = rand() % (501) + 95;
+
+
+			shapesList[i]->Move(x, y);
+
+		}*/
+	}
+
+	cout << "finiiiiiiiiiiiiiiiii" << endl;
+	
+
+
+
+
+	
 }
 
 string Graph::SelectShape(Point P, color pevClr,shape *selected)
@@ -471,8 +628,6 @@ void Graph::load(ifstream& file) {
 			isFilled = false;			//is not filled
 		}
 
-
-
 		//Constructing LineGfxInfo
 		//Creating the line
 		GfxInfo LineGfxInfo;
@@ -559,23 +714,68 @@ bool Graph::getClipBoard() const {
 		return false;
 }
 
-void Graph::delShape(shape* selecetedshape) {
-	for (unsigned int i = 0; i < shapesList.size(); i++) {
+void Graph::delShape() {
+	for ( int i = 0; i < shapesList.size(); i++) {
+		
 
-		if (selecetedshape ==shapesList[i]) {
-			shapesList.erase(shapesList.begin() + i);
-			delete selectedShape;
-			selectedShape = nullptr;
+		if (shapesList.size()>0  && shapesList[i]->IsSelected()) {
+			delete shapesList[i];
+			shapesList[i] = nullptr;
+			
+			shapesList.erase(shapesList.begin()+i);
+			
+			i = -1;
+			
+
 		}
-
+		
+		
 	}
+	
+	
+}
+
+
+
+void Graph::deleteSingleShape(shape* shp)
+
+{
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList.size() > 0 && shapesList[i] == shp) {
+			delete shapesList[i];
+			shapesList[i] = nullptr;
+
+			shapesList.erase(shapesList.begin() + i);
+
+			i = -1;
+			break;
+		}
+	}
+
 }
 
 void Graph::cut()
 {
+	for (auto& cutted : shapesList)
+	{
+		if (cutted->IsSelected())
+		{
+			shape* cuttedd  = selectedShape->Clone();
+			clipboard.push_back(cuttedd);
+			delShape();
+		}
+	}
+
+	
 	UnSelectAll();
-	shape* Cutted = selectedShape->Clone();
-	clipboard.clear();
-	clipboard.push_back(Cutted);
-	delShape(selectedShape);
+}
+
+void Graph::PopFromShapeList(shape* PopMe) {
+	for (int i = 0; i < shapesList.size(); i++)
+	{
+		if (shapesList[i] == PopMe)
+		{
+			shapesList.erase(shapesList.begin() + i);
+		}
+	}
 }

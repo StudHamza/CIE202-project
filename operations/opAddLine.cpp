@@ -12,6 +12,17 @@ opAddLine::opAddLine(controller* pCont) :operation(pCont)
 opAddLine::~opAddLine()
 {}
 
+
+
+void opAddLine::Redo()
+{
+	Graph* Gpr = pControl->getGraph();
+	shape* temp = pControl->getFutureOperatedOn();
+	Gpr->Addshape(temp);
+}
+
+
+
 //Execute the operation
 void opAddLine::Execute()
 {
@@ -35,10 +46,15 @@ void opAddLine::Execute()
 	GfxInfo LineGfxInfo;
 
 	//get drawing, filling colors and pen width from the interface
-	LineGfxInfo.DrawClr = pUI->getCrntDrawColor();
-	LineGfxInfo.FillClr = pUI->getCrntFillColor();
+	color Fill, Draw;
+	Fill = pUI->getCrntFillColor();
+	Draw = pUI->getCrntDrawColor();
+	LineGfxInfo.DrawClr = Draw;
+	LineGfxInfo.FillClr = Fill;
 	LineGfxInfo.BorderWdth = pUI->getCrntPenWidth();
 	LineGfxInfo.PrevClr = LineGfxInfo.DrawClr;
+	LineGfxInfo.PevDrawColors.push_back(Draw);
+	LineGfxInfo.PevFillColors.push_back(Fill);
 
 
 	LineGfxInfo.isFilled = false;	//default is not filled
@@ -55,4 +71,16 @@ void opAddLine::Execute()
 	//Add the rectangle to the list of shapes
 	pGr->Addshape(L);
 
+	//Update Operated on:
+	pControl->pushToOperatedOn(L);
+
+}
+
+
+
+void opAddLine::Undo()
+{
+	shape* temp=pControl->getOperatedOn();
+	Graph* Gpr = pControl->getGraph();
+	Gpr->PopFromShapeList(temp);
 }

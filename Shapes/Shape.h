@@ -31,16 +31,21 @@ public:
 	void ChngFillClr(color Fclr);	//changes the shape's filling color
 	//Getters
 	color GetCrntColor()const;
-	color getPevDrawClr() const;
-	color getPevFillClr()const;
+	color getPevDrawClr()const;
+	bool getFillHistory()const;
+
 	//setters
 	void SetFill(bool);		//Sets fill to true or false
-	void setPevDrawClr();	//vector of pev draw colors
-	void setPevFillColor();	//vector of pev fill colors
+	void setPevDrawColors();	//vector of pev draw colors
+	void setPevFillColors();	//vector of pev fill colors
+
+	//Hybrid Getters and setters
+	color UpdatePevDrawClr();
+	color UpdatePevFillClr();
+	void UpdatePevFillHistory();
 
 
-
-
+	//Selecting//
 	void Selected(color);
 	void UnSelect();
 	void UpdateId();		//resposible for id updates when cloning(copy paste)
@@ -64,7 +69,30 @@ public:
 
 
 	//virtual void Rotate() = 0;	//Rotate the shape
-	//virtual void Resize() = 0;	//Resize the shape
-	//virtual void Move() = 0;		//Move the shape
+	virtual void ResizebyDrag(int, int)  = 0;	//Resize the shape
+	virtual void Resize(double sacling_factor) = 0;	//Resize the shape
+	virtual void Move(int x, int y) = 0;				//Move the shape
+	virtual void getXlimits(int&,int&) = 0; // used in multi move
+	virtual void getYlimits(int&,int&) = 0; // used in multi move
+	virtual void relative_move(int x1,int y1 ,int x2,int y2) = 0;       //used in multimove
 
+	///////////////////////Undo and Redo Functions///////////////////
+	//Resizing
+	float getFactor()const;
+	void setFactor(float);
+	void popFactor();
+
+	//moving
+	void setPevPoint(Point);
+	Point GetPevPoint();		//updates pev point
+	void setFuturePoint(Point);
+	Point updateFuturePoint();
+	Point OnlyGetPevPoint();
+
+
+	//color future
+	void setFutureDrawColor(color);
+	void setFutureFillColor(color);
+	color updateFutureDraw();
+	color updateFutureFill();
 };

@@ -12,12 +12,15 @@ opChngDraw::~opChngDraw() {}
 void opChngDraw::Undo()
 {
 	GUI* pUI = pControl->GetUI();
-	pUI->PrintMessage("undid");
 	shape *shp=pControl->getOperatedOn();	//Get shape
-	shp->ChngDrawClr(shp->getPevDrawClr());	//Change color
+	shp->ChngDrawClr(shp->UpdatePevDrawClr());	//Change color
+}
 
-	pControl->popOperatedOn();
 
+
+void opChngDraw::Redo()
+{
+	cout << "not complete";
 }
 
 void opChngDraw::Execute()
@@ -27,13 +30,13 @@ void opChngDraw::Execute()
 	pUI->setCrntSelectedColor('d');
 	if (pGrph->GetSelectedShape())
 	{
-		for (shape* shape : pGrph->GetShapeList())
+		for (shape* fshape : pGrph->GetShapeList())
 		{
-			if (shape->IsSelected()) {
-				pControl->pushToOperatedOn(shape);
-				shape->UnSelect();
-				shape->setPevDrawClr();
-				shape->ChngDrawClr(pUI->getCrntDrawColor());
+			if (fshape->IsSelected()) {
+				pControl->pushToOperatedOn(fshape);
+				fshape->setPevDrawColors();
+				fshape->UnSelect();
+				fshape->ChngDrawClr(pUI->getCrntDrawColor());
 			}
 		}
 	}

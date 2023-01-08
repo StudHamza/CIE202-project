@@ -7,6 +7,8 @@ Line::Line(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 	Start = P1;
 	End = P2;
 	Distance = sqrt(pow(Start.x - End.x, 2) + pow(Start.y - End.y, 2));
+	midpoint.x = (Start.x + End.x) / 2;
+	midpoint.y = (Start.y + End.y) / 2;
 }
 
 Line::~Line()
@@ -73,3 +75,170 @@ void Line::Save(ofstream& file) const {
 	string line = GetInfo('l');
 	file << line << endl;
 }
+
+void Line::Move(int x, int y) {
+
+	int dx;
+	int dy;
+
+
+
+
+	dx = abs(midpoint.x - x);
+	dy = abs(midpoint.y - y);
+
+
+	if (x > midpoint.x) {
+		Start.x += dx;
+		End.x += dx;
+	}
+	else
+	{
+		Start.x -= dx;
+		End.x -= dx;
+
+
+	}
+
+	if (y > midpoint.y) {
+		Start.y += dy;
+		End.y += dy;
+	}
+	else
+	{
+		Start.y -= dy;
+		End.y -= dy;
+
+
+	}
+
+	midpoint.x = (Start.x + End.x) / 2;
+	midpoint.y = (Start.y + End.y) / 2;
+
+	cout << dx << endl;
+	cout << dy << endl;
+
+}
+
+
+
+void Line::Resize(double scaling_factor) {
+	int dx1;
+	int dx2;
+	int dy1;
+	int dy2;
+
+	dx1 = Start.x - midpoint.x;
+	dy1 = Start.y - midpoint.y;
+	dx2 = End.x - midpoint.x;
+	dy2 = End.y - midpoint.y;
+
+
+	Start.x = midpoint.x + (dx1 * scaling_factor);
+	Start.y = midpoint.y + (dy1 * scaling_factor);
+	End.x = midpoint.x + (dx2 * scaling_factor);
+	End.y = midpoint.y + (dy2 * scaling_factor);
+
+
+
+
+}
+
+
+ void Line:: ResizebyDrag(int x, int y) {
+
+	 int dx1;
+	 int dx2;
+	 int dy1;
+	 int dy2;
+
+	 dx1 = x - midpoint.x;
+	 dy1 = y - midpoint.y;
+	 dx2 = x - midpoint.x;
+	 dy2 = y - midpoint.y;
+
+	 Start.x = midpoint.x + (dx1 );
+	 Start.y = midpoint.y + (dy1 );
+	 End.x = midpoint.x - (dx2 );
+	 End.y = midpoint.y - (dy2 );
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+//multimove functions
+void Line:: getXlimits(int& xMA, int& xMI) {
+
+	xMA = max(Start.x, End.x);
+
+	xMI = min(Start.x, End.x);
+
+
+};   // used in multi move
+void Line::getYlimits(int& yMA, int& yMI) {
+
+	yMA = max(Start.y, End.y);
+
+	yMI = min(Start.y, End.y);
+
+
+}
+ void Line:: relative_move(int x1, int y1, int x2, int y2) {
+
+
+	 Point midpointS;        //midpoint of the gp of shapes  
+
+
+	 midpointS.x = x1;
+		 midpointS.y = y1;
+
+
+	 int dx;
+	 int dy;
+
+
+
+
+	 dx = abs(midpointS.x - x2);
+	 dy = abs(midpointS.y - y2);
+
+
+	 if (x2> midpointS.x) {
+		 Start.x += dx;
+		 End.x += dx;
+	 }
+	 else
+	 {
+		 Start.x -= dx;
+		 End.x -= dx;
+
+
+	 }
+
+	 if (y2 > midpointS.y) {
+		 Start.y += dy;
+		 End.y += dy;
+	 }
+	 else
+	 {
+		 Start.y -= dy;
+		 End.y -= dy;
+
+
+	 }
+
+	 midpoint.x = (Start.x + End.x) / 2;
+	 midpoint.y = (Start.y + End.y) / 2;
+ 
+ 
+ 
+ };
