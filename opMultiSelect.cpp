@@ -4,13 +4,13 @@
 #include "GUI/GUI.h"
 #include "Shapes/Graph.h"
 
-opMultiSelect::opMultiSelect(controller* pCont) : operation(controller*pCont)
+opMultiSelect::opMultiSelect(controller* pCont) : operation (pCont)
 {}
 opMultiSelect::~opMultiSelect()
 {}
 
 //Execute the operation
-void opSelect::Execute()
+void opMultiSelect::Execute()
 {
 	Point P;
 	//Get a Pointer to the Input / Output Interfaces

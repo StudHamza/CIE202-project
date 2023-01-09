@@ -609,31 +609,31 @@ void GUI::DrawIREG(int n, int* array_ofxs, int* array_ofys, GfxInfo IREGPolGfxIn
 }
 
 
-void GUI::DrawIREG(int n, int* array_ofxs, int* array_ofys, GfxInfo IREGPolGfxInfo) const {
-	color DrawingClr;
-	if (IREGPolGfxInfo.isSelected)	//shape is selected
-		DrawingClr = HighlightColor; //shape should be drawn highlighted
-	else
-		DrawingClr = IREGPolGfxInfo.DrawClr;
-
-	pWind->SetPen(DrawingClr, IREGPolGfxInfo.BorderWdth);	//Set Drawing color & width
-
-	drawstyle style;
-	if (IREGPolGfxInfo.isFilled)
-	{
-		style = FILLED;
-		pWind->SetBrush(IREGPolGfxInfo.FillClr);
-	}
-	else
-		style = FRAME;
-
-
-	pWind->DrawPolygon(array_ofxs, array_ofys,n, style);
-
-
-
-
-}
+//void GUI::DrawIREG(int n, int* array_ofxs, int* array_ofys, GfxInfo IREGPolGfxInfo) const {
+//	color DrawingClr;
+//	if (IREGPolGfxInfo.isSelected)	//shape is selected
+//		DrawingClr = HighlightColor; //shape should be drawn highlighted
+//	else
+//		DrawingClr = IREGPolGfxInfo.DrawClr;
+//
+//	pWind->SetPen(DrawingClr, IREGPolGfxInfo.BorderWdth);	//Set Drawing color & width
+//
+//	drawstyle style;
+//	if (IREGPolGfxInfo.isFilled)
+//	{
+//		style = FILLED;
+//		pWind->SetBrush(IREGPolGfxInfo.FillClr);
+//	}
+//	else
+//		style = FRAME;
+//
+//
+//	pWind->DrawPolygon(array_ofxs, array_ofys,n, style);
+//
+//
+//
+//
+//}
 
 /////////////////////////////////////////////////////////////////////////////////\
 

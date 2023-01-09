@@ -110,8 +110,8 @@ operation* controller::createOperation(operationType OpType)
 		pOp = new opResizebyDrag(this);
 			break;
 	case RESIZE:
-		/*pOp = new opRESIZE(this);*/
-		pOp = new opHide(this);
+		pOp = new opRESIZE(this);
+		
 		break;
 	case MULTIMOVE:
 		pOp = new opMultiMove(this);
