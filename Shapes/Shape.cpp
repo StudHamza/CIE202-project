@@ -182,3 +182,5 @@ color shape::updateFutureFill()
 	ShpGfxInfo.FutureFillClr.pop_back();
 	return Temp;
 }
+
+

@@ -111,41 +111,36 @@ void Graph::Addshape(shape* pShp)
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Draw all shapes on the user interface
-void Graph::Draw(GUI* pUI) const
+void Graph::Draw(GUI* pUI) 
 {
 	pUI->ClearDrawArea();
-	
-		for (auto shapePointer : shapesList) {
-			if(shapePointer)
-			shapePointer->Draw(pUI);
-		}
-	
+	string x = "images\\MenuIcons\\hide_card.jpg";
+int maxx;
+int minx;
+int maxy;
+int miny;
+		
+for (auto shapePointer : shapesList) {
+	if (shapePointer)
+		shapePointer->Draw(pUI);
+	if (fhide) {
+		shapePointer->getXlimits(maxx, minx);
+		shapePointer->getYlimits(maxy, miny);
+
+		pUI->DrawImage(x, minx, miny, maxx - minx, maxy - miny);
+	};
+
+
+};
+		this->unsethide();
 	pUI->CreateDrawToolBar(); //Prevents Shapes to flow into Tool bar
 	pUI->CreateDrawVToolBar();
 }
 
 
-void Graph::Draw_cards(GUI* pUI) const {
+
 	
-	for (int i = 0; i < shapesList.size(); i++) {
-		cout << "hide2" << endl;
 
-		Point p1;
-		Point p2;
-
-		p1.x = 300;
-		p1.y = 200;
-		p2.x = 400;
-		p2.y = 300;
-
-
-		pUI->DrawImage("images\\MenuIcons\\hide_card.jpg" , p1,p2);
-		Draw(pUI);
-
-
-
-	}
-}
 shape* Graph::Getshape(int x, int y) const
 {
 	//If a shape is found return a pointer to it.
@@ -160,9 +155,37 @@ shape* Graph::Getshape(int x, int y) const
 
 void Graph::random_move(Point Grid[][4],string flag) {
 	
+	
+	int maxx;
+	int minx;
+	int maxy;
+	int miny;
+	
+	
+	int maxx1;
+	int minx1;
+	int maxy1;
+	int miny1;
+	double diagonal1;
+	double diagonal2;
+	double dx;
+	double dy;
+	double R;
+
+
+	shapesList[0]->getXlimits(maxx, minx);
+	shapesList[0]->getYlimits(maxy, miny);
+	diagonal1 = sqrt(pow((maxx - minx), 2) + pow((maxy - miny), 2));
+
+
+
+
+
 
 	int x;
 	int y;
+
+
 
 	srand(time(0));
 	for (unsigned i = 0; i < shapesList.size(); i++) {
@@ -179,11 +202,23 @@ void Graph::random_move(Point Grid[][4],string flag) {
 		shape* shape = shapesList[i];
 
 
+
+		shape->getXlimits(maxx1, minx1);
+		shape->getYlimits(maxy1, miny1);
+		diagonal2 = sqrt(pow((maxx1 - minx1), 2) + pow((maxy1 - miny1), 2));
+		R = (double)diagonal1 / diagonal2;
+		if(diagonal2)
+		shape->Resize(R);
+
+
+
+
 		                                                        
 		shape->Move(Grid[x][y].x, Grid[x][y].y);
 		
 		Grid[x][y].x = 6666;
 		cout << x << "   " << y << "   " << endl;
+
 	}
 	else {
 		i--;
