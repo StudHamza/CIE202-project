@@ -28,10 +28,16 @@ void opHide::Execute() {
 	Graph* ptG = pControl->getGraph();
 
 	cout << "hide" << endl;
+string x="images\\MenuIcons\\Menu_MULTIMOVE.jpg";
+
+ptG->sethide();
+
+	
 
 
+	
 
-	ptG->Draw_cards(pUI);
+	
 
 
 
