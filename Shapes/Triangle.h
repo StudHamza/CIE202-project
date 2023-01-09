@@ -23,9 +23,5 @@ public:
 
 	void getXlimits(int&, int&)   ;   // used in multi move
 	void getYlimits(int&, int&) ; // used in multi move
-	virtual void relative_move(int x1, int y1, int x2, int y2) ;// used in multimov
-
-
-
-	virtual void Draw_iamge(GUI* pUI) {};
+	virtual void relative_move(int x1, int y1, int x2, int y2) ;// used in multimove
 };

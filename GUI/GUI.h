@@ -199,7 +199,6 @@ public:
 	void DrawLine(Point, Point,GfxInfo)const;	//Draw a line
 
 	void DrawIREG(int n, int*, int*, GfxInfo IREGPolGfxInfo) const;
-	
 	int getheight() {
 		return pWind->GetHeight();
 
@@ -220,7 +219,7 @@ public:
 	//Frame Image
 	void FrameImage(image, int, int);
 	void DrawImage(string, Point, Point);
-	void DrawImage(string, int,int,int=-1,int=-1);
+	void DrawImage(string, int,int,int,int);
 
 	//Colors
 	color getCrntDrawColor() const;	//get current drwawing color
@@ -235,14 +234,7 @@ public:
 	void ChangeDrawColor(color);
 	void ChangeFillColor(color);
 
-	void Draw_image() {
 
-
-		string x = "images\\MenuIcons\\hide_card.jpg";
-
-		pWind->DrawImage(x, 300, 200, 100, 100);
-
-	}
 	//Keyboard events
 
 	~GUI();

@@ -23,21 +23,13 @@ private:
 	shape* selectedShape;	//pointer to the currently selected shape
 	Point* pvp = new Point{0,0}; //isnt dellocated yet
 	vector <shape*> clipboard;	//copy of selected shpes
-	bool fhide=false;
 public:										
 	Graph();
 	~Graph();
 	void Addshape(shape* pFig); //Adds a new shape to the shapesList
-	void Draw(GUI* pUI) ;			//Draw the graph (draw all shapes)
-	void Draw_cards() const;     //Hide each shape by drawing a card on it
-	
-	void sethide() {
-		fhide = true;
-	}
-	void unsethide() {
-		fhide = false;
+	void Draw(GUI* pUI) const;			//Draw the graph (draw all shapes)
+	void Draw_cards(GUI* pUI) const;     //Hide each shape by drawing a card on it
 
-	}
 	//Select///////////////////--------------------------
 	shape* Getshape(int x, int y) const; //Search for a shape given a point inside the shape
 	string SelectShape(Point,color,shape *);	//Responsible for shape selection

@@ -464,9 +464,6 @@ void GUI::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const
 
 	cout << pWind->GetWidth() << endl;
 	cout << pWind->GetHeight() << endl;
-
-
-	
 }
 
 
@@ -532,7 +529,6 @@ void GUI::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriangleGfxInfo) co
 	else
 		style = FRAME;
 	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
-
 
 }
 
@@ -647,7 +643,7 @@ void GUI::DrawImage(string Image, Point P1, Point P2)
 	
 	pWind->DrawImage(Image, P1.x, P1.y, P2.x, P2.y);
 }
-void GUI::DrawImage(string Image, int x1,int y1,int x2, int y2)
+void GUI::DrawImage(string Image, int x1,int x2,int y1, int y2)
 {
 	pWind->DrawImage(Image, x1, y1, x2, y2);
 }

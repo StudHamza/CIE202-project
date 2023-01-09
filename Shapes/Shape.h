@@ -95,7 +95,4 @@ public:
 	void setFutureFillColor(color);
 	color updateFutureDraw();
 	color updateFutureFill();
-
-	////////////////
-	virtual void Draw_iamge(GUI* pUI)=0;
 };

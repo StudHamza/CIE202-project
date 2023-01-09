@@ -105,7 +105,7 @@ public:
 
 	}
 
-	virtual void Draw_iamge(GUI* pUI) {};
+
 };
 
 
