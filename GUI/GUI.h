@@ -49,9 +49,11 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 };
 
 
+
 		/// <summary>
 		/// a 4*4 grid
 		/// </summary>
+
 
 
 class GUI
@@ -60,7 +62,6 @@ class GUI
 
 
 
-		                          
 
 
 	enum GUI_MODE	//Graphical user interface mode
@@ -81,7 +82,7 @@ class GUI
 		ICON_REGPOLY, //Regular polygon
 		ICON_IREGPOLY,
 		//TODO: Add more icons names here
-		
+
 		ICON_PEN,
 		ICON_FILL,
 
@@ -92,7 +93,7 @@ class GUI
 		ICON_MULTIMOVE,
 		ICON_RESIZE,
 		ICON_PLAY,
-	
+
 		ICON_EXIT,		//Exit icon
 
 		DRAW_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
@@ -112,6 +113,7 @@ class GUI
 		ICON_SAVE,
 		ICON_LOAD,
 	
+
 
 		DRAW_ICON_COUNT_V
 	};
@@ -168,7 +170,9 @@ public:
 	// Input Functions  ---------------------------
 	void GetPointClicked(int& x, int& y) const;//Get coordinate where user clicks
 	buttonstate GetButtonState(button, int&, int&);
+
 	string GetSrting(char c='c') const;	 //Returns a string entered by the user
+
 	bool GetKeyClicked()const;		//Return key modifiers
 	operationType GetUseroperation() const; //Read the user click and map to an operation
 
@@ -187,30 +191,34 @@ public:
 
 	// -- shapes Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const;//Draw a rectangle
-	void DrawRegPoly(Point P1, vector<int> Vx, vector<int> Vy,int s, GfxInfo RegPolyGfxInfo)const; //Draw a Regular polygon
+	void DrawRegPoly(Point P1, vector<int> Vx, vector<int> Vy, int s, GfxInfo RegPolyGfxInfo)const; //Draw a Regular polygon
 	void DrawCircle(Point P1, int Radius, GfxInfo CircleGfxInfo)const;
 	void DrawTriangle(Point, Point, Point, GfxInfo)const;	//Draw Triangle
 	void DrawOval(Point, Point, GfxInfo)const;
+
 	void DrawLine(Point, Point,GfxInfo)const;	//Draw a line
+
 	void DrawIREG(int n, int*, int*, GfxInfo IREGPolGfxInfo) const;
 	
 	int getheight() {
 		return pWind->GetHeight();
 
 	}
+
 		
 	int getwidth() {
 		return pWind->GetWidth();
+
 
 	}
 	///Make similar functions for drawing all other shapes.
 
 	void PrintMessage(string msg) const;	//Print a message on Status bar
 
-	void PrintExitMessage(string msg,char p='u') const;	//Print a message on Exit window
+	void PrintExitMessage(string msg, char p = 'u') const;	//Print a message on Exit window
 
 	//Frame Image
-	void FrameImage(image,int,int);
+	void FrameImage(image, int, int);
 	void DrawImage(string, Point, Point);
 	void DrawImage(string, int,int,int=-1,int=-1);
 
@@ -239,4 +247,3 @@ public:
 
 	~GUI();
 };
-

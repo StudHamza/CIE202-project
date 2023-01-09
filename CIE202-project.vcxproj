@@ -181,9 +181,13 @@
     <ClCompile Include="controller.cpp" />
     <ClCompile Include="IregularPoly.cpp" />
     <ClCompile Include="main.cpp" />
+
+    <ClCompile Include="opDuplicate.cpp" />
+
     <ClCompile Include="opaddIREG.cpp" />
     <ClCompile Include="opDelete.cpp" />
     <ClCompile Include="opDRAG.cpp" />
+
     <ClCompile Include="operations\opAddCircle.cpp" />
     <ClCompile Include="operations\opAddImage.cpp" />
     <ClCompile Include="operations\opAddLine.cpp" />
@@ -204,11 +208,16 @@
     <ClCompile Include="operations\opSelect.cpp" />
     <ClCompile Include="operations\opSave.cpp" />
     <ClCompile Include="operations\opUndo.cpp" />
+    <ClCompile Include="opMatch.cpp" />
+    <ClCompile Include="opMultiSelect.cpp" />
+    <ClCompile Include="opPushBack.cpp" />
+
     <ClCompile Include="opHide.cpp" />
     <ClCompile Include="opMultiMove.cpp" />
     <ClCompile Include="opRESIZE.cpp" />
     <ClCompile Include="opResizebyDrag.cpp" />
     <ClCompile Include="opScramble.cpp" />
+
     <ClCompile Include="Shapes\Circle.cpp" />
     <ClCompile Include="Shapes\Graph.cpp" />
     <ClCompile Include="Shapes\Line.cpp" />
@@ -219,6 +228,7 @@
     <ClCompile Include="Shapes\Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Project Startup Code\operations\opPushShapeBack.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />
@@ -242,10 +252,14 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
+
+    <ClInclude Include="opDuplicate.h" />
+
     <ClInclude Include="IregularPoly.h" />
     <ClInclude Include="opaddIREG.h" />
     <ClInclude Include="opDelete.h" />
     <ClInclude Include="opDRAG.h" />
+
     <ClInclude Include="operations\opAddCircle.h" />
     <ClInclude Include="operations\opAddImage.h" />
     <ClInclude Include="operations\opAddLine.h" />
@@ -267,11 +281,17 @@
     <ClInclude Include="operations\opSave.h" />
     <ClInclude Include="operations\opSelect.h" />
     <ClInclude Include="operations\opUndo.h" />
+
+    <ClInclude Include="opMatch.h" />
+    <ClInclude Include="opMultiSelect.h" />
+    <ClInclude Include="opPushBack.h" />
+
     <ClInclude Include="opHide.h" />
     <ClInclude Include="opMultiMove.h" />
     <ClInclude Include="opRESIZE.h" />
     <ClInclude Include="opResizebyDrag.h" />
     <ClInclude Include="opScramble.h" />
+
     <ClInclude Include="Shapes\Circle.h" />
     <ClInclude Include="Shapes\Graph.h" />
     <ClInclude Include="Shapes\Line.h" />

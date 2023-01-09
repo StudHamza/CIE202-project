@@ -137,6 +137,33 @@ for (auto shapePointer : shapesList) {
 	pUI->CreateDrawVToolBar();
 }
 
+void Graph::pushShapeBack()
+{
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i] == selectedShape) {
+			shape* temp = shapesList[i];
+			shapesList.erase(shapesList.begin() + i);
+			shapesList.push_back(temp);
+			return;
+		}
+	}
+
+
+}
+
+void Graph::Duplicate()
+{
+	for (int i = 0; i < shapesList.size(); i++) {
+	
+		
+		shape* temp = shapesList[i]->Clone();
+		temp->Shift(10, 10);
+		shapesList.push_back(temp);
+		
+	}
+
+}
+
 
 
 	
@@ -247,6 +274,16 @@ void Graph::random_move(Point Grid[][4],string flag) {
 }
 
 string Graph::SelectShape(Point P, color pevClr,shape *selected)
+{
+	selectedShape = nullptr;
+	*pvp = P; //Set previous point clicked
+	selectedShape = selected;
+	selected->Selected(pevClr); //sets shape to selected
+	return (selected->GetInfo('s')); //call select function that returns shape info as string
+
+}
+
+string Graph::MultiSelect(Point P, color pevClr, shape* selected)
 {
 	selectedShape = nullptr;
 	*pvp = P; //Set previous point clicked
